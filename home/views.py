@@ -35,7 +35,8 @@ def loginview(request):
 
 def welcomeview(request):
     return render(request, 'welcome.html')
-
+def customer_login_view(request):
+    return render(request, 'customer_login.html')
 
 def login_request(request):
     if request.method == "POST":
