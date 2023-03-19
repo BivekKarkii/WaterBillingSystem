@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,100&display=swap');
+
+*{
+    font-family: Montserrat, sans-serif;
+    font-weight: bolder;
+    margin: 0;
+}
+
+.top{
+    height: 750px;
+    background-image: url("https://img.freepik.com/free-vector/realistic-vector-illustration-banner-water-splash-crown-wave-banner-with-splashes-drops_134830-1307.jpg?size=626&ext=jpg&ga=GA1.2.324159320.1678975333&semt=ais");
+    background-size: 100% 750px;
+}
+
+.top img {
+    width: 100px;
+    height: 50px;
+}
+
+.middle{
+    display: flex;
+    height: fit-content;
+    margin-left: 100px;
+}
+
+.middle img {
+    float: right;
+    margin-left: 20px; /* add some margin between the image and paragraph */
+}
+  
+.middle p {
+    margin-top: 15px;
+    float: left;
+    width: 100%;
+    overflow: hidden; /* prevent the paragraph from wrapping around the image */
+}
+
+.company{
+    font-size: 25px;
+    font-weight: 800;
+    margin: 20px;
+}
+
+body{
+    display: inline-block;
+    background-color: #75BAE042;
+    width: 100%;
+}
+
+button{
+    max-width: 150px;
+    border-radius: 6px;
+    background-color: #828AD3;
+    padding: 5px;
+    margin: 35px 0;
+}
+
+.left{
+    margin-left: 50px;
+    padding: 12px;
+    display: flex;
+    float: left;
+}
+
+.right{
+    margin-right: 70px;
+    float: right;
+}
+
+.text1{
+    position: absolute;
+    font-style: italic;
+    width: 500px;
+    height: 137px;
+    left: 60%;
+    top: 514px;
+    font-size: 26px;
+    line-height: 24px;
+    /* or 92% */
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+.company2{
+    font-size: 24px;
+    /* font-style: bold; */
+    font-weight: 800;
+    margin-top: 50px;
+}
+
+.text2{
+    font-size: 20px;
+}
+
+.text3 p{
+    padding: 200px;
+    font-size: 20px;
+    float: left;
+    margin: 200px;
+}
+
+.bottom{
+    display: flex;
+    margin-left: 100px;
+}
+
+.savewater{
+    height: 600px;
+    width: 550px;
+    float: left;
+}
+
+.bottom p{
+    padding: 100px;
+    float: right;
+    font-size: 22px;
+    overflow: hidden;
+}
+
+.end{   
+    display: flex;
+    background-color: #fff;
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.end1{
+    float: left;
+    width: 50%;
+}
+
+.end1 h3{
+    padding: 20px 0;
+    margin-left: 100px;
+    font: bolder;
+}
+
+.end1 p{
+    margin-left: 100px;
+}
+
+.end2{
+    margin-left: 300px;
+    float: right;
+}
+
+.end2 p{
+    margin-top: 50px;
+}
+
+.end2 img{
+    padding: 0 10px;
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}

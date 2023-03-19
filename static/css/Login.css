@@ -1,0 +1,53 @@
+* {box-sizing: border-box}
+/* Full-width input fields */
+  input[type=text], input[type=password] {
+  width: 75%;
+  padding: 15px;
+  margin: 10px 0 22px 0;
+  border: 1px solid;
+  background: #f1f1f1;
+  border-radius: 20px;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+body{
+  background-image: url(https://static.vecteezy.com/system/resources/previews/003/273/882/original/wave-blue-background-wallpaper-free-vector.jpg);
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+  place-items: center;
+  font-size: 25px;
+  height: 700px;
+  width: 600px;
+  margin: auto;
+  border: 1px solid #73AD21;
+  border-radius: 25px;
+  background-color: white;
+  border-color: black;
+  float: right;
+  padding: 50px 100px;
+}
+
+p{
+  font-size: 15px;
+}
+
+button {
+  font-size: 20px;
+  background-color: #345feb;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+}
