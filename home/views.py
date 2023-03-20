@@ -1,5 +1,6 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -32,7 +33,7 @@ def loginview(request):
     else:
         return render(request, 'login.html')
 
-
+@login_required
 def welcomeview(request):
     return render(request, 'welcome.html')
 def customer_login_view(request):
@@ -49,7 +50,7 @@ def login_request(request):
         if user is not None:
             login(request, user)
             messages.info(request, f"You are now logged in as {username}.")
-            return redirect("/welcome")
+            return redirect(f"/welcome?username={username}")
         else:
             print("no user")
             messages.error(request, "Invalid username or password.")
@@ -57,6 +58,12 @@ def login_request(request):
         #     messages.error(request, "Invalid username or password.")
     form = AuthenticationForm()
     return render(request=request, template_name="login.html", context={"login_form": form})
+
+@login_required
+def logoutview(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.")
+    return redirect("welcome")
 
 
 def registerview(request):

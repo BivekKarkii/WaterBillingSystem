@@ -10,6 +10,28 @@ Welcome
         {% for message in messages %}
         {{ message }}
         {% endfor %}
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <form method="post">
+                <button class="login100-form-btn" type="submit">Logout
+            </button>
+            </form>
+
+        </div>
+    </div>
+
+<script>
+     address = window.location.search
+
+    // Returns a URLSearchParams object instance
+    parameterList = new URLSearchParams(address)
+
+    // Returning the respected value associated
+    // with the provided key
+     let uname = parameterList.get("username")
+
+</script>
 
 </body>
 </html>
