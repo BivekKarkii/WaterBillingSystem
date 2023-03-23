@@ -92,20 +92,22 @@ def forgetPassword(request):
     try:
         if request.method == "POST":
             username = request.POST.get('username')
-            print(username)
-            unm = User.objects.filter(username=username)
-            print(unm)
+            # print(username)
+            # unm = User.objects.filter(username=username)
+            # print(unm)
             if not User.objects.filter(username=username).first():
                 messages.success(request, 'No user found with this username.')
                 return redirect('/forgetpassword')
 
             # print("hello"+username)
             user_obj = User.objects.get(username=username)
+            print(user_obj)
             token = str(uuid.uuid4())
             profile_obj = Profile.objects.get(user=user_obj)
             profile_obj.forget_password_token = token
             send_forget_password_mail(user_obj, token)
             profile_obj.save()
+
             messages.success(request, 'An email has been sent to your registered email. Please check your mail.')
             return redirect('/forgetpassword')
 
@@ -114,7 +116,8 @@ def forgetPassword(request):
     return render(request, 'forget_password.html')
 
 
-def changePassword(request, token):
+# def changePassword(request, token):
+def changePassword(request):
     context = {}
     try:
         profile_obj = Profile.objects.get(forget_password_token=token).first()
@@ -128,6 +131,7 @@ def changePassword(request, token):
 
 def all_user(request):
     emp = User.objects.all()
+    print(emp)
     context = {
         'emp': emp
     }

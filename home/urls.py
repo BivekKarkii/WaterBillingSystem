@@ -16,6 +16,8 @@ urlpatterns = [
     path('welcome', welcomeview, name="welcome"),
     path('customer_login', customer_login_view, name='customer_login'),
     path('forgetpassword', forgetPassword, name="forget-password"),
+    path('forgetpassword/<token>', changePassword, name="change--password"),
+    # path('changepassword', changePassword, name="change-password"),
     path('changepassword/<token>/', changePassword, name="change-password"),
     path('alluser', all_user),
 
