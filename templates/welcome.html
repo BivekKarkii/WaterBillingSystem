@@ -5,31 +5,29 @@
     <title>Title</title>
 </head>
 <body>
-Welcome
-
+{% if user.is_authenticated %}
+    Welcome
         {% for message in messages %}
         {{ message }}
         {% endfor %}
-    <div class="container-login100-form-btn">
-        <div class="wrap-login100-form-btn">
-            <div class="login100-form-bgbtn"></div>
-            <form method="post">
-                <button class="login100-form-btn" type="submit">Logout
-            </button>
-            </form>
-
+{% endif %}
+    <a class="btn btn-primary" role="button" href="/alluser">All User</a><br>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="container-login100-form-btn">
+            <div class="wrap-login100-form-btn">
+                <div class="login100-form-bgbtn"></div>
+                    <button class="login100-form-btn" type="submit"><a href="{% url 'logout' %}">Log Out</a></button>
+            </div>
         </div>
-    </div>
-
+    </form>
 <script>
-     address = window.location.search
-
+     {#address = window.location.search#}
     // Returns a URLSearchParams object instance
-    parameterList = new URLSearchParams(address)
-
+    {#parameterList = new URLSearchParams(address)#}
     // Returning the respected value associated
     // with the provided key
-     let uname = parameterList.get("username")
+     {#let uname = parameterList.get("username")#}
 
 </script>
 
