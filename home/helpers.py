@@ -1,9 +1,9 @@
-
 # This is for sending email
 
 from django.core.mail import send_mail
 import uuid
 from django.conf import settings
+
 
 def send_forget_password_mail(email, token):
     subject = "Your forget password link"

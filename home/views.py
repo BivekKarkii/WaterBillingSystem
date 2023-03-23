@@ -1,5 +1,3 @@
-import uuid
-
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
@@ -11,6 +9,7 @@ from .helpers import send_forget_password_mail
 
 from home.forms import UserLoginForm
 from .models import Profile
+import uuid
 
 
 # Create your views here.
@@ -46,6 +45,11 @@ def welcomeview(request):
 
 def customer_login_view(request):
     return render(request, 'customer_login.html')
+
+@login_required
+def logOut(request):
+    logout(request)
+    return render(request, 'login.html')
 
 
 def login_request(request):
@@ -88,36 +92,7 @@ def registerview(request):
     return render(request, "signup.html")
 
 
-def forgetPassword(request):
-    try:
-        if request.method == "POST":
-            username = request.POST.get('username')
-            # print(username)
-            # unm = User.objects.filter(username=username)
-            # print(unm)
-            if not User.objects.filter(username=username).first():
-                messages.success(request, 'No user found with this username.')
-                return redirect('/forgetpassword')
-
-            # print("hello"+username)
-            user_obj = User.objects.get(username=username)
-            print(user_obj)
-            token = str(uuid.uuid4())
-            profile_obj = Profile.objects.get(user=user_obj)
-            profile_obj.forget_password_token = token
-            send_forget_password_mail(user_obj, token)
-            profile_obj.save()
-
-            messages.success(request, 'An email has been sent to your registered email. Please check your mail.')
-            return redirect('/forgetpassword')
-
-    except Exception as e:
-        print(e)
-    return render(request, 'forget_password.html')
-
-
-# def changePassword(request, token):
-def changePassword(request):
+def changePassword(request, token):
     context = {}
     try:
         profile_obj = Profile.objects.get(forget_password_token=token).first()
@@ -127,6 +102,76 @@ def changePassword(request):
     except Exception as e:
         print(e)
     return render(request, 'change_password.html', context)
+
+
+# http://127.0.0.1:8000/changepassword/fe930ab0-be5a-433b-b738-82c5bd3d4001/
+def forgetPassword(request):
+    try:
+        if request.method == "POST":
+            username = request.POST.get('username')
+            if not User.objects.filter(username=username).first():
+                messages.success(request, 'No user found with this username.')
+                return redirect('/forgetpassword')
+
+            # print("hello"+username)
+            user_obj = User.objects.get(username=username)
+
+            token = str(uuid.uuid4())
+            print(Profile.objects.all())
+            profile_obj = Profile.objects.get(user=user_obj)
+
+            profile_obj.forget_password_token = token
+            profile_obj.save()
+            send_forget_password_mail(user_obj.email, token)
+
+            messages.success(request, 'An email has been sent to your registered email. Please check your mail.')
+            return redirect('/forgetpassword')
+
+    except Exception as e:
+        print(e)
+    return render(request, 'forget_password.html')
+
+
+
+def AdminForgetPassword(request):
+    try:
+        if request.method == "POST":
+            username = request.POST.get('username')
+            if not User.objects.filter(username=username).first():
+                messages.success(request, 'No user found with this username.')
+                return redirect('/forgetpassword')
+
+            # print("hello"+username)
+            user_obj = get_user_model.objects.get(username=username)
+            user_obj.setpassword
+
+
+    except Exception as e:
+        print(e)
+    return redirect('/adminchangepassword')
+
+# def adminchangeView(request):
+#     return render(request, 'change_password.html')
+def AdminChangePassword(request, username):
+    try:
+        if request.method == "POST":
+            password = request.POST.get('password')
+            confirm_password = request.POST.get('c_password')
+
+            if (password != confirm_password):
+                messages.success(request, 'password mismatch!')
+                return redirect('/adminchangepassword')
+
+            UserModel = get_user_model().filter(username=username)
+            UserModel.set_password(confirm_password)
+            UserModel.save()
+            return redirect(request, '/login')
+
+
+    except Exception as e:
+        print(e)
+    return render(request, 'change_password.html')
+
 
 
 def all_user(request):
