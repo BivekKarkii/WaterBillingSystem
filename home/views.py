@@ -20,24 +20,6 @@ def homeview(request):
 def signupview(request):
     pass
 
-
-# def login_view(request):
-#     next = request.GET.get('next')
-#     form = UserLoginForm(request.POST or None)
-#     if form.is_valid():
-#         username = form.cleaned_data.get('username')
-#         password = form.cleaned_data.get('password')
-#         user = authenticate(username=username, password=password)
-#         login(request, user)
-#         if next:
-#             return redirect(next)
-#         return redirect('home:welcome')
-#
-#     context = {
-#         'form': form,
-#     }
-#     return render(request, "login.html", context)
-
 @login_required
 def welcomeview(request):
     return render(request, 'welcome.html')
@@ -55,8 +37,6 @@ def logOut(request):
 def login_request(request):
     if request.method == "POST":
         print("Hello gello")
-        # form = AuthenticationForm(request, data=request.POST)
-        # if form.is_valid():
         username = request.POST.get('uname')
         password = request.POST.get('pass')
         user = authenticate(username=username, password=password)
@@ -85,6 +65,7 @@ def registerview(request):
 
         # Create a new user with the create_user method
         user = User.objects.create_user(username=username, password=password)
+        Profile.objects.create()
         print("user created!")
         return redirect("/login")
         # return HttpResponse(status=201, content='User created')
@@ -95,12 +76,30 @@ def registerview(request):
 def changePassword(request, token):
     context = {}
     try:
-        profile_obj = Profile.objects.get(forget_password_token=token).first()
-        print(profile_obj)
-
+        profile_obj = Profile.objects.get(forget_password_token=token)
         context = {'user_id': profile_obj.user_id}
+
+        if request.method == 'POST':
+            new_password = request.POST.get('password')
+            confirm_password = request.POST.get('c_password')
+            user_id = request.POST.get('user_id')
+
+            if user_id is None:
+                messages.success(request, 'No user id found.')
+                return redirect(f'/changePassword/{token}/')
+
+            if new_password != confirm_password:
+                messages.success(request, 'both should  be equal.')
+                return redirect(f'/changePassword/{token}/')
+
+            user_obj = User.objects.get(id=user_id)
+            user_obj.set_password(new_password)
+            user_obj.save()
+            return redirect('/login')
+
     except Exception as e:
         print(e)
+
     return render(request, 'change_password.html', context)
 
 
@@ -109,6 +108,7 @@ def forgetPassword(request):
     try:
         if request.method == "POST":
             username = request.POST.get('username')
+            print(username)
             if not User.objects.filter(username=username).first():
                 messages.success(request, 'No user found with this username.')
                 return redirect('/forgetpassword')
@@ -117,7 +117,7 @@ def forgetPassword(request):
             user_obj = User.objects.get(username=username)
 
             token = str(uuid.uuid4())
-            print(Profile.objects.all())
+
             profile_obj = Profile.objects.get(user=user_obj)
 
             profile_obj.forget_password_token = token
@@ -130,47 +130,6 @@ def forgetPassword(request):
     except Exception as e:
         print(e)
     return render(request, 'forget_password.html')
-
-
-
-def AdminForgetPassword(request):
-    try:
-        if request.method == "POST":
-            username = request.POST.get('username')
-            if not User.objects.filter(username=username).first():
-                messages.success(request, 'No user found with this username.')
-                return redirect('/forgetpassword')
-
-            # print("hello"+username)
-            user_obj = get_user_model.objects.get(username=username)
-            user_obj.setpassword
-
-
-    except Exception as e:
-        print(e)
-    return redirect('/adminchangepassword')
-
-# def adminchangeView(request):
-#     return render(request, 'change_password.html')
-def AdminChangePassword(request, username):
-    try:
-        if request.method == "POST":
-            password = request.POST.get('password')
-            confirm_password = request.POST.get('c_password')
-
-            if (password != confirm_password):
-                messages.success(request, 'password mismatch!')
-                return redirect('/adminchangepassword')
-
-            UserModel = get_user_model().filter(username=username)
-            UserModel.set_password(confirm_password)
-            UserModel.save()
-            return redirect(request, '/login')
-
-
-    except Exception as e:
-        print(e)
-    return render(request, 'change_password.html')
 
 
 

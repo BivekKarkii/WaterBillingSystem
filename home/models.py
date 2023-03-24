@@ -4,7 +4,8 @@ from django.db import models
 
 # Create your models here.
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     forget_password_token = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 
