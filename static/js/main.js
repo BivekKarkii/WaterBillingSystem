@@ -69,3 +69,6 @@
     
 
 })(jQuery);
+
+
+console.log("hello")
