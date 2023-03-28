@@ -1,0 +1,99 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+
+.container {
+	background-color: #fff;
+	max-width: 500px;
+	margin: 50px auto;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px #ccc;
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"] {
+	padding: 10px;
+	margin-bottom: 15px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #ccc;
+}
+
+button[type="submit"] {
+	padding: 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #ccc;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+	background-color: #0062cc;
+}
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+}
+
+.container {
+	background-color: #fff;
+	max-width: 500px;
+	margin: 50px auto;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px #ccc;
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"], select {
+	padding: 10px;
+	margin-bottom: 15px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #ccc;
+}
+
+select {
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23007bff' d='M2.1 7.9l9.9 9.9L22.1 7.9c.6-.6 1.5-.6 2.1 0s.6 1.5 0 2.1L12 19.1 2.1 9.9c-.6-.6-.6-1.5 0-2.1s1.5-.6 2.1 0z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 16px 16px;
+}
+
+button[type="submit"] {
+	padding: 10px;
+	background-color: #007bff;
+	color:
+}

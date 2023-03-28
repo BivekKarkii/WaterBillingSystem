@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat,wght@1,100&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+body{
+    background-color: #EAFDFC;
+}
+
+nav{
+    height: 80px;
+}
+
+.h2{
+    margin: 30px;    
+}
+
+.content{
+    height: 50%;
+    width: 100%;
+}
+
+main{
+    width: 100%;
+}
+
+.content input[type=text] { 
+    float: left;
+    padding: 5px;
+    border: 1px solid black;
+    border-right: none;
+    font-size: 15px;
+    width: 700px;
+}
+
+.add{
+    margin-right: 50px;
+}
+
+.content button {
+    border-right: none;
+    float: right;
+    display: block;
+    color: black;
+    padding: 5px 5px;
+    border: 1px solid black;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+    font-weight: 600;
+    justify-content: space-between;
+}
+
+.navbar{
+    display: flex;
+    height: 5%;
+    margin-left: 30px;
+    width: 100%;
+}
+
+.navbar li{
+    display: flex;
+    list-style: none;
+    margin: 30px 20px;
+    font-weight: bolder;
+}
+
+.mid{
+    width: 700px;
+    margin-left: 30px;
+}
+
+.mid li{
+    width: 200px;
+    display: flex;
+    list-style: none;
+    margin: 20px 20px;
+    font-weight: bolder;
+}
+
+table{
+    width: 90%;
+    margin-left: 50px;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+}
+
+th{
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+td{
+    font-size: 15px;
+    border: 1px solid black;
+    padding: 20px 10px;
+}
+
+.crud{
+    float: right;
+    width: 300px;
+    justify-content: space-around;
+    margin: 30px;
+}
+
+.crud button{
+    width: 100px;
+    border-right: none;
+    float: right;
+    display: block;
+    color: black;
+    padding: 5px 5px;
+    border: 1px solid black;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+    font-weight: 600;
+    justify-content: space-between;
+}
+
+button{
+    background-color: #828AD3;
+}
+
+button:hover{
+    background-color: aqua;
+}

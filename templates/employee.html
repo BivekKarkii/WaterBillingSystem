@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="util.css">
+    <link rel="stylesheet" href="consumer.css">
+    <title>Employee</title>
+</head>
+<body>
+    <div class="container mx-auto">
+        <header>
+            <nav class="nav flex justify-between bg-navbar">
+                <h2 class="h2">Employee Records</h2>
+            </nav>
+        </header>
+        <main class="min-h-screen bg-body">
+            <div class="content flex">
+                <ul class="navbar justify-between">
+                    <li>
+                        <form action="">
+                            <input type="text" placeholder="Search..."><button type="button">Search</button>
+                        </form>
+                    </li>
+                    <li><button class="add" type="button">Add Employee</button></li>
+                </ul>
+            </div>
+            <div class="mid">
+                <ul class="flex justify-between">
+                    <li>Total Employee: <p>10</p></li>
+                </ul>
+            </div>
+            <div class="records">
+                <table class="center">
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Citizenship No</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>  
+        </main>
+        <footer>
+            <div class="crud flex">
+                <button type="button">Update</button>
+                <button type="button">Remove</button>
+            </div>   
+        </footer>
+    </div> 
+</body>
+</html>

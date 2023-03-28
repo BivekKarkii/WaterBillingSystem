@@ -1,0 +1,77 @@
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid;
+    background: #f1f1f1;
+    border-radius: 20px;
+
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+body{
+  /* background-image: url("https://static.vecteezy.com/system/resources/previews/003/273/882/original/wave-blue-background-wallpaper-free-vector.jpg"); */
+  background-color: #EAFDFC;
+  background-size: cover;
+}
+
+main{
+  margin: 100px 100px;
+  min-height: 50vh;
+  min-width: 80vh;
+  display: flex;
+  border-radius: 20px;
+}
+
+.image{
+  width: 60%;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.image img{
+  height: 600px;
+  width: 100%;
+}
+
+.content{
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  width: 40%;
+  height: 600px;
+  float: right;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border-color: black;
+  justify-content: space-around;
+}
+
+.content h2{
+  margin: 50px 0;
+}
+
+p{
+  font-size: 12px;
+}
+
+button {
+  font-size: 15px;
+  background-color: #345feb;
+  color: white;
+  padding: 10px 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 75%;
+  opacity: 0.9;
+}

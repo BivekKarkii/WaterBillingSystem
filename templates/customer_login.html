@@ -8,15 +8,16 @@
   </head>
   <body>
     <div class="container">
-      <form>
+      <form method="post">
+          {% csrf_token %}
         <h2>Welcome to our application</h2>
         <p>Please login to use the platform</p>
         <label for="CustomerId">Customer Id</label><br>
         <input type="text" id="Cid" name="Cid"><br>
         <label for="password">Password</label><br>
         <input type="password" id="password" name="Cpassword"><br>
-        <button type="button" name="button">Login</button>
-        <p>New here?<a href="Sign Up">Sign Up</a></p>
+        <button type="submit" name="button">Login</button>
+        <p>New here?<a href="/consumer/consumer_signup">Sign Up</a></p>
       </form>
     </div>
   </body>

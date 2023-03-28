@@ -22,15 +22,14 @@ def signupview(request):
 
 @login_required
 def welcomeview(request):
-    return render(request, 'welcome.html')
-
-
+    return render(request, 'admindashboard.html')
 
 
 @login_required
 def logOut(request):
     logout(request)
-    return render(request, 'login.html')
+    return redirect('/login')
+    # return render(request, 'login.html') #issue 1
 
 
 def login_request(request):
@@ -41,20 +40,17 @@ def login_request(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.info(request, f"You are now logged in as {username}.")
+            # messages.info(request, f"You are now logged in as {username}.")
             return redirect(f"/welcome?username={username}")
         else:
             print("no user")
             messages.error(request, "Invalid username or password.")
-        # else:
-        #     messages.error(request, "Invalid username or password.")
     form = AuthenticationForm()
     return render(request=request, template_name="login.html", context={"login_form": form})
 
 
 def registerview(request):
     if request.method == 'POST':
-        # Extract the username and password from the request body
         username = request.POST.get("username", "")
         password = request.POST.get("password", "")
 
@@ -67,7 +63,6 @@ def registerview(request):
         Profile.objects.create()
         print("user created!")
         return redirect("/login")
-        # return HttpResponse(status=201, content='User created')
 
     return render(request, "signup.html")
 

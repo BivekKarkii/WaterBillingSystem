@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container mx-auto">
+        <header>
+            <nav class="nav flex justify-between bg-navbar">
+                <div class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="logo">
+                </div>
+                <ul class="navbar">
+                    <li><a href="#" class="notification">
+                        <img src="{% static 'images/bell-solid.svg" alt="bell' %}">
+                      </a></li>
+                    <li><a href="">Admin</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="min-h-screen bg-body flex">
+            <div class="menu bg-menu">
+                <button class="tablinks" onclick="openTab(event, 'Home')" id="defaultOpen">Home</button>
+                <button class="tablinks" type="submit"><a href="consumer/consumer_admin">Consumer</a> </button>
+                <button class="tablinks" onclick="openTab(event, 'Employee')">Employee</button>
+                <button class="tablinks" onclick="openTab(event, 'Billing')">Billing</button>
+                <button class="tablinks" type="submit"><a href="/logoout">Log Out</a></button>
+            </div>
+            <div id="Home" class="tabcontent">
+                    <div class="boxes flex justify-evenly">
+                        <div class="box">
+                            <h3>Total Consumer</h3>
+                            <h3>10</h3>
+                        </div>
+                        <div class="box">
+                            <h3>Total Employee</h3>
+                            <h3>10</h3>
+                        </div>
+                        <div class="box">
+                            <h3>Total Bills</h3>
+                            <h3>10</h3>
+                        </div>
+                    </div>
+                </div>
+
+{#            <div id="Consumer" class="tabcontent">#}
+{#                <h3>hello</h3>#}
+{#            </div>#}
+        </main>
+    </div>
+    <script>
+        function openCity(evt, menuItem) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(menuItem).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+        
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+        </script>
+</body>
+</html>
