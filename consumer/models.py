@@ -31,5 +31,9 @@ class Consumer_Profile(models.Model):
     password = models.CharField(max_length=50)
 
 
-    def __str__(self):
-        return f"{self.consumer} {self.password}"
+    # def __str__(self):
+    #     return f"{self.phone} {self.password}"
+
+
+
+

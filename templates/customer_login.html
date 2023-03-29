@@ -11,9 +11,10 @@
       <form method="post">
           {% csrf_token %}
         <h2>Welcome to our application</h2>
+          <p style="color:pink">{{ message }}</p>
         <p>Please login to use the platform</p>
-        <label for="CustomerId">Customer Id</label><br>
-        <input type="text" id="Cid" name="Cid"><br>
+        <label for="phone">Phone</label><br>
+        <input type="text" id="phone" name="phone"><br>
         <label for="password">Password</label><br>
         <input type="password" id="password" name="Cpassword"><br>
         <button type="submit" name="button">Login</button>

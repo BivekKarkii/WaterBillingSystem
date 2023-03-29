@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .helpers import send_forget_password_mail
 
-from home.forms import UserLoginForm
+# from home.forms import UserLoginForm
 from .models import Profile
 import uuid
 

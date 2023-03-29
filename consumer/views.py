@@ -14,22 +14,23 @@ def consumer_dashboardview(request):
     return render(request, 'consumer_dashboard.html')
 
 def customer_login_view(request):
-    if request.method == "POST":
-        print("Hello gello")
-        username = request.POST.get('Cid')
-        password = request.POST.get('Cpassword')
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            # messages.info(request, f"You are now logged in as {username}.")
-            return redirect(f"/consumer_dashboard?username={username}")
-        else:
-            print("no user")
-            messages.error(request, "Invalid username or password.")
-        # else:
-        #     messages.error(request, "Invalid username or password.")
-    form = AuthenticationForm()
-    return render(request=request, template_name="customer_login.html", context={"login_form": form})
+    pass
+    # if request.method == "POST":
+    #     print("Hello bivek")
+    #     phone = request.POST.get('phone')
+    #     password = request.POST.get('Cpassword')
+    #
+    #     try:
+    #         usr=Consumer_Profile.objects.filter(phone=phone, password=password)
+    #         print(usr.first().password)
+    #         return redirect("/consumer/consumer_dashboard")
+    #
+    #     except:
+    #         return render(request, "customer_login.html", context={"message":"invalid username or password"})
+    #     # return render(request, "customer_login.html", context={"message": "invalid username or password"})
+    #
+    # form = AuthenticationForm()
+    # return render(request=request, template_name="customer_login.html", context={"login_form": form})
 
 
 def consumer_registration_formview(request):
@@ -63,32 +64,32 @@ def consumer_registration_formview(request):
 def consumer_adminview(request):
     return render(request, "consumer.html")
 
-# def consumer_signupview(request):
-#     if request.method == 'POST':
-#         phone = request.POST.get('phone')
-#         password = request.POST.get('password')
-#         c_password = request.POST.get('c_password')
-#
-#         if password!=c_password:
-#             return render(request, "Signup.html", {"message": "password not matching"})
-#         print(f'hellllllllllllloooooooooo{phone}')
-#         try:
-#             consum = Consumer.objects.get(phone=phone)
-#             Consumer_Profile.objects.create(phone=phone, password=password)
-#
-#             print(consum.phone)
-#             # Consumer_Profile.save()
-#
-#             # print(consum.email)
-#             return redirect('/consumer/customer_login')
-#         except:
-#             return render(request, "Signup.html",{"message":"Consumer id is invalid"})
-#
-#         # if Consumer.objects.get(consumer_id=cid):
-#         #     print('Success')
-#         #     return render(request, "Signup.html")
-#
-#
-#     return render(request, "Signup.html")
+def consumer_signupview(request):
+    if request.method == 'POST':
+        phone = request.POST.get('phone')
+        password = request.POST.get('password')
+        c_password = request.POST.get('c_password')
+
+        if password!=c_password:
+            return render(request, "Signup.html", {"message": "password not matching"})
+        print(f'hellllllllllllloooooooooo{phone}')
+        try:
+            consum = Consumer.objects.get(phone=phone)
+            Consumer_Profile.objects.create(phone=phone, password=password)
+
+            print(consum.phone)
+            # Consumer_Profile.save()
+
+            # print(consum.email)
+            return redirect('/consumer/customer_login')
+        except:
+            return render(request, "Signup.html",{"message":"Consumer id is invalid"})
+
+        # if Consumer.objects.get(consumer_id=cid):
+        #     print('Success')
+        #     return render(request, "Signup.html")
+
+
+    return render(request, "Signup.html")
 
 
