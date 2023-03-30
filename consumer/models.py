@@ -14,13 +14,6 @@ class Consumer(models.Model):
     type = models.CharField(max_length=50)
     citizenship = models.CharField(max_length=50)
 
-    # print(type(id))
-
-    # c_random=0
-    # def randomNumber(self):
-    #     c_random = random.randint(1000, 9999)
-    # print(f"hello {c_random}")
-    # consumer_id = c_random
 
     def __str__(self):
         return "%s   %s" % (self.consumer_id, self.name)
@@ -31,8 +24,6 @@ class Consumer_Profile(models.Model):
     password = models.CharField(max_length=50)
 
 
-    # def __str__(self):
-    #     return f"{self.phone} {self.password}"
 
 
 

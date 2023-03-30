@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import random
+
+from consumer.forms import ConsumerForm
 from consumer.models import Consumer, Consumer_Profile
 
 
@@ -14,23 +16,22 @@ def consumer_dashboardview(request):
     return render(request, 'consumer_dashboard.html')
 
 def customer_login_view(request):
-    pass
-    # if request.method == "POST":
-    #     print("Hello bivek")
-    #     phone = request.POST.get('phone')
-    #     password = request.POST.get('Cpassword')
-    #
-    #     try:
-    #         usr=Consumer_Profile.objects.filter(phone=phone, password=password)
-    #         print(usr.first().password)
-    #         return redirect("/consumer/consumer_dashboard")
-    #
-    #     except:
-    #         return render(request, "customer_login.html", context={"message":"invalid username or password"})
-    #     # return render(request, "customer_login.html", context={"message": "invalid username or password"})
-    #
-    # form = AuthenticationForm()
-    # return render(request=request, template_name="customer_login.html", context={"login_form": form})
+    if request.method == "POST":
+        print("Hello bivek")
+        phone = request.POST.get('phone')
+        password = request.POST.get('Cpassword')
+
+        try:
+            usr=Consumer_Profile.objects.filter(phone=phone, password=password)
+            print(usr.first().password)
+            return redirect("/consumer/consumer_dashboard")
+
+        except:
+            return render(request, "customer_login.html", context={"message":"invalid username or password"})
+        # return render(request, "customer_login.html", context={"message": "invalid username or password"})
+
+    form = AuthenticationForm()
+    return render(request=request, template_name="customer_login.html", context={"login_form": form})
 
 
 def consumer_registration_formview(request):
@@ -91,5 +92,20 @@ def consumer_signupview(request):
 
 
     return render(request, "Signup.html")
+
+def consumer_updateview(request, phone):
+    consumer = Consumer.objects.get(phone=phone)
+    form = ConsumerForm(request.POST or None, instance=consumer)
+    if form.is_valid():
+        form.save()
+        return redirect('/consumer/consumer_admin')
+    return render(request, '/consumer/consumer_update_form.html', {'consumer_update_form': form})
+
+def consumer_delete(request, id):
+    consumer = Consumer.objects.get(id=id)
+    if request.method == 'POST':
+        consumer.delete()
+        return redirect('consumer_list')
+    return render(request, 'consumer/delete.html', {'consumer': consumer})
 
 

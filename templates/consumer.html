@@ -28,6 +28,14 @@
                         <form method="post">
                             {% csrf_token %}
                             <button class="add" type="submit"><a href="/consumer/consumer_registration_form">Add Consumer</a> </button>
+                            <button class="add" ><a href="/consumer/consumer_update">Update Consumer</a> </button>
+
+                            {% for consumer in consumers %}
+                                <h2>{{ consumer.name }}</h2>
+                                <p>{{ consumer.email }}</p>
+                                <p>{{ consumer.phone }}</p>
+                                <p>{{ consumer.address }}</p>
+                            {% endfor %}
                         </form>
 
                     </li>
