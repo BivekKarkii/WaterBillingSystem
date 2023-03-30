@@ -3,7 +3,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from consumer.views import customer_login_view, consumer_dashboardview, consumer_registration_formview, \
-    consumer_adminview, consumer_signupview
+    consumer_adminview, consumer_signupview,consumer_updateview, consumer_delete
 from home import views
 from home.views import homeview
 
@@ -16,5 +16,7 @@ urlpatterns = [
     path('consumer_admin', consumer_adminview, name='consumer_admin'),
     path('consumer_signup', consumer_signupview, name='consumer_signup'),
     # path('consumer_dashboard', consumer_dashboardview, name='consumer_dashboard'),
+    path('consumer_update/<int:phone>', consumer_updateview, name='consumer_update'),
+    path('delete/<int:id>/', consumer_delete, name='consumer_delete'),
 
 ]

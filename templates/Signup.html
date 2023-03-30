@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="Signup.css">
+    <link rel="stylesheet" href="util.css">
+    <title></title>
+  </head>
+  <body>
+    <main class="container flex justify-around">
+      <div class="image">
+        <img src="./images/Data_security_01.jpg" alt="signupimg">
+      </div>
+      <div class="content flex">
+        <form method="post">
+            {% csrf_token %}
+            {{ message }}
+          <h3>Sign UP</h3>
+          <label for="phone">Customer ID</label><br>
+          <input type="number" id="phone" name="phone"><br>
+
+          <label for="Password">Password</label><br>
+          <input type="password" id="Password" name="password"><br>
+
+          <label for="Cpassword">Confirm Password</label><br>
+          <input type="password" id="Cpassword" name="c_password"><br>
+
+          <button type="submit" name="button">Confirm</button>
+          <p>Already have an account? <a href="/consumer/customer_login">Login</a></p>
+        </form>
+        </div>
+      </div>
+    </main>
+
+  </body>
+</html>
