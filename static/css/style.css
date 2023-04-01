@@ -1,0 +1,2091 @@
+/* General css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+
+.min-h-screen{
+    min-height: 100vh;
+}
+
+.bg-red{
+    background-color: red;
+}
+
+.mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flex{
+    display: flex;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.justify-evenly{
+    justify-content: space-evenly;
+}
+
+.justify-around{
+    justify-content: space-around;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.bg-body{
+    background-color: #EAFDFC;
+}
+
+.bg-navbar{
+    background-color: #82aae3;
+}
+
+.button-color{
+    background-color: #828AD3;
+}
+
+header{
+    margin: 0;
+    padding: 0;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+/* --------------------------------------------------------------------- */
+
+/* Header css */
+
+.logo img {
+    width: 400px;
+    height: 100px;
+    margin-left: 30px;
+}
+
+.pageheader{
+    background-color: white;
+}
+
+.navbar{
+    display: flex;
+    height: 100px;
+    margin-right: 30px;
+}
+
+.navbar li{
+    display: flex;
+    list-style: none;
+    margin: 30px 20px;
+    font-weight: bolder;
+}
+
+.navbar img{
+    width: 25px;
+}
+
+.pageheader button{
+    border: 0px solid;
+    min-width: 120px;
+    border-radius: 6px;
+    background-color: #345FE3;
+    padding: 5px;
+    font-weight: 700;
+    color: white;
+}
+
+.pageheader button:hover{
+    background-color: #fff;
+    color: #345feb;
+    border: 1px solid #345feb;
+}
+
+.pageheader a{
+    text-decoration: none;
+    color: black;
+}
+
+.pageheader a:hover{
+    text-decoration: underline;
+    color: black;
+}
+
+/* --------------------------------------------------------------------- */
+
+/* Footer css */
+
+.pagefooter{
+    display: flex;
+    background-color: #fff;
+    margin-top: 100px;
+    padding-bottom: 30px;
+}
+
+.pageend{
+    float: left;
+    width: 50%;
+}
+
+.pageend h3{
+    padding: 20px 0;
+    margin-left: 100px;
+    font: bolder;
+}
+
+.pageend p{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.pageend1 p{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.pageend1{
+    margin-left: 300px;
+    float: right;
+}
+
+.pageend1 p{
+    margin-top: 50px;
+}
+
+.pageend1 img{
+    padding: 0 10px;
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.pageend1 h3{
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+.pagefooter a{
+    text-decoration: none;
+    color: black;
+}
+
+.pagefooter a:hover{
+    text-decoration: underline;
+    color: black;
+}
+
+/* --------------------------------------------------------------------- */
+
+/* Sign Up css */
+
+.signupform input[type=text], input[type=password] {
+    width: 93%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid;
+    background: #f1f1f1;
+    border-radius: 20px;
+}
+
+.signupform input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.signup{
+  background-color: #EAFDFC;
+  max-height: 70vh;
+}
+
+.signupmain{
+  margin: 100px 100px;
+  min-height: 50vh;
+  min-width: 80vh;
+  display: flex;
+  border-radius: 20px;
+}
+
+.signupimage{
+  width: 60%;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.signupimage img{
+  height: 550px;
+  width: 100%;
+}
+
+.signupcontent{
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    width: 50%;
+    height: 550px;
+    font-size: 20px;
+    margin: 0;
+    padding: 20px;
+    background-color: white;
+    border-color: black;
+    justify-content: center;
+}
+
+.signupcontent h2{
+  margin: 50px 0;
+}
+
+.signupcontent p{
+  font-size: 12px;
+}
+
+.confirm {
+    font-size: 15px;
+    background-color: #345feb;
+    color: white;
+    padding: 10px 10px;
+    margin: 20px 0 10px 0;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+.signupform label{
+    font-size: 15px;
+}
+.signupform{
+    width: 50%;
+}
+/* --------------------------------------------------------------------- */
+
+/* Home css */
+
+.hometop{
+    align-items: center;
+    height: 700px;
+    background-image: url("./images/rm373batch10-202.jpg");
+    background-size: 100% 750px;
+    width: 100%;
+}
+
+.hometop p{
+    font-size: large;
+}
+
+.homemiddle{
+    display: flex;
+    height: fit-content;
+    margin-left: 100px;
+}
+
+.homemiddle img {
+    float: right;
+    margin-left: 20px; /* add some margin between the image and paragraph */
+}
+
+.homemiddle p {
+    margin-top: 15px;
+    float: left;
+    width: 100%;
+    overflow: hidden; /* prevent the paragraph from wrapping around the image */
+}
+
+.homecompany{
+    font-size: 25px;
+    font-weight: 800;
+    margin: 20px 0px;
+}
+
+.home{
+    display: inline-block;
+    background-color: #75BAE042;
+    width: 100%;
+}
+
+.homemain button{
+    font-weight: 700;
+    margin-top: 20px;
+    padding: 6px 15px;
+    border-radius: 6px;
+    color: white;
+    background-color: #345FE3;
+    border: 0px;
+
+}
+
+.homemain button:hover{
+    background-color: #fff;
+    color: #345feb;
+    border: 1px solid #345feb;
+}
+
+.hometext1{
+    color: white;
+    font-style: italic;
+    font-size: 30px;
+    letter-spacing: 1px;
+    text-align: left;
+    margin-left: 80px;
+    width: 30%;
+}
+
+.homecompany{
+    font-size: 24px;
+    font-weight: 800;
+    margin-top: 50px;
+}
+
+.hometext2{
+    font-size: 20px;
+}
+
+.homebottom{
+    display: flex;
+    margin-left: 100px;
+}
+
+.savewater{
+    height: 600px;
+    width: 550px;
+    float: left;
+}
+
+.homebottom p{
+    padding: 100px;
+    float: right;
+    font-size: 22px;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------- */
+
+/* Abpot Us css */
+
+.aboutuscontent{
+    width: 80%;
+}
+
+.aboutushead{
+    font-size: 70px;
+}
+
+.aboutuscontent h1{
+    margin: 40px 0;
+    text-align: center;
+}
+
+.whowearetext{
+    font-size: 20px;
+    padding: 0px 200px;
+    width: 70%;
+}
+
+.aboutusboxes{
+    margin-top: 100px;
+}
+
+.aboutusbox{
+    width: 500px;
+    min-height: 700px;
+    border: 1px solid black;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.aboutusbox h3{
+    text-align: center;
+    margin: 20px 20px;
+    font-size: 25px;
+}
+
+.aboutusbox p{
+    font-size: 20px;
+    padding: 0 70px;
+}
+
+.aboutusbox img {
+    width: 130px;
+    height: 150px;
+    margin: 20px 185px;
+}
+/* --------------------------------------------------------------------- */
+
+/* Support css */
+
+.supportmain h1{
+    padding: 40px;
+    text-align: center;
+}
+
+.mainbody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 70%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    text-align: left;
+}
+
+.accordion p{
+    width: 70%;
+    overflow: hidden;
+}
+
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+  /* Style the accordion panel. Note: hidden by default */
+.panel {
+    width: 70%;
+    min-height: 10vh;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+.panel p{
+    font-size: 18px;
+    padding: 20px 40px;
+}
+
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+
+
+/* --------------------------------------------------------------------- */
+/* Register css (Nilima) */
+.Addconsumer {
+	background-color: #EAFDFC;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+  }
+
+  .Addconsumer h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+  }
+
+  .Addconsumer form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #EAFDFC;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .Addconsumer label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+
+  .Addconsumer input[type="text"],
+  .Addconsumer input[type="email"],
+  .Addconsumer input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+  }
+
+  .Addconsumer input[type="radio"] {
+	margin-right: 10px;
+  }
+
+  .Addconsumer {
+	background-color: #EAFDFC;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+  }
+
+  .Addconsumer h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+  }
+
+  .Addconsumer form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .Addconsumer label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+
+  .Addconsumer input[type="text"],
+  .Addconsumer input[type="email"],
+  .Addconsumer input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+  }
+
+  .Addconsumer input[type="radio"] {
+	margin-right: 10px;
+  }
+
+
+/* --------------------------------------------------------------------- */
+/* UpdateE css (Nilima) */
+
+.logo2{
+  width: 300px;
+}
+
+.Addemployee  {
+	background-color: #EAFDFC;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+  }
+
+  .Addemployee h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+  }
+
+  .Addemployee form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #EAFDFC;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .Addemployee label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+
+  .Addemployee input[type="text"],
+  .Addemployee input[type="email"],
+  .Addemployee input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+  }
+
+  .Addemployee input[type="radio"] {
+	margin-right: 10px;
+  }
+
+  .Addemployee button[type="submit"] {
+	background-color: #345FE3;
+	color: white;
+	padding: 10px 20px;
+	border: 1px solid;
+	border-radius: 1px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+
+  .Addemployee button[type="submit"]:hover {
+	background-color: #345FE3;
+  }
+  .Addemployee {
+	background-color: #EAFDFC;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+  }
+
+  .Addemployee h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+  }
+
+  .Addemployee form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .Addemployee label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+
+  .Addemployee input[type="text"],
+  .Addemployee input[type="email"],
+  .Addemployee input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+  }
+
+  .Addemployee input[type="radio"] {
+	margin-right: 10px;
+  }
+
+  .Addemployee button[type="submit"] {
+	background-color: #345FE3;
+	color: white;
+	padding: 10px 20px;
+	border: 1px solid;
+	border-radius: 1px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+
+  .Addemployee button[type="submit"]:hover {
+	background-color: #345FE3;
+  }
+/* --------------------------------------------------------------------- */
+/* Deletecustomer css (Nilima) */
+.deleteconsumer {
+	font-family: Poppins, sans-serif;
+	background-color: #f0f0f0;
+}
+
+.deleteconsumer {
+	margin: auto;
+	width: 40%;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.deleteconsumer h1{
+	text-align: center;
+}
+
+.deleteconsumer p {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.deleteconsumer form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.deleteconsumer input[type="submit"], input[type="button"] {
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}
+
+.deleteconsumer input[type="submit"] {
+	background-color: #e74c3c;
+}
+
+.deleteconsumer input[type="submit"]:hover {
+	background-color: #c0392b;
+}
+
+.deleteconsumer input[type="button"] {
+	background-color: #2ecc71;
+	margin-left: 10px;
+}
+
+.deleteconsumer input[type="button"]:hover {
+	background-color: #27ae60;
+}
+
+/* --------------------------------------------------------------------- */
+/* AddE css (Nilima) */
+
+.AddE {
+	background-color: #EAFDFC;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+  }
+
+  .AddEh1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+  }
+
+  .AddE form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #EAFDFC;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .AddE label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+
+  .AddE input[type="text"],
+  .AddE input[type="email"],
+  .AddE input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+  }
+
+  .AddE input[type="radio"] {
+	margin-right: 10px;
+  }
+
+  .AddE button[type="submit"] {
+	background-color: #345FE3;
+	color: white;
+	padding: 10px 20px;
+	border: 1px solid;
+	border-radius: 1px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+
+  .AddE button[type="submit"]:hover {
+	background-color: #345FE3;
+  }
+  .AddE  {
+	background-color: #EAFDFC;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+  }
+
+  .AddE h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+  }
+
+  .AddE form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .AddE label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+
+  .AddE input[type="text"],
+  .AddE input[type="email"],
+  .AddE input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+  }
+
+  .AddE input[type="radio"] {
+	margin-right: 10px;
+  }
+
+  .AddE button[type="submit"] {
+	background-color: #345FE3;
+	color: white;
+	padding: 10px 20px;
+	border: 1px solid;
+	border-radius: 1px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+
+  .AddE button[type="submit"]:hover {
+	background-color: #345FE3;
+  }
+
+/* --------------------------------------------------------------------- */
+/* UpdateE css (Nilima) */
+
+.Addemployee  {
+	background-color: #EAFDFC;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+  }
+
+  .Addemployee h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+  }
+
+  .Addemployee form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #EAFDFC;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .Addemployee label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+
+  .Addemployee input[type="text"],
+  .Addemployee input[type="email"],
+  .Addemployee input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+  }
+
+  .Addemployee input[type="radio"] {
+	margin-right: 10px;
+  }
+
+  .Addemployee button[type="submit"] {
+	background-color: #345FE3;
+	color: white;
+	padding: 10px 20px;
+	border: 1px solid;
+	border-radius: 1px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+
+  .Addemployee button[type="submit"]:hover {
+	background-color: #345FE3;
+  }
+  .Addemployee {
+	background-color: #EAFDFC;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+  }
+
+  .Addemployee h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+  }
+
+  .Addemployee form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .Addemployee label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+
+  .Addemployee input[type="text"],
+  .Addemployee input[type="email"],
+  .Addemployee input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+  }
+
+  .Addemployee input[type="radio"] {
+	margin-right: 10px;
+  }
+
+  .Addemployee button[type="submit"] {
+	background-color: #345FE3;
+	color: white;
+	padding: 10px 20px;
+	border: 1px solid;
+	border-radius: 1px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+
+  .Addemployee button[type="submit"]:hover {
+	background-color: #345FE3;
+  }
+
+/* --------------------------------------------------------------------- */
+/* DeleteE css (Nilima) */
+
+.DeleteE {
+	font-family: Poppins, sans-serif;
+	background-color: #f0f0f0;
+}
+
+.DeleteE {
+	margin: auto;
+	width: 40%;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.DeleteE h1{
+	text-align: center;
+}
+
+.DeleteE p {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.DeleteE form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.DeleteE input[type="submit"], input[type="button"] {
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}
+
+.DeleteE input[type="submit"] {
+	background-color: #e74c3c;
+}
+
+.DeleteE input[type="submit"]:hover {
+	background-color: #c0392b;
+}
+
+.DeleteE input[type="button"] {
+	background-color: #2ecc71;
+	margin-left: 10px;
+}
+
+.DeleteE input[type="button"]:hover {
+	background-color: #27ae60;
+}
+
+/* --------------------------------------------------------------------- */
+/* Forgetpasssword css (Nilima) */
+
+.Forgetpassword {
+	background-color: #EAFDFC;
+	font-family: Poppins, sans-serif;
+}
+
+.Forgetpasswordcontainer {
+	max-width: 500px;
+	width: 400px;
+	margin: 5px auto;
+	padding: 20px;
+	height: 250px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.Forgetpassword p{
+	text-align: left;
+	margin: 10px 0;
+}
+
+.Forgetpassword a{
+	display: flex;
+	margin-top: 20px;
+}
+
+.Forgetpassword{
+	margin-bottom: 20px;
+}
+
+.Forgetpassword label {
+	display: block;
+	margin-bottom: 15px;
+	font-weight: bold;
+}
+
+.Forgetpassword input[type="text"] {
+	width: 90%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
+
+.Forgetpassword button[type="submit"] {
+	background-color: #345FE3;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+  width: 30%;
+  border: 1px solid #345FE3;
+}
+
+.Forgetpassword button[type="submit"]:hover {
+	background-color: white;
+  color: #345FE3;
+}
+
+/* --------------------------------------------------------------------- */
+/* Newpasssword css (Nilima) */
+
+.Newpassword {
+	font-family: Poppins, sans-serif;
+	background-color: #EAFDFC;
+}
+
+.Newpasswordcontainer {
+    max-width: 500px;
+    width: 400px;
+    margin: 4px auto;
+    padding: 20px;
+    height: 400px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+}
+
+.Newpasswordcontainer h2{
+  margin: 20px 0;
+}
+
+.Newpasswordform input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.Newpasswordform button[type="submit"] {
+    background-color: #345FE3;
+    border: 1px solid #345FE3;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: inherit;
+    margin-top: 20px;
+}
+
+.Newpasswordform button[type="submit"]:hover {
+  background-color: white;
+  color: #345FE3;
+}
+
+/* --------------------------------------------------------------------- */
+/* LoginA/C css (Nilima) */
+
+.Loginform input[type=text], input[type=password] {
+    width: 93%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid;
+    background: #f1f1f1;
+    border-radius: 20px;
+}
+
+.Loginform input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.Loginform input[type=text], input[type=cust] {
+    width: 93%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid;
+    background: #f1f1f1;
+    border-radius: 20px;
+}
+
+.Loginform input[type=text]:focus, input[type=cust]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.Loginform{
+  width: 70%;
+}
+
+.Loginform h3{
+  padding: 15px 0;
+  margin-bottom: 30px;
+  font-size: 35px;
+}
+
+.lftxt{
+  padding: 10px 0;
+}
+
+.Login{
+  background-color: #EAFDFC;
+  max-height: 70vh;
+}
+
+.Loginmain{
+  margin: 100px 100px;
+  min-height: 50vh;
+  min-width: 80vh;
+  display: flex;
+  border-radius: 20px;
+}
+
+.Loginimage{
+  width: 60%;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.Loginimage img{
+  height: 550px;
+  width: 100%;
+}
+
+.Logincontent{
+  font-family: Poppins, Helvetica, sans-serif;
+  align-items: center;
+  width: 40%;
+  height: 550px;
+  float: right;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border-color: black;
+  justify-content: space-around;
+}
+
+.Logincontent h2{
+  margin: 50px 0;
+}
+
+.Logincontent p{
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.loginconfirm {
+    font-size: 15px;
+    background-color: #345feb;
+    color: white;
+    padding: 10px 10px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    min-width: 200px;
+    width: 98%;
+    opacity: 0.9;
+}
+
+.forgotp{
+  font-size: 12px;
+  float: right;
+  margin: 0;
+}
+
+
+/* --------------------------------------------------------------------- */
+
+/* Update Customer css */
+
+.uc h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+  }
+
+  .uc form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #EAFDFC;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .uc label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+
+  .uc input[type="text"],
+  .uc input[type="email"],
+  .uc input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+  }
+
+  .uc input[type="radio"] {
+	margin-right: 10px;
+  }
+
+  .uc button[type="submit"] {
+	background-color: #345FE3;
+	color: white;
+	padding: 10px 20px;
+	border: 1px solid;
+	border-radius: 1px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+
+  .uc button[type="submit"]:hover {
+	background-color: #345FE3;
+  }
+  .uc button[type="cancel"] {
+	background-color: #345FE3;
+	color: white;
+	padding: 10px 20px;
+	border: 1px solid;
+	border-radius: 1px;
+	cursor: pointer;
+	font-size: 16px;
+  }
+
+  .uc button[type="cancel"]:hover {
+	background-color: #345FE3;
+  }
+  body {
+	background-color: #EAFDFC;
+	font-family: Poppins, sans-serif;
+	margin: 0;
+	padding: 0;
+  }
+
+  .uc h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+  }
+
+  .uc form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .uc label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+  }
+
+  .uc input[type="text"],
+  .uc input[type="email"],
+  .uc input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+  }
+
+  .uc input[type="radio"] {
+	margin-right: 10px;
+  }
+
+.uc-cancel-button{
+    /*background-color: white;*/
+	/*color: #345FE3;*/
+	/*padding: 10px 20px;*/
+	/*border: 1px solid#345FE3;*/
+	/*border-radius: 1px;*/
+	/*cursor: pointer;*/
+	/*font-size: 16px;*/
+
+    font-size: 15px;
+    background-color: #345feb;
+    color: white;
+    padding: 10px 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 75%;
+    opacity: 0.9;
+}
+.uc-cancel-button:hover{
+    background-color: #345FE3;
+    color: white;
+}
+
+
+
+/* --------------------------------------------------------------------- */
+/* General css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+
+.min-h-screen{
+    min-height: 100vh;
+}
+
+.bg-red{
+    background-color: red;
+}
+
+.mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flex{
+    display: flex;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.justify-evenly{
+    justify-content: space-evenly;
+}
+
+.justify-around{
+    justify-content: space-around;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.bg-body{
+    background-color: #EAFDFC;
+}
+
+.bg-navbar{
+    background-color: #82aae3;
+}
+
+.button-color{
+    background-color: #828AD3;
+}
+
+header{
+    margin: 0;
+    padding: 0;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+/* --------------------------------------------------------------------- */
+
+/* Header css */
+
+.logo img {
+    width: 400px;
+    height: 100px;
+    margin-left: 30px;
+}
+
+.pageheader{
+    background-color: white;
+}
+
+.navbar{
+    display: flex;
+    height: 100px;
+    margin-right: 30px;
+}
+
+.navbar li{
+    display: flex;
+    list-style: none;
+    margin: 30px 20px;
+    font-weight: bolder;
+}
+
+.navbar img{
+    width: 25px;
+}
+
+.pageheader button{
+    border: 0px solid;
+    min-width: 120px;
+    border-radius: 6px;
+    background-color: #345FE3;
+    padding: 5px;
+    font-weight: 700;
+    color: white;
+}
+
+.pageheader button:hover{
+    background-color: #fff;
+    color: #345feb;
+    border: 1px solid #345feb;
+}
+
+.pageheader a{
+    text-decoration: none;
+    color: black;
+}
+
+.pageheader a:hover{
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.button-color a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.button-color:hover a{
+    text-decoration: none;
+    color: #0056b3 !important;
+}
+
+
+/* --------------------------------------------------------------------- */
+
+/* Footer css */
+
+.pagefooter{
+    display: flex;
+    background-color: #fff;
+    margin-top: 100px;
+    padding-bottom: 30px;
+}
+
+.pageend{
+    float: left;
+    width: 50%;
+}
+
+.pageend h3{
+    padding: 20px 0;
+    margin-left: 100px;
+    font: bolder;
+}
+
+.pageend p{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.pageend1 p{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.pageend1{
+    margin-left: 300px;
+    float: right;
+}
+
+.pageend1 p{
+    margin-top: 50px;
+}
+
+.pageend1 img{
+    padding: 0 10px;
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.pageend1 h3{
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
+.pagefooter a{
+    text-decoration: none;
+    color: black;
+}
+
+.pagefooter a:hover{
+    text-decoration: underline;
+    color: black;
+}
+
+/* --------------------------------------------------------------------- */
+
+/* Sign Up css */
+
+.signupform input[type=text], input[type=password] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid;
+    background: #f1f1f1;
+    border-radius: 20px;
+}
+
+.signupform input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.signup{
+  background-color: #EAFDFC;
+  max-height: 70vh;
+}
+
+.signupmain{
+  margin: 100px 100px;
+  min-height: 50vh;
+  min-width: 80vh;
+  display: flex;
+  border-radius: 20px;
+}
+
+.signupimage{
+  width: 60%;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.signupimage img{
+  height: 550px;
+  width: 100%;
+}
+
+.signupcontent{
+  align-items: center;
+  width: 40%;
+  height: 550px;
+  float: right;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border-color: black;
+  justify-content: space-around;
+}
+
+.signupcontent h2{
+  margin: 50px 0;
+}
+
+.signupcontent p{
+  font-size: 12px;
+}
+
+.confirm {
+    font-size: 15px;
+    background-color: #345feb;
+    color: white;
+    padding: 10px 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 75%;
+    opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------- */
+
+/* Home css */
+
+.hometop{
+    align-items: center;
+    height: 700px;
+    background-image: url("../images/rm373batch10-202.jpg ");
+    background-size: 100% 750px;
+    width: 100%;
+}
+
+.hometop p{
+    font-size: large;
+}
+
+.homemiddle{
+    display: flex;
+    height: fit-content;
+    margin-left: 100px;
+}
+
+.homemiddle img {
+    float: right;
+    margin-left: 20px; /* add some margin between the image and paragraph */
+}
+
+.homemiddle p {
+    margin-top: 15px;
+    float: left;
+    width: 100%;
+    overflow: hidden; /* prevent the paragraph from wrapping around the image */
+}
+
+.homecompany{
+    font-size: 25px;
+    font-weight: 800;
+    margin: 20px 0px;
+}
+
+.home{
+    display: inline-block;
+    background-color: #75BAE042;
+    width: 100%;
+}
+
+.homemain button{
+    font-weight: 700;
+    margin-top: 20px;
+    padding: 6px 15px;
+    border-radius: 6px;
+    color: white;
+    background-color: #345FE3;
+    border: 0px;
+}
+
+.homemain button:hover{
+    background-color: #fff;
+    color: #345feb;
+    border: 1px solid #345feb;
+}
+
+.hometext1{
+    color: white;
+    font-style: italic;
+    font-size: 30px;
+    letter-spacing: 1px;
+    text-align: left;
+    margin-left: 80px;
+    width: 30%;
+}
+
+.homecompany{
+    font-size: 24px;
+    font-weight: 800;
+    margin-top: 50px;
+}
+
+.hometext2{
+    font-size: 20px;
+}
+
+.homebottom{
+    display: flex;
+    margin-left: 100px;
+}
+
+.savewater{
+    height: 600px;
+    width: 550px;
+    float: left;
+}
+
+.homebottom p{
+    padding: 100px;
+    float: right;
+    font-size: 22px;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------- */
+
+/* Abpot Us css */
+
+.aboutuscontent{
+    width: 80%;
+}
+
+.aboutushead{
+    font-size: 70px;
+}
+
+.aboutuscontent h1{
+    margin: 40px 0;
+    text-align: center;
+}
+
+.whowearetext{
+    font-size: 20px;
+    padding: 0px 200px;
+    width: 70%;
+}
+
+.aboutusboxes{
+    margin-top: 100px;
+}
+
+.aboutusbox{
+    width: 500px;
+    min-height: 700px;
+    border: 1px solid black;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.aboutusbox h3{
+    text-align: center;
+    margin: 20px 20px;
+    font-size: 25px;
+}
+
+.aboutusbox p{
+    font-size: 20px;
+    padding: 0 70px;
+}
+
+.aboutusbox img {
+    width: 130px;
+    height: 150px;
+    margin: 20px 185px;
+}
+/* --------------------------------------------------------------------- */
+
+/* Support css */
+
+.supportmain h1{
+    padding: 40px;
+    text-align: center;
+}
+
+.mainbody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #eee;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 70%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    text-align: left;
+}
+
+.accordion p{
+    width: 70%;
+    overflow: hidden;
+    font-weight: 800;
+}
+
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+  /* Style the accordion panel. Note: hidden by default */
+.panel {
+    width: 70%;
+    min-height: 10vh;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+.panel p{
+    font-size: 18px;
+    padding: 20px 40px;
+}
+
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+/* --------------------------------------------------------------------- */
+
+/* Contact Us */
+
+.contactusheader{
+    min-height: 50px;
+}
+
+.contactusform h1 {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.contactusform h2 {
+	text-align: center;
+    margin-bottom: 20px;
+}
+
+.contactusform {
+    margin-top: 200px;
+    border-radius: 40px;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: white;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contactusform label {
+	display: block;
+	font-weight: bold;
+}
+
+.contactusform input[type="text"], input[type="textarea"]{
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	font-size: 16px;
+}
+
+.cutxt{
+    width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+}
+
+.contactusbutton{
+    justify-content: space-around;
+    width: 30%;
+}
+
+/* --------------------------------------------------------------------- */
+
+/* Dashboard css */
+
+.dashcontent{
+    width: 100%;
+}
+
+.consumermain{
+    width: 100%;
+}
+
+.dashcontent input[type=text] {
+    float: left;
+    padding: 5px;
+    border: 1px solid black;
+    border-right: none;
+    font-size: 15px;
+    width: 700px;
+}
+
+.consumeradd{
+    margin-right: 50px;
+}
+
+.dashcontent button {
+    border-right: none;
+    float: right;
+    display: block;
+    color: black;
+    padding: 5px 5px;
+    border: 1px solid black;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+    font-weight: 600;
+    justify-content: space-between;
+}
+
+.searchbar{
+    margin-right: 70px;
+    display: flex;
+    height: 5%;
+    margin-left: 30px;
+    width: 100%;
+}
+
+.searchbar li{
+    display: flex;
+    list-style: none;
+    margin: 30px 20px;
+    font-weight: bolder;
+}
+
+.searchbar button{
+    border-radius: 5px;
+    height: fit-content;
+    color: white;
+    background-color: #345FE3;
+}
+
+.searchbar button:hover{
+    background-color: #fff;
+    color: #345feb;
+    border: 1px solid #345feb;
+}
+
+.dashmid{
+    width: 700px;
+    margin-left: 30px;
+}
+
+.dashmid li{
+    width: 200px;
+    display: flex;
+    list-style: none;
+    margin: 20px 20px;
+    font-weight: bolder;
+}
+
+.center{
+    width: 90%;
+    margin-left: 50px;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+}
+
+.center th{
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+.center td{
+    font-size: 15px;
+    border: 1px solid black;
+    padding: 20px 10px;
+}
+
+.crud{
+    float: right;
+    width: 300px;
+    justify-content: space-around;
+    margin: 30px;
+}
+
+.crud button{
+    width: 100px;
+    border-right: none;
+    float: right;
+    display: block;
+    color: black;
+    padding: 5px 5px;
+    border: 1px solid black;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+    font-weight: 600;
+    justify-content: space-between;
+}
+/* --------------------------------------------------------------------- */
+

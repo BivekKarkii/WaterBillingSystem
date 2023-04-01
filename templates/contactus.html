@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Contact Us</title>
+</head>
+<body class="bg-body">
+    <div class="contactus">
+        <header class="contactusheader">
+        </header>
+        <main>
+            <div class="contactuscontent flex">
+                <form class="contactusform">
+                    <div class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="logo">
+                    </div>
+                  <h2>Contact Us</h2>
+                  <label for="username">Username</label><br>
+                  <input type="text" id="username" name="username" placeholder="Name"><br>
+                  <label for="email">Email</label><br>
+                  <input type="text" id="email" name="email" placeholder="Email"><br>
+                  <label for="message">Message</label><br>
+                  <textarea class="cutxt" rows="4">
+                  </textarea><br>
+                  <button class="confirm contactusbutton flex" type="button" name="button">Submit</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

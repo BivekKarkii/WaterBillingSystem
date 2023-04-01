@@ -1,41 +1,53 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="util.css">
-    <link rel="stylesheet" href="aboutus.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>About Us</title>
 </head>
 <body>
-    <div class="container min-h-screen mx-auto">
-        <header class="top bg-navbar">
-            <nav class="nav flex justify-between bg-navbar">
-                <h2 class="h2">About Us</h2>
+    <div class="aboutus bg-body">
+        <header class="pageheader">
+            <nav class="aboutusnav flex justify-between">
+                <div class="logo">
+                    <a href=""><img src="{% static '/images/logo.png' %}" alt="logo"></a> <!----Website Logo---->
+                </div>
+                <ul class="navbar align-center">
+                    <li><a href="/about">About Us</a></li> <!----Link to About Us page---->
+                    <li><a href="/support">Support</a></li> <!----Link to Support page---->
+                    <li><a href="/contact">Contact Us</a></li>  <!----Link to Contact Us page---->
+                    <li><button class="button-color" name="admin"><a href="/login" style="color: #ffffff; ">
+                        Admin Login</a></button></li>   <!----Link to Admin Login page---->
+                    <li><button class="button-color" name="c_login"><a href="consumer/customer_login" style="color: #ffffff;">
+                        Customer Login</a></li> <!----Link to Customer Login page---->
+                </ul>
             </nav>
         </header>
         <main class="flex justify-around">
-            <div class="content">
+            <div class="aboutuscontent">
+                <h1 class="aboutushead">About Us</h1>
                 <h1>Who we are?</h1>
-                <p class="t1">We are a team of professionals dedicated to providing the best water billing services to our clients.
+                <p class="whowearetext">We are a team of professionals dedicated to providing the best water billing services to our clients.
                     Our goal is to make water billing as easy and efficient as possible for both residential and commercial customers.
                 </p>
-                <div class="flex justify-between margin1">
-                    <div class="box1 box">
-                        <img src="./images/rocket-solid.svg" alt="mission">
+                <div class="aboutusboxes flex justify-between">
+                    <div class="aboutusbox">
+                        <img src="{% static 'images/rocket-solid.svg' %}" alt="mission">
                         <h3>Our Mission</h3>
                         <p>Our system is designed with the latest technology and software, ensuring accuracy and reliability in billing.
-                        We understand that water is an essential commodity, and every drop counts. 
+                        We understand that water is an essential commodity, and every drop counts.
                         Therefore, we strive to make sure that our billing system is fair and transparent to our clients.
                         </p>
                     </div>
-                    <div class="box2 box">
-                        <img src="./images/lightbulb-regular.svg" alt="solutions">
+                    <div class="aboutusbox">
+                        <img src="{% static 'images/lightbulb-regular.svg' %}" alt="solutions">
                         <h3>We help to get solutions</h3>
                         <p>
-                            At our company, we value customer satisfaction and go the extra mile to meet our customers' needs. 
-                            Our customer support team is available 24/7 to answer any questions or concerns you may have. 
+                            At our company, we value customer satisfaction and go the extra mile to meet our customers' needs.
+                            Our customer support team is available 24/7 to answer any questions or concerns you may have.
                             We are committed to providing exceptional service to our clients and believe that communication is the key to achieving this.
                         </p>
                     </div>
@@ -43,8 +55,19 @@
 
             </div>
         </main>
-        <footer>
-            
+        <footer class="pagefooter">
+            <div class="pageend">
+                <h3>Company</h3>
+                <a href="/about"><p>About Us</p></a>
+                <a href="/contact"><p>Contact Us</p></a>
+                <a href="/support"><p>Support</p> </a>
+            </div>
+            <div class="pageend1">
+                <h3>Connect With Us</h3>
+                <a href=""><img src="{% static 'images/5296499_fb_facebook_facebook logo_icon.png' %}" alt="fb"></a>
+                <a href=""><img src="{% static 'images/5296514_bird_tweet_twitter_twitter logo_icon.svg' %}" alt="tw"></a>
+                <a href=""><img src="{% static 'images/5296765_camera_instagram_instagram logo_icon.svg' %}" alt="inst"></a>
+            </div>
         </footer>
     </div>    
 </body>

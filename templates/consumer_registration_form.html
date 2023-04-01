@@ -1,54 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
 {% load static %}
-<head>
+<html  lang="en">
+  <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static 'css/Register.css' %}">
-</head>
-<body>
-<div class="container">
-		<h2>Add Customer</h2>
-		<form method="post">
-            {% csrf_token %}
-            <label for="cid">Consumer ID:</label>
-			<input type="number" id="cid" name="consumer_id"  required>
+    <title>Add Consumer</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <style>
+          .registration_btn{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+          }
+          .registration_btn .add_btn{
+            font-size: 15px;
+            background-color: #345feb;
+            color: white;
+            padding: 10px 10px;
+            margin: 10px 0;
+            border: 2px solid #345feb;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 45%;
+            opacity: 0.9;
+              transition: 0.5s all;
+          }
+          .registration_btn .add_btn:hover{
+            font-size: 15px;
+            background-color: #ffffff;
+            color: #345feb;
+            padding: 10px 10px;
+            margin: 10px 0;
+            border: 2px solid #345feb;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 45%;
+            opacity: 0.9;
+          }
+          .uc-cancel-button{
+              transition: 0.5s all;
+              font-size: 15px;
+            background-color: #ffffff;
+            color: #345feb;
+            padding: 10px 10px;
+            margin: 10px 0;
+            border: 2px solid #345feb;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 45%;
+            opacity: 0.9;
+          }
 
-			<label for="name">Full Name:</label>
-			<input type="text" id="name" name="name" required>
 
-			<label for="phonenumber">Phone Number:</label>
-			<input type="text" id="address" name="phone" required>
+      </style>
+  </head>
+  <body class="Addconsumer">
+    <form method="post">
+      {% csrf_token %}
+      <img class="logo2" src="{% static 'images/logo.png' %}" alt="logo">
+      <h1>Register Consumer</h1>
 
-            <label for="email">Email:</label>
-			<input type="text" id="email" name="email" required>
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="name" required>
 
-			<label for="address">Address:</label>
-			<input type="text" id="meter-no" name="address" required>
+      <label for="phonenumber">Phone Number:</label>
+      <input type="tel" id="phonenumber" name="phone" required>
 
-            <label for="citizenship">Citizenship:</label>
-			<input type="number" id="citizenship" name="citizenship" required>
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
 
-            <label for="meternumber">Meter Number:</label>
-			<input type="number" id="meternumber" name="meter_no" required>
+      <label>Water Type:</label>
+      <label for="domestic">
+        <input type="radio" id="domestic" name="type" value="domestic" checked>
+        Community
+      </label>
+      <label for="commercial">
+        <input type="radio" id="commercial" name="type" value="commercial">
+        KUKL
+      </label>
 
-            <label for="type-options">Khanepani Type:</label>
-			<select id="type-options" name="type" required>
-				<option value="">Select an option</option>
-				<option value="A">Option A</option>
-				<option value="B">Option B</option>
-				<option value="C">Option C</option>
-			</select>
+      <label for="meternumber">Meter Number:</label>
+      <input type="text" id="meternumber" name="meter_no" required>
 
-{#            <label for="username">Meter Number:</label>#}
-{#			<input type="text" id="username" name="username" required>#}
-{##}
-{#            <label for="password">Meter Number:</label>#}
-{#			<input type="password" id="password" name="password" required>#}
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
 
-            <button type="submit" class="btn btn-primary"> Add Consumer</button>
-		</form>
-	</div>
+      <label for="citizenshipnumber">Citizenship Number:</label>
+      <input type="text" id="citizenshipnumber" name="citizenship" required>
 
-</body>
+      <label for="consumer_id">Consumer Id:</label>
+      <input type="text" id="consumer_id" name="consumer_id" required>
+        <div class="registration_btn">
+            <button type="submit" class="add_btn">Add </button>
+            <button type="button" class="uc-cancel-button">Cancel</button>
+        </div>
+
+    </form>
+  </body>
 </html>

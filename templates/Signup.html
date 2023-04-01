@@ -1,23 +1,33 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="Signup.css">
-    <link rel="stylesheet" href="util.css">
-    <title></title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Consumer signup</title>
+      <style>
+          .message{
+              color: red;
+              font-size: 12px;
+          }
+
+      </style>
   </head>
-  <body>
-    <main class="container flex justify-around">
-      <div class="image">
-        <img src="./images/Data_security_01.jpg" alt="signupimg">
+  <body class="signup">
+    <main class="signupmain flex justify-around">
+      <div class="signupimage">
+        <img src="{% static 'images/Data_security_01.jpg' %}" alt="signupimg">
       </div>
-      <div class="content flex">
-        <form method="post">
-            {% csrf_token %}
-            {{ message }}
+      <div class="signupcontent flex">
+        <form class="signupform" method="POST">
           <h3>Sign UP</h3>
-          <label for="phone">Customer ID</label><br>
-          <input type="number" id="phone" name="phone"><br>
+          {% csrf_token %}
+            <div class="message">
+                {{ message }}<br>
+            </div>
+
+          <label for="phone">Phone</label><br>
+          <input type="text" id="phone" name="phone"><br>
 
           <label for="Password">Password</label><br>
           <input type="password" id="Password" name="password"><br>
@@ -25,12 +35,13 @@
           <label for="Cpassword">Confirm Password</label><br>
           <input type="password" id="Cpassword" name="c_password"><br>
 
-          <button type="submit" name="button">Confirm</button>
+          <button type="submit" name="button" class="confirm">Confirm</button>
           <p>Already have an account? <a href="/consumer/customer_login">Login</a></p>
+
         </form>
         </div>
       </div>
     </main>
-
   </body>
 </html>
+

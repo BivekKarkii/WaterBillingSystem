@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Support</title>
+</head>
+<body>
+    <div class="support bg-body">
+        <header class="pageheader">
+            <nav class="supportnav flex justify-between">
+                <div class="logo">
+                    <a href=""><img src="{% static '/images/logo.png' %}" alt="logo"></a> <!----Website Logo---->
+                </div>
+                <ul class="navbar align-center">
+                    <li><a href="/about">About Us</a></li> <!----Link to About Us page---->
+                    <li><a href="/support">Support</a></li> <!----Link to Support page---->
+                    <li><a href="/contact">Contact Us</a></li>  <!----Link to Contact Us page---->
+                    <li><button class="button-color" name="admin"><a href="/login" style="color: #1b1e21; background: #828AD3">
+                        Admin Login</a></button></li>   <!----Link to Admin Login page---->
+                    <li><button class="button-color" name="c_login"><a href="consumer/customer_login" style="color: #1b1e21; background: #828AD3">
+                        Customer Login</a></li> <!----Link to Customer Login page---->
+                </ul>
+            </nav>
+        </header>
+        <main class="supportmain">
+            <h1>Frequently Asked Questions (FAQs)</h1>
+            <div class="mainbody">
+                <button class="accordion">1. What is a water billing system, and how does it work?</button>
+                <div class="panel">
+                  <p>A water billing system is a software program that helps water suppliers track and bill customers for
+                    the water they use. The system typically uses water meters to measure how much water a customer
+                    uses, and then calculates the bill based on the meter readings.
+                </p>
+                </div>
+
+                <button class="accordion">2. Can I pay my water bill online?</button>
+                <div class="panel">
+                  <p>Yes, we offer online bill payment options, either through their website (connect IPS) Check with your
+                    water supplier to find out if online bill payment is available.</p>
+                </div>
+
+                <button class="accordion">3. How do I read my water meter?</button>
+                <div class="panel">
+                  <p>Water meters typically have a digital or analog display that shows the amount of water that has been
+                    used. To read your meter, you will need to locate the display and note the numbers or digits that are
+                    displayed</p>
+                </div>
+
+                <button class="accordion">4. How can I check for water leaks in my home?</button>
+                <div class="panel">
+                  <p>To check for water leaks in your home, you can perform a simple test by turning off all water sources
+                    and checking your water meter. If the meter is still moving, it may indicate a leak. You can also
+                    check for visible leaks, such as dripping faucets or running toilets.
+                    </p>
+                </div>
+
+                <button class="accordion">5. How often will I receive my water bill?</button>
+                <div class="panel">
+                  <p>The frequency of water bills varies depending on the different water supplier. And we send bills
+                    monthly, while others may send them bi-monthly or quarterly.</p>
+                </div>
+
+
+                <button class="accordion">6. What should I do if I think there is an error on my water bill?</button>
+                <div class="panel">
+                  <p>If you believe there is an error on your water bill, you should contact your water supplier's customer
+                    service department. They can investigate the issue and make any necessary adjustments to your bill.</p>
+                </div>
+
+                <button class="accordion">7. What happens if I don't pay my water bill?</button>
+                <div class="panel">
+                  <p>If you don't pay your water bill, your water supplier may take various actions, such as sending you a
+                    reminder notice or disconnecting your water service. It is important to pay your water bill on time to
+                    avoid any service interruptions or penalties.
+                    </p>
+                </div>
+
+                <button class="accordion">8. Can I dispute my water bill if I think it is too high?</button>
+                <div class="panel">
+                  <p>If you think your water bill is too high, you can contact your water supplier's customer service
+                    department to dispute the bill. They can investigate the issue and make any necessary adjustments
+                    to your bill.
+                </p>
+                </div>
+
+                <button class="accordion">9. How do I read my water meter?</button>
+                <div class="panel">
+                  <p>Water meters typically have a digital or analog display that shows the amount of water that has been
+                    used. To read your meter, you will need to locate the display and note the numbers or digits that are
+                    displayed.
+                </p>
+                </div>
+
+            </div>
+        </main>
+        <footer class="pagefooter">
+            <div class="pageend">
+                <h3>Company</h3>
+                <a href=""><p>About Us</p></a>
+                <a href=""><p>Contact Us</p></a>
+                <a href=""><p>Support</p> </a>
+            </div>
+            <div class="pageend1">
+                <h3>Connect With Us</h3>
+                <a href=""><img src="./images/5296499_fb_facebook_facebook logo_icon.png" alt="fb"></a>
+                <a href=""><img src="./images/5296514_bird_tweet_twitter_twitter logo_icon.svg" alt="tw"></a>
+                <a href=""><img src="./images/5296765_camera_instagram_instagram logo_icon.svg" alt="inst"></a>
+            </div>
+        </footer>
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                /* Toggle between adding and removing the "active" class,
+                to highlight the button that controls the panel */
+                this.classList.toggle("active");
+
+                /* Toggle between hiding and showing the active panel */
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+                });
+            }
+        </script>
+</body>
+</html>

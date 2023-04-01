@@ -24,62 +24,128 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<!--	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">-->
+<!--	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <!--===============================================================================================-->
-{#    <style>#}
-{#        button,a{#}
-{#            color: #ffffff;#}
-{#        }#}
-{#    </style>#}
+
 </head>
 <body>
- <div class="top">
-        <div class="left">
-            <img src="https://dynamic.brandcrowd.com/asset/logo/926a3500-a3f7-4755-a8f5-9e43880a561c/logo-search-grid-1x?logoTemplateVersion=1&v=637916578078770000&text=bluelinesplash&colorpalette=blue" alt="Logo">
-            <h3 class="company">BlueLine Splash</h3>
-        </div>
-        <div class="right">
-            <button name="admin"><a href="/login" style="color: #1b1e21; background: #828AD3">Admin Login</a></button>
-            <button name="c_login"><a href="consumer/customer_login" style="color: #1b1e21; background: #828AD3">Customer Login</a></button>
-        </div>
-        <div class="text1">
-            Streamline your billing,Simplify your billing with our Water Billing System
-        </div>
+<div class="home">
+        <header class="pageheader">
+            <nav class="homenav flex justify-between">
+                <div class="logo">
+                    <a href=""><img src="{% static '/images/logo.png' %}" alt="logo"></a>
+                </div>
+                <ul class="navbar align-center">
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/support">Support</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><button class="button-color" name="admin"><a href="/login">Admin Login</a></button></li>
+                    <li><button class="button-color" name="c_login"><a href="consumer/customer_login" >Customer Login</a></button></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="homemain">
+            <div class="hometop flex">
+                <div class="hometext1">
+                    <h5>Streamline your billing,
+                        Simplify your billing with our Water Billing System</h5>
+                        <br>
+                    <p>A water billing system helps in managing and tracking
+                        the consumption of water by customers and billing them accordingly.</p>
+                    <button class="button-color" type="button">Get Started</button>
+                </div>
+            </div>
+            <div class="homemiddle">
+                <div class="homemiddle1">
+                    <h3 class="homecompany">BlueLine Splash</h3>
+                    <p class="hometext2">
+                        The goal of our company is to create an efficient and reliable water billing system that saves time and
+                        resources for both water utility companies and their customers.A well-designed water billing system can help
+                        water utility companies to improve their customer service, reduce billing errors and disputes, and increase
+                        operational efficiency. It can also help customers to manage their water usage and costs more effectively.
+                        <br>
+                        <button class="button-color" name="learn">Learn More</button>
+                    </p>
+                </div>
+                <div class="homemiddle2">
+                    <img src="{%static 'images/image-removebg-preview (1).png' %}" alt="picture">
+                </div>
+            </div>
+            <div class="homebottom">
+                <img class="savewater" src="{%static 'images/2001.i211.019_save water faucet realistic composition.jpg' %}" alt="picture">
+                <p>
+                    In every city more than 50 to 80 percent of the total waste water discharge is from residential sector.
+                    Industrial and commercial buildings claim only the rest.Water is a limited and vital resource that plays a
+                    critical role in our daily lives. As responsible citizens, it is imperative that we make concerted efforts to
+                    conserve this precious resource. A number of simple and effective measures can be adopted in our daily lives to
+                    save water.By adopting these small yet impactful changes, we can collectively ensure that our precious water
+                    resources are preserved and made available for future generations.
+                </p>
+            </div>
+        </main>
+        <footer class="pagefooter">
+            <div class="pageend">
+                <h3>Company</h3>
+                <a href=""><p>About Us</p></a>
+                <a href=""><p>Contact Us</p></a>
+                <a href=""><p>Support</p> </a>
+            </div>
+            <div class="pageend1">
+                <h3>Connect With Us</h3>
+                <a href=""><img src="{%static 'images/5296499_fb_facebook_facebook logo_icon.png' %}" alt="fb"></a>
+                <a href=""><img src="{%static 'images/5296514_bird_tweet_twitter_twitter logo_icon.svg' %}" alt="tw"></a>
+                <a href=""><img src="{%static 'images/5296765_camera_instagram_instagram logo_icon.svg' %}" alt="inst"></a>
+            </div>
+        </footer>
     </div>
-    <div class="middle">
-        <div class="middle1">
-            <h3 class="company2">BlueLine Splash</h3>
-            <p class="text2">
-                The goal of the project is to create an efficient and reliable water billing system that saves time and resources for both water utility companies and their customers.
-                <br>
-                <button name="learn">Learn More</button>
-            </p>
-        </div>
-        <div class="middle2">
-            <img src="{% static 'images/image-removebg-preview (1).png' %}" alt="picture">
-        </div>
-    </div>
-    <div class="bottom">
-        <img class="savewater" src="{% static 'images/2001.i211.019_save water faucet realistic composition.jpg' %}" alt="picture">
-        <p class="text3">
-            In every city more than 50 to 80 percent of the total waste water discharge is from residential sector. Industrial and commercial buildings claim only the rest.
-        </p>
-    </div>
-    <div class="end">
-        <div class="end1">
-            <h3>Company</h3>
-            <a href=""><p>About Us</p></a>
-            <a href=""><p>Contact Us</p></a>
-            <a href=""><p>Support</p> </a>
-        </div>
-        <div class="end2">
-            <p>Follow Us</p>
-            <a href=""><img src="{% static 'images/5296499_fb_facebook_facebook logo_icon.png' %}" alt="fb"></a>
-            <a href=""><img src="{% static 'images/5296514_bird_tweet_twitter_twitter logo_icon.svg' %}" alt="tw"></a>
-            <a href=""><img src="{% static 'images/5296765_camera_instagram_instagram logo_icon.svg' %}" alt="inst"></a>
-        </div>
-    </div>
+<!-- <div class="top">-->
+<!--        <div class="left">-->
+<!--            <img src="https://dynamic.brandcrowd.com/asset/logo/926a3500-a3f7-4755-a8f5-9e43880a561c/logo-search-grid-1x?logoTemplateVersion=1&v=637916578078770000&text=bluelinesplash&colorpalette=blue" alt="Logo">-->
+<!--            <h3 class="company">BlueLine Splash</h3>-->
+<!--        </div>-->
+<!--        <div class="right">-->
+<!--            <button name="admin"><a href="/login" style="color: #1b1e21; background: #828AD3">Admin Login</a></button>-->
+<!--            <button name="c_login"><a href="consumer/customer_login" style="color: #1b1e21; background: #828AD3">Customer Login</a></button>-->
+<!--        </div>-->
+<!--        <div class="text1">-->
+<!--            Streamline your billing,Simplify your billing with our Water Billing System-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="middle">-->
+<!--        <div class="middle1">-->
+<!--            <h3 class="company2">BlueLine Splash</h3>-->
+<!--            <p class="text2">-->
+<!--                The goal of the project is to create an efficient and reliable water billing system that saves time and resources for both water utility companies and their customers.-->
+<!--                <br>-->
+<!--                <button name="learn">Learn More</button>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--        <div class="middle2">-->
+<!--            <img src="{% static 'images/image-removebg-preview (1).png' %}" alt="picture">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="bottom">-->
+<!--        <img class="savewater" src="{% static 'images/2001.i211.019_save water faucet realistic composition.jpg' %}" alt="picture">-->
+<!--        <p class="text3">-->
+<!--            In every city more than 50 to 80 percent of the total waste water discharge is from residential sector. Industrial and commercial buildings claim only the rest.-->
+<!--        </p>-->
+<!--    </div>-->
+<!--    <div class="end">-->
+<!--        <div class="end1">-->
+<!--            <h3>Company</h3>-->
+<!--            <a href=""><p>About Us</p></a>-->
+<!--            <a href=""><p>Contact Us</p></a>-->
+<!--            <a href=""><p>Support</p> </a>-->
+<!--        </div>-->
+<!--        <div class="end2">-->
+<!--            <p>Follow Us</p>-->
+<!--            <a href=""><img src="{% static 'images/5296499_fb_facebook_facebook logo_icon.png' %}" alt="fb"></a>-->
+<!--            <a href=""><img src="{% static 'images/5296514_bird_tweet_twitter_twitter logo_icon.svg' %}" alt="tw"></a>-->
+<!--            <a href=""><img src="{% static 'images/5296765_camera_instagram_instagram logo_icon.svg' %}" alt="inst"></a>-->
+<!--        </div>-->
+<!--    </div>-->
 
 {#<div class="container">#}
 {#    <div class="p-5">#}

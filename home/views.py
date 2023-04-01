@@ -34,7 +34,7 @@ def logOut(request):
 
 def login_request(request):
     if request.method == "POST":
-        print("Hello gello")
+        # print("Hello gello")
         username = request.POST.get('uname')
         password = request.POST.get('pass')
         user = authenticate(username=username, password=password)
@@ -135,3 +135,12 @@ def all_user(request):
     }
     print(context)
     return render(request, 'welcome.html', context)
+
+def aboutview(request):
+    return render(request, 'aboutus.html')
+
+def supportview(request):
+    return render(request, 'support.html')
+
+def contactview(request):
+    return render(request, 'contactus.html')

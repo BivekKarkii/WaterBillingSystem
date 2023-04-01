@@ -4,7 +4,7 @@ from django.contrib.auth import views as auth_views
 
 from home import views
 from home.views import homeview, signupview, registerview, login_request, welcomeview, \
-    forgetPassword, changePassword, all_user, logOut
+    forgetPassword, changePassword, all_user, logOut, aboutview, supportview, contactview
 from newWaterBillingSystem import settings
 
 app_name = "home"
@@ -18,6 +18,8 @@ urlpatterns = [
     path('changepassword/<token>/', changePassword, name="change-password"),
     path('logoout', logOut, name="logout"),
     path('alluser', all_user),
-
+    path('about', aboutview, name="about"),
+    path('support', supportview, name="support"),
+    path('contact', contactview, name="contact"),
 
 ]

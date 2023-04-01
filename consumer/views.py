@@ -73,18 +73,16 @@ def consumer_signupview(request):
 
         if password!=c_password:
             return render(request, "Signup.html", {"message": "password not matching"})
-        print(f'hellllllllllllloooooooooo{phone}')
+        # print(f'hellllllllllllloooooooooo{phone}')
         try:
             consum = Consumer.objects.get(phone=phone)
             Consumer_Profile.objects.create(phone=phone, password=password)
-
             print(consum.phone)
             # Consumer_Profile.save()
-
             # print(consum.email)
             return redirect('/consumer/customer_login')
         except:
-            return render(request, "Signup.html",{"message":"Consumer id is invalid"})
+            return render(request, "Signup.html",{"message":"Invalid phone number"})
 
         # if Consumer.objects.get(consumer_id=cid):
         #     print('Success')
