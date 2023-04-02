@@ -281,7 +281,7 @@ a:hover{
 }
 
 .hometop p{
-    font-size: large;
+    font-size: 20px;
 }
 
 .homemiddle{
@@ -316,6 +316,7 @@ a:hover{
 
 .homemain button{
     font-weight: 700;
+    font-size: 15px !important;
     margin-top: 20px;
     padding: 6px 15px;
     border-radius: 6px;
@@ -365,7 +366,7 @@ a:hover{
 .homebottom p{
     padding: 100px;
     float: right;
-    font-size: 22px;
+    font-size: 20px;
     overflow: hidden;
 }
 
@@ -481,7 +482,7 @@ a:hover{
     margin-left: 5px;
 }
 
-.active:after {
+.panel.active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
@@ -1182,7 +1183,7 @@ a:hover{
   outline: none;
 }
 .Loginform input[type=text], input[type=cust] {
-    width: 93%;
+    width: 99%;
     padding: 10px;
     margin: 10px 0 20px 0;
     border: 1px solid;
@@ -1267,7 +1268,7 @@ a:hover{
     border-radius: 25px;
     cursor: pointer;
     min-width: 200px;
-    width: 98%;
+    width: 99%;
     opacity: 0.9;
 }
 
@@ -1705,7 +1706,7 @@ a:hover{
 }
 
 .hometop p{
-    font-size: large;
+    font-size: 20px;
 }
 
 .homemiddle{
@@ -1788,7 +1789,7 @@ a:hover{
 .homebottom p{
     padding: 100px;
     float: right;
-    font-size: 22px;
+    font-size: 20px;
     overflow: hidden;
 }
 
@@ -1905,7 +1906,7 @@ a:hover{
     margin-left: 5px;
 }
 
-.active:after {
+.panel.active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
@@ -1965,8 +1966,6 @@ a:hover{
     width: 30%;
 }
 
-/* --------------------------------------------------------------------- */
-
 /* Dashboard css */
 
 .dashcontent{
@@ -2010,7 +2009,6 @@ a:hover{
     margin-right: 70px;
     display: flex;
     height: 5%;
-    margin-left: 30px;
     width: 100%;
 }
 
@@ -2021,14 +2019,14 @@ a:hover{
     font-weight: bolder;
 }
 
-.searchbar button{
+.dashbtn {
     border-radius: 5px;
     height: fit-content;
     color: white;
     background-color: #345FE3;
 }
 
-.searchbar button:hover{
+.dashbtn:hover{
     background-color: #fff;
     color: #345feb;
     border: 1px solid #345feb;
@@ -2058,6 +2056,7 @@ a:hover{
     border: 1px solid black;
     padding: 5px 10px;
 }
+
 .center td{
     font-size: 15px;
     border: 1px solid black;
@@ -2066,9 +2065,9 @@ a:hover{
 
 .crud{
     float: right;
-    width: 300px;
+    width: 500px;
     justify-content: space-around;
-    margin: 30px;
+    margin: 30px 60px;
 }
 
 .crud button{
@@ -2086,6 +2085,90 @@ a:hover{
     font-size: 15px;
     font-weight: 600;
     justify-content: space-between;
+}
+
+.cruda{
+    text-decoration: none;
+    color: black;
+}
+
+.cruda:hover{
+    text-decoration: none;
+    color: #345FE3;
+}
+
+.menu{
+    background-color: #82aae3;
+    margin: 0;
+    min-height: 100vh;
+    width: 15%;
+    border-right: 1px solid black;
+    padding-top: 50px;
+}
+
+.menuicon{
+    width: 20px;
+    padding: 0px 10px;
+}
+
+.menu button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 10px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.h{
+    margin-top: 50px;
+}
+
+.menu button:hover{
+    background-color:#EAFDFC;
+}
+
+.menu button.active {
+    background-color: #EAFDFC;
+  }
+
+.tabcontent{
+    width: 100%;
+    background-color: #EAFDFC;
+}
+
+.menu a{
+    text-decoration: none;
+    color: black;
+}
+
+.boxes{
+    margin-top: 50px;
+}
+
+.box{
+    background-color: white;
+    min-width: 200px;
+    min-height: 200px;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+.box h3{
+    padding: 15px;
+    font-size: 20px;
+}
+
+.boximg{
+    margin: 20px 70px;
+    width: 70px;
+    height: 56px;
 }
 /* --------------------------------------------------------------------- */
 
