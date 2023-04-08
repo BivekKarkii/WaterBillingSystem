@@ -20,14 +20,18 @@
     margin-left: auto;
     margin-right: auto;
 }
-
-.flex{
-    display: flex;
+.dashmid ul{
+    width: 100%;
+    margin: 0;
 }
+/*.flex{*/
+/*    display: flex;*/
+/*}*/
 
-.justify-between{
-    justify-content: space-between;
-}
+/*.justify-between{*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*}*/
 
 .justify-evenly{
     justify-content: space-evenly;
@@ -2040,16 +2044,20 @@ a:hover{
 }
 
 .dashmid{
-    width: 700px;
-    margin-left: 30px;
+    /*width: 90%;*/
+    margin:0 80px 20px 50px;
+    background: #0c5460;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .dashmid li{
-    width: 200px;
     display: flex;
     list-style: none;
-    margin: 20px 20px;
     font-weight: bolder;
+    align-items: center;
 }
 
 .center{
@@ -2070,15 +2078,15 @@ a:hover{
     padding: 20px 10px;
 }
 
-.crud{
-    float: right;
-    width: 500px;
-    justify-content: space-around;
-    margin: 30px 60px;
-}
+/*.crud{*/
+/*    float: right;*/
+/*    width: 500px;*/
+/*    justify-content: space-around;*/
+/*    margin: 30px 60px;*/
+/*}*/
 
 .crud button{
-    width: 100px;
+    /*width: 100px;*/
     border-right: none;
     float: right;
     display: block;

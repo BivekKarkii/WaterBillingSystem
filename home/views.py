@@ -139,12 +139,6 @@ def forgetPassword(request):
 
 
 def consumerView(request):
-    # consumer = Profile.objects.all()
-    # print(consumer)
-    # context = {
-    #     'consumer': consumer
-    # }
-    # print(context)
     return render(request, 'welcome.html')
 
 def aboutview(request):
@@ -157,9 +151,11 @@ def contactview(request):
     return render(request, 'contactus.html')
 
 def editView(request):
-    cons = Profile.objects.all()
+    consumer = Consumer.objects.all()
+    for i in consumer:
+        print(i.address)
     context = {
-        'cons':cons,
+        'consumer':consumer,
     }
     return render(request, 'index.html', context)
 
@@ -175,7 +171,7 @@ def updateView(request,id):
         citizenship = request.POST.get('citizenship')
         consumer_id = request.POST.get('consumer_id')
 
-        cons = Profile(
+        consumer = Consumer(
             id = id,
             name = name,
             email=email,
@@ -186,16 +182,16 @@ def updateView(request,id):
             citizenship=citizenship,
             consumer_id=consumer_id
         )
-        cons.save()
-        return redirect('/')
+        consumer.save()
+        return redirect('/welcome')
     return render(request, 'index.html')
 
 
 def deleteView(request,id):
-    cons = Profile.objects.filter(id=id)
-    cons.delete()
+    consumer = Consumer.objects.filter(id=id)
+    consumer.delete()
 
     context = {
-        'cons': cons,
+        'consumer': consumer,
     }
-    return redirect('/')
+    return redirect('/welcome')

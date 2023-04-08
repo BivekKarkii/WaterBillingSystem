@@ -75,8 +75,13 @@
                         <div class="dashmid">
                         <ul class="flex justify-between">
 
-                            <li>Total Consumer : <p>  {{ count }}</p></li>
-                            <li>Active: <p>10</p></li>
+                            <li>Total Consumer :  {{ count }}</li>
+                            <li>Active: {{ count }}</li>
+                            <div class="crud flex">
+                        <button class="dashbtn" type="button"><a href="/consumer/consumer_registration_form">Add Consumer</a></button>
+{#                        <button class="dashbtn" type="button">Update</button>#}
+{#                        <button class="dashbtn" type="button">Remove</button>#}
+                    </div>
 
                         </ul>
                     </div>
@@ -104,35 +109,32 @@
                                 <td>{{ i.citizenship }}</td>
                                 <td>{{ i.consumer_id }}</td>
                                 <td>
-                                    <a href="#editConsumerModal-{{ forloop.counter }}" class="edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteConsumerModal-{{ forloop.counter }}" class="delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-{#                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
-{#                                      <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
-{#                                    </button>#}
+                                    <a href="#editConsumerModal-{{ forloop.counter }}" class="edit" data-bs-toggle="modal" data-bs-target="#editConsumerModal-{{ forloop.counter }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#deleteConsumerModal-{{ forloop.counter }}" class="delete" data-bs-toggle="modal" data-bs-target="#deleteConsumerModal-{{ forloop.counter }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
+{#                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editConsumerModal-{{ forloop.counter }}">#}
+{#                                         <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
+{#                                        </button>#}
                                 </td>
                             </tr>
                             {% endfor %}
                         </table>
                     </div>
-                    <div class="crud flex">
-                        <button class="dashbtn" type="button"><a href="/consumer/consumer_registration_form">Add</a></button>
-                        <button class="dashbtn" type="button">Update</button>
-                        <button class="dashbtn" type="button">Remove</button>
-                    </div>
+
                 </div>
 
         <!-- Edit consumer Modal HTML -->
 
-    {% for i in emp %}
-	<div id="editConsumerModal-{{ forloop.counter }}" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    {% for i in consumer %}
+	<div id="editConsumerModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="/update/{{i.id}}" method="post">
                     {% csrf_token %}
 					<div class="modal-header">
 						<h4 class="modal-title">Edit Consumer</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
 					<div class="modal-body">
 						<div class="form-group">
 
@@ -166,18 +168,39 @@
 
                           <label for="consumer_id">Consumer Id:</label>
                           <input type="text" value="{{ i.consumer_id }}" id="consumer_id" name="consumer_id" required>
-                            <div class="registration_btn">
-                                <button type="submit" class="add_btn btn btn-info">Update </button>
-                                <button type="button" class="uc-cancel-button" value="Cancel">Cancel</button>
-                            </div>
-
 
 						</div>
 
 					</div>
 					<div class="modal-footer">
+						<div class="registration_btn">
+                                <button type="submit" class="add_btn btn btn-info">Update </button>
+                                <button type="button" class="uc-cancel-button" value="Cancel">Cancel</button>
+                            </div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+
+        <!-- Delete Modal HTML -->
+    {% for i in consumer %}
+	<div id="deleteConsumerModal-{{ forloop.counter }}" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<h4 class="modal-title">Delete consumer</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>DO you want to delete {{ i.name }}'s information?</small></p>
+					</div>
+					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-info" value="Update">
+                        <a href="/delete/{{ i.id }}" type="submit" class="btn btn-danger" >Delete</a>
 					</div>
 				</form>
 			</div>
