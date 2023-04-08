@@ -58,7 +58,7 @@ def consumer_registration_formview(request):
             citizenship=citizenship
         )
         # print("user created!")
-        return redirect("/consumer/consumer_admin")
+        return redirect("/welcome")
 
     return render(request, "consumer_registration_form.html")
 

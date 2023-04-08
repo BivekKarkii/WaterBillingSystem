@@ -126,14 +126,14 @@
         <!-- Edit consumer Modal HTML -->
 
     {% for i in consumer %}
-	<div id="editConsumerModal-{{ forloop.counter }}" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div id="editConsumerModal-{{ forloop.counter }}" class="modal fade"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="/update/{{i.id}}" method="post">
                     {% csrf_token %}
 					<div class="modal-header">
 						<h4 class="modal-title">Edit Consumer</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
@@ -174,7 +174,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="submit" class="add_btn btn btn-info">Update </button>
-                        <button type="button" class="uc-cancel-button" value="Cancel">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 					</div>
 				</form>
 			</div>
