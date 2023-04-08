@@ -2031,6 +2031,13 @@ a:hover{
     color: #345feb;
     border: 1px solid #345feb;
 }
+.dashbtn a{
+    color: #ffffff;
+    text-decoration: none;
+}
+.dashbtn:hover a{
+    color: #345feb ;
+}
 
 .dashmid{
     width: 700px;
@@ -2077,7 +2084,7 @@ a:hover{
     display: block;
     color: black;
     padding: 5px 5px;
-    border: 1px solid black;
+    border: 1px solid #345fe3;
     outline: none;
     text-align: center;
     cursor: pointer;

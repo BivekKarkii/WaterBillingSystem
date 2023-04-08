@@ -5,6 +5,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+
+from consumer.models import Consumer
 from .helpers import send_forget_password_mail
 
 # from home.forms import UserLoginForm
@@ -22,7 +24,16 @@ def signupview(request):
 
 @login_required
 def welcomeview(request):
-    return render(request, 'admindashboard.html')
+    consumer = Consumer.objects.all()
+    a=0
+    for i in consumer:
+        a+=1
+        # print(a)
+    context = {
+        'consumer':consumer,
+        'count':a
+    }
+    return render(request, 'admindashboard.html',context)
 
 
 @login_required
@@ -127,14 +138,14 @@ def forgetPassword(request):
 
 
 
-def all_user(request):
-    emp = User.objects.all()
-    print(emp)
-    context = {
-        'emp': emp
-    }
-    print(context)
-    return render(request, 'welcome.html', context)
+def consumerView(request):
+    # consumer = Profile.objects.all()
+    # print(consumer)
+    # context = {
+    #     'consumer': consumer
+    # }
+    # print(context)
+    return render(request, 'welcome.html')
 
 def aboutview(request):
     return render(request, 'aboutus.html')
@@ -144,3 +155,47 @@ def supportview(request):
 
 def contactview(request):
     return render(request, 'contactus.html')
+
+def editView(request):
+    cons = Profile.objects.all()
+    context = {
+        'cons':cons,
+    }
+    return render(request, 'index.html', context)
+
+
+def updateView(request,id):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+        meter_no = request.POST.get('meter_no')
+        type = request.POST.get('type')
+        citizenship = request.POST.get('citizenship')
+        consumer_id = request.POST.get('consumer_id')
+
+        cons = Profile(
+            id = id,
+            name = name,
+            email=email,
+            address=address,
+            phone=phone,
+            meter_no=meter_no,
+            type=type,
+            citizenship=citizenship,
+            consumer_id=consumer_id
+        )
+        cons.save()
+        return redirect('/')
+    return render(request, 'index.html')
+
+
+def deleteView(request,id):
+    cons = Profile.objects.filter(id=id)
+    cons.delete()
+
+    context = {
+        'cons': cons,
+    }
+    return redirect('/')
