@@ -104,8 +104,8 @@
                                 <td>{{ i.citizenship }}</td>
                                 <td>{{ i.consumer_id }}</td>
                                 <td>
-                                    <a href="#editConsumerModal-{{ forloop.counter }}" class="edit" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteConsumerModal-{{ forloop.counter }}" class="delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="#editConsumerModal-{{ forloop.counter }}" class="edit" data-bs-toggle="modal" data-bs-target="#editConsumerModal-{{ forloop.counter }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#deleteConsumerModal-{{ forloop.counter }}" class="delete" data-bs-toggle="modal" data-bs-target="#deleteConsumerModal-{{ forloop.counter }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 {#                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
 {#                                      <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
 {#                                    </button>#}
@@ -123,7 +123,7 @@
 
         <!-- Edit consumer Modal HTML -->
 
-    {% for i in emp %}
+    {% for i in consumer %}
 	<div id="editConsumerModal-{{ forloop.counter }}" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
