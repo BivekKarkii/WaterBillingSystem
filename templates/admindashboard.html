@@ -185,6 +185,29 @@
 	</div>
     {% endfor %}
 
+<!-- Delete Modal HTML -->
+    {% for i in consumer %}
+	<div id="deleteEmployeeModal-{{ forloop.counter }}" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<h4 class="modal-title">Delete Consumer</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>DO you want to delete {{ i.name }}'s information?</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <a href="/delete/{{ i.id }}" type="submit" class="btn btn-danger" >Delete</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
 {#     ===================================================Employee part=======================================#}
                 <div id="Employee" class="tabcontent">
                     <div class="dashcontent flex">
