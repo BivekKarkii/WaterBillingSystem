@@ -27,13 +27,20 @@ def signupview(request):
 def welcomeview(request):
     consumer = Consumer.objects.all()
     a=0
+    employee = Employee.objects.all()
+    b = 0
+
     for i in consumer:
         a+=1
-        # print(a)
+    for j in employee:
+        b += 1
     context = {
         'consumer':consumer,
-        'count':a
+        'count':a,
+        'employee': employee,
+        'countemp': b
     }
+
     return render(request, 'admindashboard.html',context)
 
 @login_required
@@ -202,10 +209,12 @@ def updateView(request,id):
 
 
 def deleteView(request,id):
-    consumer = Consumer.objects.filter(id=id)
-    consumer.delete()
+    # consumer = Consumer.objects.filter(id=id)
+    # consumer.delete()
 
-    context = {
-        'consumer': consumer,
-    }
+    # context = {
+    #     'consumer': consumer,
+    # }
     return redirect('/welcome')
+
+

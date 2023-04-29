@@ -91,19 +91,20 @@ def consumer_signupview(request):
 
     return render(request, "Signup.html")
 
-def consumer_updateview(request, phone):
-    consumer = Consumer.objects.get(phone=phone)
-    form = ConsumerForm(request.POST or None, instance=consumer)
-    if form.is_valid():
-        form.save()
-        return redirect('/consumer/consumer_admin')
-    return render(request, '/consumer/consumer_update_form.html', {'consumer_update_form': form})
+# def consumer_updateview(request, phone):
+#     consumer = Consumer.objects.get(phone=phone)
+#     form = ConsumerForm(request.POST or None, instance=consumer)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('/consumer/consumer_admin')
+#     return render(request, '/consumer/consumer_update_form.html', {'consumer_update_form': form})
 
-def consumer_delete(request, id):
-    consumer = Consumer.objects.get(id=id)
-    if request.method == 'POST':
-        consumer.delete()
-        return redirect('consumer_list')
-    return render(request, 'consumer/delete.html', {'consumer': consumer})
+# def consumer_delete(request, id):
+#     pass
+    # consumer = Consumer.objects.get(id=id)
+    # if request.method == 'POST':
+    #     consumer.delete()
+    #     return redirect('consumer_list')
+    # return render(request, 'consumer/delete.html', {'consumer': consumer})
 
 

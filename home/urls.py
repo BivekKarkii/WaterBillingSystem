@@ -28,6 +28,4 @@ urlpatterns = [
 
     path('employeetable', employeeview, name="employeetable"),
 
-
-
 ]
