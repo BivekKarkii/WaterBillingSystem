@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from consumer.models import Consumer
+from employee.models import Employee
 from .helpers import send_forget_password_mail
 
 # from home.forms import UserLoginForm
@@ -32,6 +33,19 @@ def welcomeview(request):
     context = {
         'consumer':consumer,
         'count':a
+    }
+    return render(request, 'admindashboard.html',context)
+
+@login_required
+def employeeview(request):
+    employee = Employee.objects.all()
+    b=0
+    for i in employee:
+        b+=1
+        print(i)
+    context = {
+        'employee':employee,
+        'count':b
     }
     return render(request, 'admindashboard.html',context)
 
