@@ -623,7 +623,8 @@ a:hover{
 
   .Addemployee input[type="text"],
   .Addemployee input[type="email"],
-  .Addemployee input[type="tel"] {
+  .Addemployee input[type="tel"],
+  .Addemployee input[type="password"]{
 	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;
@@ -680,7 +681,7 @@ a:hover{
 
   .Addemployee input[type="text"],
   .Addemployee input[type="email"],
-  .Addemployee input[type="tel"] {
+  .Addemployee input[type="tel"]{
 	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;

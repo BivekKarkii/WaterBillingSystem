@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<html  lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <style>
+          .registration_btn{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+          }
+          .registration_btn .add_btn{
+            font-size: 15px;
+            background-color: #345feb;
+            color: white;
+            padding: 10px 10px;
+            margin: 10px 0;
+            border: 2px solid #345feb;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 45%;
+            opacity: 0.9;
+              transition: 0.5s all;
+          }
+          .registration_btn .add_btn:hover{
+            font-size: 15px;
+            background-color: #ffffff;
+            color: #345feb;
+            padding: 10px 10px;
+            margin: 10px 0;
+            border: 2px solid #345feb;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 45%;
+            opacity: 0.9;
+          }
+
+          .uc-cancel-button{
+              transition: 0.5s all;
+              font-size: 15px;
+            background-color: #ffffff;
+            color: #345feb;
+            padding: 10px 10px;
+            margin: 10px 0;
+            border: 2px solid #345feb;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 45%;
+            opacity: 0.9;
+          }
+
+           input[type="password"]{
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-bottom: 20px;
+                font-size: 16px;
+                background-color:white;
+            }
+
+
+      </style>
+  </head>
+  <body class="Addemployee">
+    <form method="post">
+      {% csrf_token %}
+      <img class="logo2" src="{% static 'images/logo.png' %}" alt="logo">
+      <h1>Register Employee</h1>
+
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="name" required>
+
+      <label for="phonenumber">Phone Number:</label>
+      <input type="tel" id="phonenumber" name="phone" required>
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="citizenshipnumber">Citizenship Number:</label>
+      <input type="text" id="citizenshipnumber" name="citizenship" required>
+
+      <label for="employee_id">Employee Id:</label>
+      <input type="text" id="employee_id" name="employee_id" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+        <div class="registration_btn">
+            <button type="submit" class="add_btn">Add </button>
+            <button type="button" class="uc-cancel-button">Cancel</button>
+        </div>
+
+    </form>
+  </body>
+</html>

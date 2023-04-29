@@ -26,6 +26,8 @@ urlpatterns = [
     path('support', supportview, name="support"),
     path('contact', contactview, name="contact"),
 
+    path('employeetable', employeeview, name="employeetable"),
+
 
 
 ]

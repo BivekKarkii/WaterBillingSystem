@@ -206,94 +206,137 @@
 	</div>
     {% endfor %}
 {#     ===================================================Employee part=======================================#}
-                <div id="Employee" class="tabcontent">
+                 <div id="Employee" class="tabcontent">
                     <div class="dashcontent flex">
                         <ul class="searchbar justify-between">
                             <li>
-                                <form action="">
+                                <form action="post">
                                     <input type="text" placeholder="Search..."><button class="dashbtn" type="button">Search</button>
                                 </form>
                             </li>
                         </ul>
                     </div>
-                    <form>
 
-                    </form>
-                    <div class="dashmid">
-                        <ul>
-                        <li>Total Employee:  <p>10</p></li>
-                        </ul>
-                    </div>
-                    <div class="employeerecords">
-                        <table class="center">
-                            <tr>
-                                <th>Employee ID</th>
-                                <th>Phone Number</th>
-                                <th>Address</th>
-                                <th>Email</th>
-                                <th>Citizenship No</th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="crud flex">
-                        <button class="dashbtn" type="button">Add</button>
-                        <button class="dashbtn" type="button">Update</button>
-                        <button class="dashbtn" type="button">Remove</button>
-                    </div>
-                </div>
-
-                <div id="Billing" class="tabcontent">
-                    <div class="dashcontent flex">
-                        <ul class="searchbar justify-between">
-                            <li>
-                                <form action="">
-                                    <input type="text" placeholder="Search..."><button class="dashbtn" type="button">Search</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="dashmid">
+                        <div class="dashmid">
                         <ul class="flex justify-between">
-                            <li>Pending Bills: <p>10</p></li>
+
+                            <li>Total Employee :  {{ count }}</li>
+                            <li>Active : {{ count }}</li>
+                            <li><div class="crud">
+                                <button class="dashbtn" type="button"><a href="/employee/employee_registration_form">Add Employee</a></button>
+        {#                        <button class="dashbtn" type="button">Update</button>#}
+        {#                        <button class="dashbtn" type="button">Remove</button>#}
+                            </div></li>
+
+
                         </ul>
                     </div>
-                    <div class="billrecords">
-                        <table class="center">
+                    <div class="employeerecords table-responsive">
+                        <table class="center table">
                             <tr>
-                                <th>Bill No</th>
-                                <th>Consumer ID</th>
-                                <th>Previous Unit</th>
-                                <th>Current Unit</th>
-                                <th>Reading Date</th>
-                                <th>Amount</th>
-                                <th>Status</th>
+                                <th>Full Name</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Citizenship No</th>
+                                <th>Password</th>
+                                <th>Employee Id</th>
+                                <th>Action</th>
                             </tr>
+                            {% for i in employee %}
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ i.name }}</td>
+                                <td>{{ i.phone }}</td>
+                                <td>{{ i.email }}</td>
+                                <td>{{ i.address }}</td>
+                                <td>{{ i.citizenship }}</td>
+                                <td>{{ i.password }}</td>
+                                <td>{{ i.employee_id }}</td>
+                                <td>
+                                    <a href="#editEmployeeModal-{{ forloop.counter }}" class="edit" data-bs-toggle="modal" data-bs-target="#editEmployeeModal-{{ forloop.counter }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal-{{ forloop.counter }}" class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal-{{ forloop.counter }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+{#                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
+{#                                      <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
+{#                                    </button>#}
+                                </td>
                             </tr>
+                            {% endfor %}
                         </table>
                     </div>
+
                 </div>
+
+        <!-- Edit Employee Modal HTML -->
+
+    {% for i in employee %}
+	<div id="editEmployeeModal-{{ forloop.counter }}" class="modal fade"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="/update/{{i.id}}" method="post">
+                    {% csrf_token %}
+					<div class="modal-header">
+						<h4 class="modal-title">Edit Employee</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" value="{{ i.name }}" id="efullname" name="name" required>
+
+                        <label for="phonenumber">Phone Number:</label>
+                        <input type="tel" value="{{ i.phone }}" id="ephonenumber" name="phone" required>
+
+                          <label for="address">Address:</label>
+                          <input type="text" value="{{ i.address }}" id="eaddress" name="address" required>
+
+                          <label for="email">Email:</label>
+                          <input type="email" value="{{ i.email }}" id="eemail" name="email" required>
+
+                          <label for="citizenshipnumber">Citizenship Number:</label>
+                          <input type="text" value="{{ i.citizenship }}" id="ecitizenshipnumber" name="citizenship" required>
+
+                          <label for="employee_id">Employee Id:</label>
+                          <input type="text" value="{{ i.employee_id }}" id="employee_id" name="employee_id" required>
+
+                            <label for="password">Password :</label>
+                          <input type="text" value="{{ i.password }}" id="password" name="password" required>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="add_btn btn btn-info">Update </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+
+<!-- Delete Modal HTML -->
+    {% for i in employee %}
+	<div id="deleteEmployeeModal-{{ forloop.counter }}" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<h4 class="modal-title">Delete Employee</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>DO you want to delete {{ i.name }}'s information?</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <a href="/delete/{{ i.id }}" type="submit" class="btn btn-danger" >Delete</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
         </main>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
