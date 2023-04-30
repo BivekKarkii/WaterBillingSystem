@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'home',
     'consumer',
     'employee',
+    'billing',
 ]
 
 MIDDLEWARE = [
