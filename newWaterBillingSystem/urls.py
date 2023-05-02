@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('home.urls', namespace='homepage')),
     path('consumer/', include('consumer.urls', namespace='consumer-page')),
     path('employee/', include('employee.urls', namespace='employee-page')),
+    path('billing/', include('billing.urls', namespace='billing-page')),
 ]

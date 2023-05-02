@@ -41,7 +41,15 @@
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/support">Support</a></li>
                     <li><a href="/contact">Contact Us</a></li>
-                    <li><button class="button-color" name="admin"><a href="/login">Admin Login</a></button></li>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle button-color" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Corporate login
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                       <a href="/login">Admin Login</a>
+                        <a href="/employee/employeelogin">Employee Login</a>
+                      </div>
+                    </div>
                     <li><button class="button-color" name="c_login"><a href="consumer/customer_login" >Customer Login</a></button></li>
                 </ul>
             </nav>

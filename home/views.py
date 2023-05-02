@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from billing.models import consumerBilling
 from consumer.models import Consumer
 from employee.models import Employee
 from .helpers import send_forget_password_mail
@@ -30,6 +31,11 @@ def welcomeview(request):
     employee = Employee.objects.all()
     b = 0
 
+    billing = consumerBilling.objects.all()
+    c = 0
+    for i in billing:
+        c=+1
+
     for i in consumer:
         a+=1
     for j in employee:
@@ -38,7 +44,9 @@ def welcomeview(request):
         'consumer':consumer,
         'count':a,
         'employee': employee,
-        'countemp': b
+        'countemp': b,
+        'billing':billing,
+        'countbill':c,
     }
 
     return render(request, 'admindashboard.html',context)

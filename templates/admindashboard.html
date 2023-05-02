@@ -205,8 +205,147 @@
 		</div>
 	</div>
     {% endfor %}
-{#     ===================================================Employee part=======================================#}
-                 <div id="Employee" class="tabcontent">
+{#     ===================================================Billing part=======================================#}
+                 <div id="Billing" class="tabcontent">
+                    <div class="dashcontent flex">
+                        <ul class="searchbar justify-between">
+                            <li>
+                                <form action="post">
+                                    <input type="text" placeholder="Search..."><button class="dashbtn" type="button">Search</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+
+                        <div class="dashmid">
+                        <ul class="flex justify-between">
+
+                            <li>Total Consumer :  {{ countbill }}</li>
+                            <li>Active : {{ countbill }}</li>
+{#                            <li><div class="crud">#}
+{#                                <button class="dashbtn" type="button"><a href="/consumer/consumer_registration_form">Add Consumer</a></button>#}
+        {#                        <button class="dashbtn" type="button">Update</button>#}
+        {#                        <button class="dashbtn" type="button">Remove</button>#}
+{#                            </div></li>#}
+
+
+                        </ul>
+                    </div>
+                    <div class="consumerrecords table-responsive">
+                        <table class="center table">
+                            <tr>
+                                <th>Invoice_Id</th>
+                                <th>Consumer_Id</th>
+                                <th>Consumer name</th>
+                                <th>Previous unit</th>
+                                <th>Curent unit</th>
+                                <th>Total amount</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                            {% for i in billing %}
+                            <tr>
+                                <td>{{ i.invoice_id }}</td>
+                                <td>{{ i.consumer_id }}</td>
+                                <td>{{ i.consumer_name }}</td>
+                                <td>{{ i.previous_unit }}</td>
+                                <td>{{ i.current_unit }}</td>
+                                <td>{{ i.amount }}</td>
+                                <td>{{ i.date }}</td>
+                                <td>{{ i.status }}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+
+                </div>
+
+        <!-- Edit consumer Modal HTML -->
+
+    {% for i in consumer %}
+	<div id="editConsumerModal-{{ forloop.counter }}" class="modal fade"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="/update/{{i.id}}" method="post">
+                    {% csrf_token %}
+					<div class="modal-header">
+						<h4 class="modal-title">Edit Consumer</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" value="{{ i.name }}" id="fullname" name="name" required>
+
+                        <label for="phonenumber">Phone Number:</label>
+                        <input type="tel" value="{{ i.phone }}" id="phonenumber" name="phone" required>
+
+                          <label for="address">Address:</label>
+                          <input type="text" value="{{ i.address }}" id="address" name="address" required>
+
+                          <label>Water Type:</label>
+                          <label for="domestic">
+                            <input type="radio" id="domestic" name="type" value="domestic" checked>
+                            Community
+                          </label>
+                          <label for="commercial">
+                            <input type="radio" id="commercial" name="type" value="commercial">
+                            KUKL
+                          </label>
+
+                          <label for="meternumber">Meter Number:</label>
+                          <input type="text" value="{{ i.meter_no }}" id="meternumber" name="meter_no" required>
+
+                          <label for="email">Email:</label>
+                          <input type="email" value="{{ i.email }}" id="email" name="email" required>
+
+                          <label for="citizenshipnumber">Citizenship Number:</label>
+                          <input type="text" value="{{ i.citizenship }}" id="citizenshipnumber" name="citizenship" required>
+
+                          <label for="consumer_id">Consumer Id:</label>
+                          <input type="text" value="{{ i.consumer_id }}" id="consumer_id" name="consumer_id" required>
+
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="add_btn btn btn-info">Update </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+
+<!-- Delete Modal HTML -->
+    {% for i in consumer %}
+	<div id="deleteConsumerModal-{{ forloop.counter }}" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<h4 class="modal-title">Delete Consumer</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>DO you want to delete {{ i.name }}'s information?</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <a href="/delete/{{ i.id }}" type="submit" class="btn btn-danger" >Delete</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+
+{#==========================================================Employee part=========================================#}
+          <div id="Employee" class="tabcontent">
                     <div class="dashcontent flex">
                         <ul class="searchbar justify-between">
                             <li>
@@ -337,6 +476,7 @@
 		</div>
 	</div>
     {% endfor %}
+
         </main>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -39,3 +39,22 @@ def employee_registration_formview(request):
         return redirect("/employeetable")
 
     return render(request, "employee_registration_form.html")
+
+def employee_login_view(request):
+    if request.method == "POST":
+        print("Hello employee")
+        phone = request.POST.get('phone')
+        password = request.POST.get('Cpassword')
+
+        try:
+            usr = Employee.objects.filter(phone=phone, password=password)
+            print(usr.first().phone)
+            return redirect("/employee/employee_dashboard")
+
+        except:
+            print("Whattttttttttttttttt")
+            return render(request, "employee_login.html", context={"message": "invalid username or password"})
+
+    form = AuthenticationForm()
+    return render(request=request, template_name="employee_login.html", context={"login_form": form})
+

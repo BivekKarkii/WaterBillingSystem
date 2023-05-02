@@ -23,7 +23,7 @@ def customer_login_view(request):
 
         try:
             usr=Consumer_Profile.objects.filter(phone=phone, password=password)
-            print(usr.first().password)
+            print(usr.first().phone)
             return redirect("/consumer/consumer_dashboard")
 
         except:
