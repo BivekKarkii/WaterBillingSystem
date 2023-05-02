@@ -6,13 +6,31 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import random
 
+from billing.models import consumerBilling
+from consumer.models import Consumer
 from employee.models import Employee, Employee_Profile
 
 
 # Create your views here.
 
 def employee_dashboardview(request):
-    return render(request, 'employee_dashboard.html')
+    consumer = Consumer.objects.all()
+    a = 0
+
+    billing = consumerBilling.objects.all()
+    c = 0
+    for i in billing:
+        c = +1
+
+    for i in consumer:
+        a += 1
+    context = {
+        'consumer': consumer,
+        'count': a,
+        'billing': billing,
+        'countbill': c,
+    }
+    return render(request, 'employee_dashboard.html',context)
 
 def employee_registration_formview(request):
     if request.method == 'POST':

@@ -30,11 +30,11 @@ def welcomeview(request):
     a=0
     employee = Employee.objects.all()
     b = 0
-
     billing = consumerBilling.objects.all()
     c = 0
     for i in billing:
         c=+1
+        # print(i.invoice_id)
 
     for i in consumer:
         a+=1
