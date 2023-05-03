@@ -33,5 +33,5 @@ def meter_readingFormview(request):
             meter_number=meter_number
         )
         # print("user created!")
-        return redirect("/employeeview")
+        return redirect("/employee/employee_dashboard")
     return render(request, "meter_readingForm.html")

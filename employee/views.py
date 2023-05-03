@@ -1,5 +1,6 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -76,3 +77,7 @@ def employee_login_view(request):
     form = AuthenticationForm()
     return render(request=request, template_name="employee_login.html", context={"login_form": form})
 
+@login_required
+def employeelogoutview(request):
+    logout(request)
+    return redirect('/employee_login_view')

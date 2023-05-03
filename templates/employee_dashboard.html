@@ -61,6 +61,58 @@
     align-items: center;
 }
 
+h1 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+  font-size: 16px;
+  padding: 5px;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-bottom: 2px solid #1E90FF;
+}
+
+button[type="submit"] {
+  background-color: #1E90FF;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0066CC;
+}
+
     </style>
 </head>
 <body>
@@ -77,7 +129,8 @@
 ">
               <ul class="navbar-nav">
               <div class="login-div employee_img" id="login-toggle">
-                  <img src="{% static 'images/user-circle-solid.svg' %}" alt="bell" style="margin-right: 10px;"><a href="" class="">Employee</a>
+                  <a href=""><img src="{% static 'images/user-circle-solid.svg' %}" alt="bell" style="margin-right: 10px;"> </a>
+                  <a href="/employee/employeelogout" class="">Logout</a>
                 </div>
             </ul>
           </div>
@@ -93,9 +146,6 @@
                             <li>Total Consumer :  {{ count }}</li>
                             <li>Active : {{ count }}</li>
                             <li><div class="crud">
-{#                                <button class="dashbtn" type="button"><a href="/consumer/consumer_registration_form">Add Consumer</a></button>#}
-        {#                        <button class="dashbtn" type="button">Update</button>#}
-        {#                        <button class="dashbtn" type="button">Remove</button>#}
                             </div></li>
 
 
@@ -128,16 +178,84 @@
         <td>{{ i.citizenship }}</td>
         <td>{{ i.consumer_id }}</td>
         <td>
-            <button class="view-bill-btn">View Bill</button>
+            <a href="#viewbillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewbillModal-{{ forloop.counter }}">View bill</a>
+{#            <button type="button view-bill-btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">view bill</button>#}
             <button class="create-bill-btn">Create Bill</button>
-        </td>
+             </td>
     </tr>
     {% endfor %}
     <tr>
 
   </tbody>
 </table>
+ <!-- Modal view bill -->
+{% for i in billing %}
+    {% for j in consumer %}
+<div class="modal fade" id="viewbillModal-{{ forloop.counter }}" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
 
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Water Billing System</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+{#        <div class="container">#}
+
+    <div id="" class="">
+      <h2>Create Bill</h2>
+
+      <form action="/billing/meter_readingForm" method="post">
+          {% csrf_token %}
+{#        <label for="id">ID:</label>#}
+{#        <input type="text" id="id" name="id" required>#}
+
+        <label for="invoice_id">Invoice ID:</label>
+        <input type="text" id="invoice_id" name="invoice_id" required>
+
+        <label for="consumer_id">Consumer ID:</label>
+        <input type="text" value="{{ j.consumer_id }}" id="consumer_id" name="consumer_id" required>
+
+        <label for="consumer_name">Consumer Name:</label>
+        <input type="text" value="{{ j.name }}" id="consumer_name" name="consumer_name" required>
+
+        <label for="previousUnit">Previous Unit:</label>
+        <input type="number" value="{{ i.previous_unit }}" id="previousUnit" name="previous_unit" required>
+
+        <label for="currentUnit">Current Unit:</label>
+        <input type="number" id="currentUnit" name="current_unit" required>
+
+        <label for="perUnitPrice">Per Unit Price:</label>
+        <input type="text" value="15" id="perUnitPrice" name="perUnitPrice" required>
+
+        <label for="date">Date:</label>
+        <input type="datetime-local" id="meterNo" name="date" required>
+
+        <label for="meterNo">Meter No:</label>
+        <input type="text" value="{{ i.meter_number }}" id="meterNo" name="meter_number" required>
+
+        <label for="totalAmount">Total Amount:</label>
+        <input type="text"  id="totalAmount" name="amount" required>
+
+{#          <label for="totalAmount">Total Amount:</label>#}
+        <input type="text" value="unpaid"  id="totalAmount" name="status" hidden="">
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+{#  </div>#}
+      </div>
+{#      <div class="modal-footer">#}
+{#        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>#}
+{#        <button type="button" class="btn btn-primary">Save changes</button>#}
+{#      </div>#}
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endfor %}
 
 
 </div>
