@@ -1,80 +1,38 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/util.css' %}">
-    <link rel="stylesheet" href="{% static 'css/consumer.css' %}">
-    <title>Employee</title>
-</head>
-<body>
-    <div class="container mx-auto">
-        <header>
-            <nav class="nav flex justify-between bg-navbar">
-                <h2 class="h2">Employee Records</h2>
-            </nav>
-        </header>
-        <main class="min-h-screen bg-body">
-            <div class="content flex">
-                <ul class="navbar justify-between">
-                    <li>
-                        <form action="">
-                            <input type="text" placeholder="Search..."><button type="button">Search</button>
-                        </form>
-                    </li>
-                    <li>
-                        <form method="post">
-                            {% csrf_token %}
-                            <button class="add" type="submit"><a href="/consumer/consumer_registration_form">Add Employee</a> </button>
-                            <button class="add" ><a href="/consumer/consumer_update">Update Employee</a> </button>
+<div class="container">
+  <h1>Water Billing System</h1>
+   <link rel="stylesheet" href="employee.css">
+  
+  <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for consumer...">
 
-                            {% for consumer in consumers %}
-                                <h2>{{ employee.name }}</h2>
-                                <p>{{ employee.email }}</p>
-                                <p>{{ employee.phone }}</p>
-                                <p>{{ employee.address }}</p>
-                            {% endfor %}
-                        </form>
-
-                    </li>
-                </ul>
-            </div>
-            <div class="mid">
-                <ul class="flex justify-between">
-                    <li>Total Employee: <p>10</p></li>
-                    <li>Active: <p>10</p></li>
-                </ul>
-            </div>
-            <div class="records">
-                <table class="center">
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Phone Number</th>
-                        <th>Address</th>
-                        <th>Email</th>
-                        <th>Citizenship No</th>
-                        <th>Password</th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>  
-        </main>
-        <footer>
-            <div class="crud flex">
-                <button type="button">Update</button>
-                <button type="button">Remove</button>
-            </div>   
-        </footer>
-    </div> 
-</body>
-</html>
+  <table id="table">
+    <thead>
+      <tr>
+        <th>SN</th>
+        <th>Full Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Khanepani Type</th>
+        <th>Previous Unit</th>
+        <th>Current Unit</th>
+        <th>Total Amount</th>
+        <th>Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>123J</td>
+        <td>002</td>
+        <td>1000</td>
+        <td>5 unit</td>
+        <td id="total_amount"></td>
+        <td id="action">
+        <button class="view-bill-btn">View Bill</button>
+        <button class="create-bill-btn">Create Bill</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
