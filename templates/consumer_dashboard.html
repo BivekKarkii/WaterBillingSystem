@@ -141,7 +141,7 @@ html, body {
                 <button class="tablinks" onclick="openTab(event, 'History')">
                     <img class="menuicon" src="{% static 'images/history-solid.svg' %}" alt="History">History</button>
                 <button class="tablinks">
-                    <a href="/logoout"><img class="menuicon" src="{% static 'images/sign-out-alt-solid.svg' %}" alt="Logout">Logout</a></button>
+                    <a href="{% url 'consumer-page:sign_out'%}"><img class="menuicon" src="{% static 'images/sign-out-alt-solid.svg' %}" alt="Logout">Logout</a></button>
             </div>
             <div id="Home" class="tabcontent">
                 <div class="boxes flex justify-evenly">

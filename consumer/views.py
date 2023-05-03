@@ -1,11 +1,12 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 import random
-
+from django.views.generic.base import TemplateView
 from consumer.forms import ConsumerForm
 from consumer.models import Consumer, Consumer_Profile
 
@@ -108,3 +109,13 @@ def consumer_signupview(request):
     # return render(request, 'consumer/delete.html', {'consumer': consumer})
 
 
+# @login_required
+# def consumerlogoutview(request):
+#     logout(request)
+#     return redirect('/customer_login_view')
+
+class SignedOutView(TemplateView):
+    template_name = "customer_login.html"
+    def get(self, request: HttpRequest):
+        logout(request)
+        return render(request, self.template_name)

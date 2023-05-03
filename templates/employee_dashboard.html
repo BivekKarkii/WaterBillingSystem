@@ -130,7 +130,7 @@ button[type="submit"]:hover {
               <ul class="navbar-nav">
               <div class="login-div employee_img" id="login-toggle">
                   <a href=""><img src="{% static 'images/user-circle-solid.svg' %}" alt="bell" style="margin-right: 10px;"> </a>
-                  <a href="/employee/employeelogout" class="">Logout</a>
+                  <a href="{% url 'employee-page:empsigned_out'%}" class="">Logout</a>
                 </div>
             </ul>
           </div>

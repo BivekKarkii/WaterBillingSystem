@@ -3,10 +3,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 import random
-
+from django.views.generic.base import TemplateView
 from billing.models import consumerBilling
 from consumer.models import Consumer
 from employee.models import Employee, Employee_Profile
@@ -77,7 +77,13 @@ def employee_login_view(request):
     form = AuthenticationForm()
     return render(request=request, template_name="employee_login.html", context={"login_form": form})
 
-@login_required
-def employeelogoutview(request):
-    logout(request)
-    return redirect('/employee_login_view')
+# @login_required
+# def employeelogoutview(request):
+#     logout(request)
+#     return redirect('/employee_login_view')
+
+class ConsumerSignedOutView(TemplateView):
+    template_name = "employee_login.html"
+    def get(self, request: HttpRequest):
+        logout(request)
+        return render(request, self.template_name)
