@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Water Billing System</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="text-decoration: underline;">Water Billing System</h1>
+
+      <table id="table">
+        <thead>
+          <tr>
+            <th>SN</th>
+            <th>Bill Number</th>
+            <th>Date</th>
+            <th>meterNo.</th>
+            <th>Address</th>
+            <th>Previous Unit</th>
+            <th>Current Unit</th>
+            <th>Total Amount</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>123J</td>
+            <td>5/3/2023</td>
+            <td>1000</td>
+            <td>5 unit</td>
+            <td>
+              <input type="number" id="prevReading" onchange="calculateTotal()">
+            </td>
+            <td>
+              <input type="number" id="currReading" onchange="calculateTotal()">
+            </td>
+            <td id="total_amount"></td>
+            <td id="action">
+              <button class="view-bill-btn">View Bill</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
