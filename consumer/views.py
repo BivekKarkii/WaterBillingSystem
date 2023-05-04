@@ -9,12 +9,24 @@ import random
 from django.views.generic.base import TemplateView
 from consumer.forms import ConsumerForm
 from consumer.models import Consumer, Consumer_Profile
+from billing.models import consumerBilling
 
 
 # Create your views here.
 
 def consumer_dashboardview(request):
-    return render(request, 'consumer_dashboard.html')
+    billing = consumerBilling.objects.all()
+    a=0
+
+    for i in billing:
+        a += 1
+
+
+    context = {
+        'count': a,
+        'billing': billing,
+    }
+    return render(request, 'consumer_dashboard.html',context)
 
 def customer_login_view(request):
     if request.method == "POST":

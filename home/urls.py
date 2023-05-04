@@ -27,5 +27,11 @@ urlpatterns = [
     path('contact', contactview, name="contact"),
 
     path('employeetable', employeeview, name="employeetable"),
+    path('employeeedit', employeeeditView, name='employeeedit'),
+    path('employeeupdate/<str:id>', employeeupdateView, name='employeeupdate'),
+    path('employeedelete/<str:id>', employeedeleteView, name='employeedelete'),
+
+    path('billview', billview, name="billview"),
+    path('viewbill/<str:id>', billView, name='viewbill'),
 
 ]

@@ -216,13 +216,107 @@ def updateView(request,id):
     return render(request, 'index.html')
 
 
-def deleteView(request,id):
-    # consumer = Consumer.objects.filter(id=id)
-    # consumer.delete()
+def deleteView(request, id):
+    consumer = Consumer.objects.filter(id=id)
+    consumer.delete()
 
-    # context = {
-    #     'consumer': consumer,
-    # }
+    context = {
+        'consumer': consumer,
+    }
     return redirect('/welcome')
+
+
+@login_required
+def employeeview(request):
+    employee = Employee.objects.all()
+    b = 0
+    for i in employee:
+        b += 1
+        print(i)
+    context = {
+        'employee': employee,
+        'count': b
+    }
+    return render(request, 'admindashboard.html', context)
+
+
+def employeeeditView(request):
+    employee = Employee.objects.all()
+    for i in employee:
+        print(i.employee_id)
+    context = {
+        'employee': employee,
+    }
+    return render(request, 'index.html', context)
+
+
+def employeeupdateView(request, id):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+        citizenship = request.POST.get('citizenship')
+        employee_id = request.POST.get('employee_id')
+        e_password = request.POST.get('password')
+
+        employee = Employee(
+            id=id,
+            name=name,
+            email=email,
+            address=address,
+            phone=phone,
+            citizenship=citizenship,
+            employee_id=employee_id,
+            password=e_password,
+        )
+        employee.save()
+        return redirect('/welcome')
+    return render(request, 'index.html')
+
+
+def employeedeleteView(request, id):
+    employee = Employee.objects.filter(id=id)
+    employee.delete()
+
+    context = {
+        'employee': employee,
+    }
+    return redirect('/welcome')
+
+
+def billview(request):
+
+
+    return render(request, 'consumer_dashboard.html', context)
+def billView(request, id):
+    if request.method == 'POST':
+        date = request.POST.get('date')
+        invoice_id = request.POST.get('invoice_id')
+        consumer_id = request.POST.get('consumer_id')
+        consumer_name = request.POST.get('consumer_name')
+        previous_unit = request.POST.get('previous_unit')
+        current_unit = request.POST.get('current_unit')
+        meter_no = request.POST.get('meter_no')
+        amount = request.POST.get('amount')
+        status = request.POST.get('status')
+
+        billing = consumerBilling(
+            date=date,
+            id=id,
+            invoice_id=invoice_id,
+            consumer_id=consumer_id,
+            consumer_name=consumer_name,
+            previous_unit=previous_unit,
+            current_unit=current_unit,
+            meter_no=meter_no,
+            amount=amount,
+            status=status,
+
+        )
+        billing.save()
+        return redirect('/billview')
+    return render(request, 'consumer_dashboard.html')
+
 
 
