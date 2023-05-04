@@ -20,9 +20,10 @@ def employee_dashboardview(request):
 
     billing = consumerBilling.objects.all()
     c = 0
+
     for i in billing:
         c = +1
-
+        print(i.consumer_det.name)
     for i in consumer:
         a += 1
     context = {
@@ -86,4 +87,5 @@ class ConsumerSignedOutView(TemplateView):
     template_name = "employee_login.html"
     def get(self, request: HttpRequest):
         logout(request)
-        return render(request, self.template_name)
+        # return render(request, self.template_name)
+        return redirect('/employee/employeelogin')

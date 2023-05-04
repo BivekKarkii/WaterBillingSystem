@@ -18,7 +18,6 @@ urlpatterns = [
     # path('consumerlogout', consumerlogoutview, name='consumerlogout'),
     path("signed_out", SignedOutView.as_view(), name="sign_out"),
 
-
     # path('consumer_dashboard', consumer_dashboardview, name='consumer_dashboard'),
     # path('consumer_update/<int:phone>', consumer_updateview, name='consumer_update'),
     # path('delete/<int:id>/', consumer_delete, name='consumer_delete'),
