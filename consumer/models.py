@@ -19,12 +19,10 @@ class Consumer(models.Model):
         return "%s   %s" % (self.consumer_id, self.name)
 
 class Consumer_Profile(models.Model):
-    # consumerobj = models.OneToOneField(Consumer, on_delete=models.CASCADE)
+    consumerobj = models.OneToOneField(Consumer, on_delete=models.CASCADE, null=True)
+    #consumer_details = models.ForeignKey(Consumer, on_delete=models.CASCADE)
     phone = models.IntegerField()
     password = models.CharField(max_length=50)
 
-
-
-
-
-
+    def __str__(self):
+        return "%s's profile" % (self.consumer.name)

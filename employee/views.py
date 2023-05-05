@@ -72,7 +72,7 @@ def employee_login_view(request):
             return redirect("/employee/employee_dashboard")
 
         except:
-            print("Whattttttttttttttttt")
+            # print("Whattttttttttttttttt")
             return render(request, "employee_login.html", context={"message": "invalid username or password"})
 
     form = AuthenticationForm()
@@ -89,3 +89,4 @@ class ConsumerSignedOutView(TemplateView):
         logout(request)
         # return render(request, self.template_name)
         return redirect('/employee/employeelogin')
+

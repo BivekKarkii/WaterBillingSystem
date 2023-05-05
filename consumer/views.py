@@ -14,19 +14,36 @@ from billing.models import consumerBilling
 
 # Create your views here.
 
+# def consumer_dashboardview(request):
+#     # get the logged-in consumer
+#     consumer = Consumer.objects.get(id=request.session['consumer_id'])
+#
+#     # get all the bill records for the logged-in consumer
+#     billing = consumerBilling.objects.filter(consumer_id=consumer.consumer_id)
+#
+#     context = {
+#         'consumer': consumer,
+#         'billing': billing,
+#     }
+#
+#     return render(request, 'consumer_dashboard.html', context)
+
 def consumer_dashboardview(request):
-    billing = consumerBilling.objects.all()
-    a=0
+    # get the logged-in consumer
+    consumer = Consumer.objects.get(id=request.session['consumer_id'])
 
-    for i in billing:
-        a += 1
+    # get the consumer's id
+    consumer_id = consumer.consumer_id
 
-
+    # get all the bill records for the logged-in consumer
+    billing = consumerBilling.objects.filter(consumer_id=consumer_id)
     context = {
-        'count': a,
+        'consumer_id': consumer_id,
         'billing': billing,
     }
-    return render(request, 'consumer_dashboard.html',context)
+
+    return render(request, 'consumer_dashboard.html', context)
+
 
 def customer_login_view(request):
     if request.method == "POST":
@@ -35,8 +52,8 @@ def customer_login_view(request):
         password = request.POST.get('Cpassword')
 
         try:
-            usr=Consumer_Profile.objects.filter(phone=phone, password=password)
-            print(usr.first().phone)
+            consumer_profile = Consumer_Profile.objects.get(phone=phone, password=password)
+            request.session['consumer_id'] = consumer_profile.consumerobj.id
             return redirect("/consumer/consumer_dashboard")
 
         except:
@@ -78,31 +95,55 @@ def consumer_registration_formview(request):
 def consumer_adminview(request):
     return render(request, "consumer.html")
 
+# def consumer_signupview(request):
+#     if request.method == 'POST':
+#         phone = request.POST.get('phone')
+#         password = request.POST.get('password')
+#         c_password = request.POST.get('c_password')
+#
+#         if password!=c_password:
+#             return render(request, "Signup.html", {"message": "password not matching"})
+#         # print(f'hellllllllllllloooooooooo{phone}')
+#         try:
+#             consum = Consumer.objects.get(phone=phone)
+#             Consumer_Profile.objects.create(phone=phone, password=password)
+#             print(consum.phone)
+#             Consumer_Profile.save()
+#             # print(consum.email)
+#             return redirect('/consumer/customer_login')
+#         except:
+#             return render(request, "Signup.html",{"message":"Invalid phone number"})
+#
+#         # if Consumer.objects.get(consumer_id=cid):
+#         #     print('Success')
+#         #     return render(request, "Signup.html")
+#
+#
+#     return render(request, "Signup.html")
+
 def consumer_signupview(request):
     if request.method == 'POST':
         phone = request.POST.get('phone')
         password = request.POST.get('password')
         c_password = request.POST.get('c_password')
 
-        if password!=c_password:
+        if password != c_password:
             return render(request, "Signup.html", {"message": "password not matching"})
-        # print(f'hellllllllllllloooooooooo{phone}')
+
         try:
-            consum = Consumer.objects.get(phone=phone)
-            Consumer_Profile.objects.create(phone=phone, password=password)
-            print(consum.phone)
-            # Consumer_Profile.save()
-            # print(consum.email)
+            # Get the Consumer object
+            consumer = Consumer.objects.get(phone=phone)
+
+            # Create the Consumer_Profile object with the foreign key set to the Consumer object
+            consumer_profile = Consumer_Profile(consumerobj=consumer, phone=phone, password=password)
+            consumer_profile.save()
+
             return redirect('/consumer/customer_login')
         except:
             return render(request, "Signup.html",{"message":"Invalid phone number"})
 
-        # if Consumer.objects.get(consumer_id=cid):
-        #     print('Success')
-        #     return render(request, "Signup.html")
-
-
     return render(request, "Signup.html")
+
 
 # def consumer_updateview(request, phone):
 #     consumer = Consumer.objects.get(phone=phone)
@@ -131,3 +172,32 @@ class SignedOutView(TemplateView):
     def get(self, request: HttpRequest):
         logout(request)
         return render(request, self.template_name)
+
+def billView(request, id):
+    request.consumer.id
+    if request.method == 'POST':
+        date = request.POST.get('date')
+        invoice_id = request.POST.get('invoice_id')
+        consumer_id = request.POST.get('consumer_id')
+        consumer_name = request.POST.get('consumer_name')
+        previous_unit = request.POST.get('previous_unit')
+        current_unit = request.POST.get('current_unit')
+        meter_no = request.POST.get('meter_no')
+        amount = request.POST.get('amount')
+        status = request.POST.get('status')
+
+        billing = consumerBilling(
+            date=date,
+            id=id,
+            invoice_id=invoice_id,
+            consumer_id=consumer_id,
+            consumer_name=consumer_name,
+            previous_unit=previous_unit,
+            current_unit=current_unit,
+            meter_no=meter_no,
+            amount=amount,
+            status=status,
+            )
+        billing.save()
+        return redirect('/billview')
+    return render(request, 'consumer_dashboard.html')

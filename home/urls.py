@@ -31,7 +31,4 @@ urlpatterns = [
     path('employeeupdate/<str:id>', employeeupdateView, name='employeeupdate'),
     path('employeedelete/<str:id>', employeedeleteView, name='employeedelete'),
 
-    path('billview', billview, name="billview"),
-    path('viewbill/<str:id>', billView, name='viewbill'),
-
 ]

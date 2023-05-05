@@ -285,38 +285,5 @@ def employeedeleteView(request, id):
     return redirect('/welcome')
 
 
-def billview(request):
-
-
-    return render(request, 'consumer_dashboard.html', context)
-def billView(request, id):
-    if request.method == 'POST':
-        date = request.POST.get('date')
-        invoice_id = request.POST.get('invoice_id')
-        consumer_id = request.POST.get('consumer_id')
-        consumer_name = request.POST.get('consumer_name')
-        previous_unit = request.POST.get('previous_unit')
-        current_unit = request.POST.get('current_unit')
-        meter_no = request.POST.get('meter_no')
-        amount = request.POST.get('amount')
-        status = request.POST.get('status')
-
-        billing = consumerBilling(
-            date=date,
-            id=id,
-            invoice_id=invoice_id,
-            consumer_id=consumer_id,
-            consumer_name=consumer_name,
-            previous_unit=previous_unit,
-            current_unit=current_unit,
-            meter_no=meter_no,
-            amount=amount,
-            status=status,
-
-        )
-        billing.save()
-        return redirect('/billview')
-    return render(request, 'consumer_dashboard.html')
-
 
 
