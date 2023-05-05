@@ -216,13 +216,74 @@ def updateView(request,id):
     return render(request, 'index.html')
 
 
-def deleteView(request,id):
-    # consumer = Consumer.objects.filter(id=id)
-    # consumer.delete()
+def deleteView(request, id):
+    consumer = Consumer.objects.filter(id=id)
+    consumer.delete()
 
-    # context = {
-    #     'consumer': consumer,
-    # }
+    context = {
+        'consumer': consumer,
+    }
     return redirect('/welcome')
+
+
+@login_required
+def employeeview(request):
+    employee = Employee.objects.all()
+    b = 0
+    for i in employee:
+        b += 1
+        print(i)
+    context = {
+        'employee': employee,
+        'count': b
+    }
+    return render(request, 'admindashboard.html', context)
+
+
+def employeeeditView(request):
+    employee = Employee.objects.all()
+    for i in employee:
+        print(i.employee_id)
+    context = {
+        'employee': employee,
+    }
+    return render(request, 'index.html', context)
+
+
+def employeeupdateView(request, id):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+        citizenship = request.POST.get('citizenship')
+        employee_id = request.POST.get('employee_id')
+        e_password = request.POST.get('password')
+
+        employee = Employee(
+            id=id,
+            name=name,
+            email=email,
+            address=address,
+            phone=phone,
+            citizenship=citizenship,
+            employee_id=employee_id,
+            password=e_password,
+        )
+        employee.save()
+        return redirect('/welcome')
+    return render(request, 'index.html')
+
+
+def employeedeleteView(request, id):
+    employee = Employee.objects.filter(id=id)
+    employee.delete()
+
+    context = {
+        'employee': employee,
+    }
+    return redirect('/welcome')
+
+
 
 

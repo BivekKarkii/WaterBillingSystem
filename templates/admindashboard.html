@@ -344,8 +344,8 @@
 	</div>
     {% endfor %}
 
-{#==========================================================Employee part=========================================#}
-          <div id="Employee" class="tabcontent">
+{#     ===================================================Employee part=======================================#}
+     <div id="Employee" class="tabcontent">
                     <div class="dashcontent flex">
                         <ul class="searchbar justify-between">
                             <li>
@@ -408,17 +408,17 @@
         <!-- Edit Employee Modal HTML -->
 
     {% for i in employee %}
-	<div id="editEmployeeModal-{{ forloop.counter }}" class="modal fade"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form action="/update/{{i.id}}" method="post">
+   <div id="editEmployeeModal-{{ forloop.counter }}" class="modal fade"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form action="/employeeupdate/{{i.id}}" method="post">
                     {% csrf_token %}
-					<div class="modal-header">
-						<h4 class="modal-title">Edit Employee</h4>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
+               <div class="modal-header">
+                  <h4 class="modal-title">Edit Employee</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <div class="form-group">
 
                         <label for="fullname">Full Name:</label>
                         <input type="text" value="{{ i.name }}" id="efullname" name="name" required>
@@ -435,47 +435,48 @@
                           <label for="citizenshipnumber">Citizenship Number:</label>
                           <input type="text" value="{{ i.citizenship }}" id="ecitizenshipnumber" name="citizenship" required>
 
-                          <label for="employee_id">Employee Id:</label>
+                          <label for="employee_id">Employee ID:</label>
                           <input type="text" value="{{ i.employee_id }}" id="employee_id" name="employee_id" required>
 
                             <label for="password">Password :</label>
                           <input type="text" value="{{ i.password }}" id="password" name="password" required>
-						</div>
+                  </div>
 
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="add_btn btn btn-info">Update </button>
+               </div>
+               <div class="modal-footer">
+                  <button type="submit" class="add_btn btn btn-info">Update </button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
     {% endfor %}
 
 <!-- Delete Modal HTML -->
     {% for i in employee %}
-	<div id="deleteEmployeeModal-{{ forloop.counter }}" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Delete Employee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>Are you sure you want to delete these Records?</p>
-						<p class="text-warning"><small>DO you want to delete {{ i.name }}'s information?</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <a href="/delete/{{ i.id }}" type="submit" class="btn btn-danger" >Delete</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+   <div id="deleteEmployeeModal-{{ forloop.counter }}" class="modal fade">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form>
+               <div class="modal-header">
+                  <h4 class="modal-title">Delete Employee</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               </div>
+               <div class="modal-body">
+                  <p>Are you sure you want to delete these Records?</p>
+                  <p class="text-warning"><small>DO you want to delete {{ i.name }}'s information?</small></p>
+               </div>
+               <div class="modal-footer">
+                  <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <a href="/employeedelete/{{ i.id }}" type="submit" class="btn btn-danger" >Delete</a>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
     {% endfor %}
+
 
         </main>
     </div>
