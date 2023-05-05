@@ -173,8 +173,21 @@ class SignedOutView(TemplateView):
         logout(request)
         return render(request, self.template_name)
 
+def billview(request):
+    billing = consumerBilling.objects.all()
+    a=0
+
+    for i in billing:
+        a += 1
+
+
+    context = {
+        'count': a,
+        'billing': billing,
+    }
+
+    return render(request, 'consumer_dashboard.html', context)
 def billView(request, id):
-    request.consumer.id
     if request.method == 'POST':
         date = request.POST.get('date')
         invoice_id = request.POST.get('invoice_id')
@@ -197,7 +210,8 @@ def billView(request, id):
             meter_no=meter_no,
             amount=amount,
             status=status,
-            )
+
+        )
         billing.save()
         return redirect('/billview')
     return render(request, 'consumer_dashboard.html')

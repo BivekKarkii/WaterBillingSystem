@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
 
+from consumer.views import *
 from home import views
 from home.views import *
 from newWaterBillingSystem import settings
@@ -30,5 +31,9 @@ urlpatterns = [
     path('employeeedit', employeeeditView, name='employeeedit'),
     path('employeeupdate/<str:id>', employeeupdateView, name='employeeupdate'),
     path('employeedelete/<str:id>', employeedeleteView, name='employeedelete'),
+
+    path('billview', billview, name="billview"),
+    path('viewbill/<str:id>', billView, name='viewbill'),
+
 
 ]
