@@ -18,19 +18,20 @@ def meter_readingFormview(request):
         date = request.POST.get("date")
         status = request.POST.get("status")
         meter_number = request.POST.get("meter_number")
+        consumer_det = request.POST.get("id")
 
         print(invoice_id)
 
         consumerBilling.objects.create(
             invoice_id=invoice_id,
-            consumer_det=consumer_id,
-            consumer_name=consumer_name,
+            consumer_det_id=consumer_det,
+            # consumer_name=consumer_name,
             previous_unit=previous_unit,
             current_unit=current_unit,
             amount=amount,
             date=date,
             status=status,
-            meter_number=meter_number
+            # meter_number=meter_number
         )
         # print("user created!")
         return redirect("/employee/employee_dashboard")

@@ -36,7 +36,7 @@ def consumer_dashboardview(request):
     consumer_id = consumer.consumer_id
 
     # get all the bill records for the logged-in consumer
-    billing = consumerBilling.objects.filter(consumer_id=consumer_id)
+    billing = consumerBilling.objects.filter(consumer_det=consumer_id)
     context = {
         'consumer_id': consumer_id,
         'billing': billing,
@@ -53,11 +53,11 @@ def customer_login_view(request):
 
         try:
             consumer_profile = Consumer_Profile.objects.get(phone=phone, password=password)
-            request.session['consumer_id'] = consumer_profile.consumerobj.id
+            request.session['consumer_id'] = consumer_profile.consumer.id
             return redirect("/consumer/consumer_dashboard")
 
         except:
-            return render(request, "customer_login.html", context={"message":"invalid username or password"})
+            return render(request, "customer_login.html", context={"message": "invalid username or password"})
         # return render(request, "customer_login.html", context={"message": "invalid username or password"})
 
     form = AuthenticationForm()
@@ -92,8 +92,10 @@ def consumer_registration_formview(request):
 
     return render(request, "consumer_registration_form.html")
 
+
 def consumer_adminview(request):
     return render(request, "consumer.html")
+
 
 # def consumer_signupview(request):
 #     if request.method == 'POST':
@@ -140,7 +142,7 @@ def consumer_signupview(request):
 
             return redirect('/consumer/customer_login')
         except:
-            return render(request, "Signup.html",{"message":"Invalid phone number"})
+            return render(request, "Signup.html", {"message": "Invalid phone number"})
 
     return render(request, "Signup.html")
 
@@ -155,11 +157,11 @@ def consumer_signupview(request):
 
 # def consumer_delete(request, id):
 #     pass
-    # consumer = Consumer.objects.get(id=id)
-    # if request.method == 'POST':
-    #     consumer.delete()
-    #     return redirect('consumer_list')
-    # return render(request, 'consumer/delete.html', {'consumer': consumer})
+# consumer = Consumer.objects.get(id=id)
+# if request.method == 'POST':
+#     consumer.delete()
+#     return redirect('consumer_list')
+# return render(request, 'consumer/delete.html', {'consumer': consumer})
 
 
 # @login_required
@@ -169,17 +171,18 @@ def consumer_signupview(request):
 
 class SignedOutView(TemplateView):
     template_name = "customer_login.html"
+
     def get(self, request: HttpRequest):
         logout(request)
         return render(request, self.template_name)
 
+
 def billview(request):
     billing = consumerBilling.objects.all()
-    a=0
+    a = 0
 
     for i in billing:
         a += 1
-
 
     context = {
         'count': a,
@@ -187,6 +190,8 @@ def billview(request):
     }
 
     return render(request, 'consumer_dashboard.html', context)
+
+
 def billView(request, id):
     if request.method == 'POST':
         date = request.POST.get('date')
