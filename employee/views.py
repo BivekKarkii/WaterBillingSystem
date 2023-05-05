@@ -23,7 +23,7 @@ def employee_dashboardview(request):
 
     for i in billing:
         c = +1
-        print(i.consumer_det.name)
+        # print(i.consumer_det.name)
     for i in consumer:
         a += 1
     context = {
