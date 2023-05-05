@@ -246,8 +246,8 @@
                             {% for i in billing %}
                             <tr>
                                 <td>{{ i.invoice_id }}</td>
-                                <td>{{ i.consumer_id }}</td>
-                                <td>{{ i.consumer_name }}</td>
+                                <td>{{ i.consumer_det.consumer_id }}</td>
+                                <td>{{ i.consumer_det.name }}</td>
                                 <td>{{ i.previous_unit }}</td>
                                 <td>{{ i.current_unit }}</td>
                                 <td>{{ i.amount }}</td>
