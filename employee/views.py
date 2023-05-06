@@ -18,10 +18,22 @@ def employee_dashboardview(request):
     consumer = Consumer.objects.all()
     a = 0
 
-    billing = consumerBilling.objects.all()
+    billing = consumerBilling.objects.values('consumer_det_id').distinct()
+    consumer_billing_list = []
+    for consumer_id in billing:
+        last_billing = consumerBilling.objects.filter(consumer_det=consumer_id['consumer_det_id']).order_by('-id')
+        if last_billing:
+            consumer_billing_list.append(last_billing)
+
+    print("counterrrrr",consumer_billing_list)
+    billcounter = consumerBilling.objects.all()
     c = 0
 
-    for i in billing:
+    for l in consumer_billing_list:
+        for i in l:
+            print(i.amount)
+
+    for i in billcounter:
         c = +1
         # print(i.consumer_det.name)
     for i in consumer:
@@ -29,8 +41,9 @@ def employee_dashboardview(request):
     context = {
         'consumer': consumer,
         'count': a,
-        'billing': billing,
+        'billing': billcounter,
         'countbill': c,
+        'consumer_billing_list':consumer_billing_list,
     }
     return render(request, 'employee_dashboard.html',context)
 

@@ -184,7 +184,7 @@ button:hover {
       </nav>
     </section>
 
-{#=============================================main page===================================================================#}
+{# ============================================= main page =================================================================== #}
 <div class="container">
     <div class="dashmid">
     <ul class="flex justify-between">
@@ -225,7 +225,7 @@ button:hover {
         <td>{{ i.consumer_id }}</td>
         <td>
             <a href="#createbillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createbillModal-{{ forloop.counter }}">Create Bill</a>
-            <a href="#viewbillModal-{{ forloop.counter }}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#viewbillModal-{{ forloop.counter }}">View Bill</a>
+            <a href="#{{ i.consumer_id  }}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#viewbillModal-{{ i.consumer_id  }}">View Bill</a>
             {#            <button type="button view-bill-btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">view bill</button>#}
 {#            <button class="create-bill-btn">View Bill</button>#}
              </td>
@@ -280,7 +280,7 @@ button:hover {
         <input type="text" value="15" id="perUnitPrice" name="perUnitPrice" required>
 
         <label for="date">Date:</label>
-        <input type="date" id="meterNo" name="date" required>
+        <input type="date" id="date" name="date" required>
 
         <label for="meterNo">Meter No:</label>
         <input type="text" value="{{ i.consumer_det.meter_no }}" id="meterNo" name="meter_number" required>
@@ -310,9 +310,9 @@ button:hover {
 
 
 <!-- Modal view bill -->
-{% for i in billing %}
-{#    {% for j in consumer %}#}
-<div class="modal fade" id="viewbillModal-{{ forloop.counter }}" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+{% for j in consumer_billing_list %}
+    {% for i in j %}
+<div class="modal fade" id="viewbillModal-{{ i.consumer_det.consumer_id }}" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -361,7 +361,7 @@ button:hover {
   </div>
 </div>
 {% endfor %}
-{#{% endfor %}#}
+{% endfor %}
 
 
 
