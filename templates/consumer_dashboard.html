@@ -1,300 +1,631 @@
-<!DOCTYPE html>
+<!doctype html>
 {% load static %}
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Consumer Dashboard</title>
+  <title>Consumer Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <style type="text/css">
-        /* Reset some default styles */
-html, body {
-  margin: 0;
-  padding: 0;
-}
 
-/* Overall layout */
-.consumerdash {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-.pageheader {
-  background: #f3f3f3;
-  padding: 20px;
-}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/cdashboard.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-.logo img {
-  height: 40px;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
-.navbar li {
-  margin-left: 10px;
-}
 
-.menu {
-  background: #f3f3f3;
-  width: 200px;
-  padding: 20px;
-}
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
-.tablinks {
-  display: block;
-  border: none;
-  background: none;
-  padding: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  text-align: left;
-}
 
-.tablinks:hover {
-  background-color: #ddd;
-}
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #fff;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-.tabcontent {
-  padding: 20px;
-}
+    /*.logo img {
+      height: 50px;
+    }*/
 
-.boxes {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-}
+    .nav ul {
+      display: flex;
+      list-style: none;
+    }
 
-.box {
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  padding: 20px;
-  text-align: center;
-  flex-basis: 30%;
-}
+    .nav ul li {
+      margin-right: 20px;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
-/* Dark Mode */
-.consumerdash.dark-mode {
-  background-color: #333;
-  color: #fff;
-}
+    .main {
+      padding: 20px;
+      margin: 20px;
+      background-color: #fff;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-.pageheader.dark-mode {
-  background-color: #555;
-}
+    .bill-summary {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 30px;
+      margin-top: 20px;
+    }
 
-.menu.dark-mode {
-  background-color: #555;
-}
+    .summary-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 20%;
+      box-shadow: 3px 4px 8px 0px rgba(0, 0, 0, 0.49) inset;
+    }
 
-.menu .tablinks {
-  color: #fff;
-}
+    .icon img {
+      height: 50px;
+    }
 
-.tabcontent.dark-mode {
-  background-color: #555;
-  color: #fff;
-}
+    .count {
+      font-size: 40px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
 
-.box.dark-mode {
-  background-color: #666;
-  border-color: #999;
-  color: #fff;
-}
+    .label {
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 10px;
+      text-align: center;
+    }
 
-    </style>
+    .graph {
+      height: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 220px;
+      height: 100%;
+      background-color: #333;
+      color: #fff;
+      padding-top: 20px;
+            transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .sidebar.closed {
+      transform: translateX(-100%);
+    }
+
+    .sidebar .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sidebar_menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar_menu ul li {
+      padding: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 18px;
+    }
+
+    .sidebar_menu ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .sidebar_menu ul li i {
+      margin-right: 10px;
+    }
+
+    .sidebar_menu ul li.active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar_menu ul li.active a {
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .list-unstyled li {
+      display: flex;
+      flex-flow: row;
+      align-items: center;
+    }
+
+    #calendar {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    #Home,#Billing,#Payment,#History{
+      width: 100%;
+    }
+
+    .smenu{
+      margin-top: 20px;
+      margin-left:10px;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="consumerdash">
-        <header class="pageheader">
-            <nav class="nav flex justify-between">
-                <div class="logo">
-                    <img src="{% static 'images/logo.png' %}" alt="logo">
-                </div>
-                <ul class="navbar">
-                    <li><a href="#" class="notification">
-                        <img src="{% static 'images/bell-solid.svg' %}" alt="bell">
-                      </a></li>
-                    <li><a href=""><img src="{% static 'images/user-circle-solid.svg' %}" alt="bell">Consumer</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main class="min-h-screen flex">
-            <div class="menu bg-menu">
-                <button class="tablinks" onclick="openTab(event, 'Home')" id="defaultOpen">
-                    <img class="menuicon" src="{%static 'images/house-solid.svg' %}" alt="Home">Home</button>
-                <button class="tablinks" onclick="openTab(event, 'Billing')">
-                    <img class="menuicon" src="{% static 'images/file-invoice-solid.svg' %}" alt="Billing">Billing</button>
-                <button class="tablinks" onclick="openTab(event, 'Payment')">
-                    <img class="menuicon" src="{% static 'images/credit-card-solid.svg' %}" alt="Payment">Payment</button>
-                <button class="tablinks" onclick="openTab(event, 'History')">
-                    <img class="menuicon" src="{% static 'images/history-solid.svg' %}" alt="History">History</button>
-                <button class="tablinks">
-                    <a href="{% url 'consumer-page:sign_out'%}"><img class="menuicon" src="{% static 'images/sign-out-alt-solid.svg' %}" alt="Logout">Logout</a></button>
+
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+          <i class="fa fa-bars"></i>
+          <span class="sr-only">Toggle Menu</span>
+        </button>
+      </div>
+      <div class="p-4 pt-5">
+        <a href="index.html" class="logo"><img src="{% static 'images/logo.png' %}" style="width: 100%;"></a>
+        <ul class="list-unstyled components mb-5 smenu">
+
+          <li class="tablinks" onclick="openTab(event, 'Home')" id="defaultOpen"><i class="fa fa-home"></i><a href="#"> Home</a></li>
+          <li class="tablinks" onclick="openTab(event, 'Billing')"><i class="fa fa-file-invoice" style="padding: 0 3px 0 2px;"></i> <a href="#">Billing</a></li>
+          <li class="tablinks" onclick="openTab(event, 'Payment')"><i class="fa fa-credit-card"></i><a href="#"> Payment</a></li>
+          <li class="tablinks" onclick="openTab(event, 'History')"><i class="fa fa-history"></i><a href="#"> History</a></li>
+          <li><i class="fa fa-sign-out-alt"></i><a href="/logoout"> Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id = "Home" class="tabcontent" >
+    <div id="content1" class="p-4 p-md-5 pt-5">
+
+      <div class="content">
+        <div class="bill-summary">
+          <div class="summary-item unpaid-bills">
+            <div class="icon">
+              <!-- <img src="bell.png"> -->
+              <i class="fa fa-file-invoice" style="font-size: 35px;"></i>
             </div>
-            <div id="Home" class="tabcontent">
-                <div class="boxes flex justify-evenly">
-                    <div class="box">
-                        <h3>Unpaid Bills</h3>
-                        <h3>{{count}}</h3>
-                    </div>
-                    <div class="box">
-                        <h3>Paid Bills</h3>
-                         <h3>{{count}}</h3>
-                    </div>
-                </div>
+            <div class="count">{{ u_count }}</div>
+            <div class="label">Unpaid Bills</div>
+          </div>
+          <div class="summary-item paid-bills">
+            <div class="icon">
+
+              <i class="fa fa-file-invoice" style="font-size: 35px;"></i>
             </div>
-            <div id="Billing" class="tabcontent">
-                <div class="dashcontent flex">
-                    <ul class="searchbar justify-between">
-                        <li>
-                            <form action="post">
-                                <input type="text" placeholder="Search..."><button class="dashbtn" type="button">Search</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+            <div class="count">{{ p_count }}</div>
+            <div class="label">Paid Bills</div>
+          </div>
+        </div>
+        </div>
+            <div class="graph">
+          <canvas id="myChart"></canvas>
+        </div>
 
-                <div class="dashmid">
-                    <ul class="flex justify-between">
+        <div id="calendar"></div>
 
-                        <li>Total bill :  {{ countbill }}</li>
-                        <li>Active : {{ countbill }}</li>
-{#              <li><div class="crud">#}
-{#              <button class="dashbtn" type="button"><a href="/consumer/consumer_registration_form">Add Consumer</a></button>#}
-        {#      <button class="dashbtn" type="button">Update</button>#}
-        {#      <button class="dashbtn" type="button">Remove</button>#}
-{#              </div></li>#}
-
-
-                    </ul>
-                </div>
-                <div class="billingrecords table-responsive">
-                    <table class="center table">
-                        <tr>
-                            <th>ID</th>
-                            <th>Invoice ID</th>
-                            <th>Consumer ID</th>
-                            <th>Consumer Name</th>
-                            <th>Meter No</th>
-                            <th>Previous Unit</th>
-                            <th>Current Unit</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
-                        <h3>consumer id: {{consumer_id}}</h3>
-                        {% for i in billing %}
-                            <tr>
-                                <td>{{ i.id }}</td>
-                                <td>{{ i.invoice_id }}</td>
-                                <td>{{ i.consumer_id }}</td>
-                                <td>{{ i.consumer_name }}</td>
-                                <td>{{ i.meter_number }}</td>
-                                <td>{{ i.previous_unit }}</td>
-                                <td>{{ i.current_unit }}</td>
-                                <td>{{ i.amount }}</td>
-                                <td>{{ i.date }}</td>
-                                <td>{{ i.status }}</td>
-                                <td>
-                                    <a href="#viewBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewBillModal-{{ forloop.counter }}">View Bill</a>
-                                    <a href="#viewBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewBillModal-{{ forloop.counter }}">Print Bill</a>
-                                    {# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
-                                    {# <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
-                                    {#</button>#}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </table>
-                    </div>
-                </div>
-                    {% for i in billing %}
-                    <div id="viewBillModal-{{ forloop.counter }}" class="modal fade"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="/consumer/viewbill/{{i.id}}" method="post">
-                                    {% csrf_token %}
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">View Bill</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-
-                                          <label for="date">Date:</label>
-                                          <input type="text" value="{{ i.date }}" id="date" name="date" readonly>
-
-                                          <label for="invoiceid">Invoice ID:</label>
-                                          <input type="text" value="{{ i.invoice_id }}" id="invoiceid" name="invoice_id" readonly>
-
-                                          <label for="consumerid">Consumer ID:</label>
-                                          <input type="text" value="{{ i.consumer_id }}" id="consumerid" name="consumer_id" readonly>
-
-                                          <label for="consumername">Consumer Name:</label>
-                                          <input type="tel" value="{{ i.consumer_name }}" id="consumername" name="consumer_name" readonly>
-
-                                          <label for="previousunit">Previous Unit:</label>
-                                          <input type="email" value="{{ i.previous_unit }}" id="previousunit" name="previous_unit" readonly>
-
-                                          <label for="currentunit">Current Unit:</label>
-                                          <input type="text" value="{{ i.current_unit }}" id="currentunit" name="current_unit" readonly>
-
-                                          <label for="meternumber">Meter Number:</label>
-                                          <input type="text" value="{{ i.meter_number }}" id="meternumber" name="meter_no" readonly>
-
-                                          <label for="amount">Amount:</label>
-                                          <input type="text" value="{{ i.amount }}" id="amount" name="amount" readonly>
-
-                                          <label for="status">Status:</label>
-                                          <input type="text" value="{{ i.status }}" id="status" name="status" readonly>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="add_btn btn btn-info">Print</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-        </main>
+      </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- <script src="{% static 'js/consumerdashboard.js' %}"></script> -->
-    <script type="text/javascript">
-        function openTab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
 
-document.getElementById("defaultOpen").click();
+  <!-- Billing Content  -->
+    <div id="Billing" class="tabcontent">
+    <div id="content2" class="p-4 p-md-5 pt-5">
+      <div class="content">
+        <div class="bill-summary">
+          Bills
+        </div>
 
-    </script>
+        <div class="table-container">
+          <table class="billing-table table table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Invoice ID</th>
+                <th>Meter No</th>
+                <th>Previous Unit</th>
+                <th>Current Unit</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in unpaidbill %}
+              <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.invoice_id }}</td>
+                <td>{{ i.meter_number }}</td>
+                <td>{{ i.previous_unit }}</td>
+                <td>{{ i.current_unit }}</td>
+                <td>{{ i.amount }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.status }}</td>
+                <td>
+                  <a href="#viewBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewBillModal-{{ forloop.counter }}">View Bill</a>
+                  <a href="#printBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#printBillModal-{{ forloop.counter }}">Print Bill</a>
+                  {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
+                  {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
+                  {#     </button>#}
+
+                </td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
+        </div>
+         {% for i in unpaidbill %}
+          <div id="viewBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">        <div class="modal-dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Water Billing System</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h1>Water Billing System</h1>
+                <h2>BlueLine Splash</h2>
+                <h3>Bill Invoice</h3>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <td>{{ i.date }}</td>
+                        </tr>
+                        <tr>
+                            <th>Consumer ID</th>
+                            <td>{{ i.consumer_det.consumer_id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ i.consumer_det.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td>{{ i.consumer_det.address }}</td>
+                        </tr>
+                        <tr>
+                            <th>Previous Unit</th>
+                            <td>{{ i.previous_unit }}</td>
+                        </tr>
+                        <tr>
+                            <th>Current Unit</th>
+                            <td>{{ i.current_unit }}</td>
+                        </tr>
+                        <tr>
+                            <th>Total Amount</th>
+                            <td><strong>{{ i.amount }}</strong></td>
+                        </tr>
+                    </table>
+                </div>
+                <button onclick="window.print()">Print Bill</button>
+            </div>
+            </div>
+      </div>
+    </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+
+    <!-- Payment Content  -->
+    <div id="Payment" class="tabcontent">
+      <div id="content3" class="p-4 p-md-5 pt-5">
+        <div class="content">
+          <div class="bill-summary">
+           Payment
+          </div>
+
+          <div class="table-container">
+            <table class="billing-table table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Invoice ID</th>
+                  <th>Meter No</th>
+                  <th>Previous Unit</th>
+                  <th>Current Unit</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in unpaidbill %}
+                <tr>
+                  <td>{{ i.id }}</td>
+                  <td>{{ i.invoice_id }}</td>
+                  <td>{{ i.meter_number }}</td>
+                  <td>{{ i.previous_unit }}</td>
+                  <td>{{ i.current_unit }}</td>
+                  <td>{{ i.amount }}</td>
+                  <td>{{ i.date }}</td>
+                  <td>{{ i.status }}</td>
+                  <td>
+                    <a href="#payBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#payBillModal-{{ forloop.counter }}">Pay Bill</a>
+                    {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
+                    {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
+                    {#     </button>#}
+
+                  </td>
+                </tr>
+              </tbody>
+              {% endfor %}
+            </table>
+          </div>
+           {% for i in unpaidbill %}
+            <div id="viewBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">        <div class="modal-dialog">
+              <div class="modal-content">
+                <form action="/consumer/viewbill/{{i.id}}" method="post">
+                  {% csrf_token %}
+                  <div class="modal-header">
+                    <h4 class="modal-title">View Bill</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="date">Date:</label>
+                      <input type="text" value="{{ i.date }}" id="date" name="date" readonly>
+
+                      <label for="invoiceid">Invoice ID:</label>
+                      <input type="text" value="{{ i.invoice_id }}" id="invoiceid" name="invoice_id" readonly>
+
+                      <label for="meternumber">Meter Number:</label>
+                      <input type="text" value="{{ i.meter_number }}" id="meternumber" name="meter_no" readonly>
+
+                      <label for="previousunit">Previous Unit:</label>
+                      <input type="email" value="{{ i.previous_unit }}" id="previousunit" name="previous_unit" readonly>
+
+                      <label for="currentunit">Current Unit:</label>
+                      <input type="text" value="{{ i.current_unit }}" id="currentunit" name="current_unit" readonly>
+
+                      <label for="amount">Amount:</label>
+                      <input type="text" value="{{ i.amount }}" id="amount" name="amount" readonly>
+
+                      <label for="status">Status:</label>
+                      <input type="text" value="{{ i.status }}" id="status" name="status" readonly>
+
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="add_btn btn btn-info">Print</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        </div>
+      </div>
+
+    <!-- History Content  -->
+    <div id="History" class="tabcontent">
+      <div id="content4" class="p-4 p-md-5 pt-5">
+        <div class="content4">
+          <div class="bill-summary">
+            Bill History
+          </div>
+
+          <div class="table-container">
+            <table class="billing-table table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Invoice ID</th>
+                  <th>Meter No</th>
+                  <th>Previous Unit</th>
+                  <th>Current Unit</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in unpaidbill %}
+                <tr>
+                  <td>{{ i.id }}</td>
+                  <td>{{ i.invoice_id }}</td>
+                  <td>{{ i.meter_number }}</td>
+                  <td>{{ i.previous_unit }}</td>
+                  <td>{{ i.current_unit }}</td>
+                  <td>{{ i.amount }}</td>
+                  <td>{{ i.date }}</td>
+                  <td>{{ i.status }}</td>
+                  <td>
+                    <a href="#viewBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewBillModal-{{ forloop.counter }}">View Bill</a>
+                    <a href="#printBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#printBillModal-{{ forloop.counter }}">Print Bill</a>
+                    {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
+                    {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
+                    {#     </button>#}
+
+                  </td>
+                </tr>
+              </tbody>
+              {% endfor %}
+            </table>
+          </div>
+           {% for i in paidbill %}
+            <div id="viewBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">        <div class="modal-dialog">
+              <div class="modal-content">
+                <form action="/consumer/viewbill/{{i.id}}" method="post">
+                  {% csrf_token %}
+                  <div class="modal-header">
+                    <h4 class="modal-title">View Bill</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="date">Date:</label>
+                      <input type="text" value="{{ i.date }}" id="date" name="date" readonly>
+
+                      <label for="invoiceid">Invoice ID:</label>
+                      <input type="text" value="{{ i.invoice_id }}" id="invoiceid" name="invoice_id" readonly>
+
+                      <label for="meternumber">Meter Number:</label>
+                      <input type="text" value="{{ i.meter_number }}" id="meternumber" name="meter_no" readonly>
+
+                      <label for="previousunit">Previous Unit:</label>
+                      <input type="email" value="{{ i.previous_unit }}" id="previousunit" name="previous_unit" readonly>
+
+                      <label for="currentunit">Current Unit:</label>
+                      <input type="text" value="{{ i.current_unit }}" id="currentunit" name="current_unit" readonly>
+
+                      <label for="amount">Amount:</label>
+                      <input type="text" value="{{ i.amount }}" id="amount" name="amount" readonly>
+
+                      <label for="status">Status:</label>
+                      <input type="text" value="{{ i.status }}" id="status" name="status" readonly>
+
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="add_btn btn btn-info">Print</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        </div>
+      </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
+  <script src="{%static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/popper.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/new.js' %}"></script>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      var ctx = document.getElementById('myChart').getContext('2d');
+
+      // Define the data for the graph
+      var data = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [{
+          label: 'Meter Unit',
+          data: [10, 20, 15, 25, 8, 32],
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      };
+
+      // Configure the options for the graph
+      var options = {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      };
+
+      // Create the chart
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+      });
+
+      // Initialize the calendar
+      $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,basicWeek,basicDay'
+        },
+        defaultDate: '2023-05-01',
+        editable: true,
+        eventLimit: true,
+        events: [
+          {
+            title: 'Event 1',
+            start: '2023-05-01'
+          },
+          {
+            title: 'Event 2',
+            start: '2023-05-05',
+            end: '2023-05-07'
+          },
+          {
+            title: 'Event 3',
+            start: '2023-05-09T16:00:00'
+          }
+          // add more events here...
+        ]
+      });
+    });
+  </script>
+  <script>
+        function openTab(evt, menuItem) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(menuItem).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+        </script>
+
 </body>
+
 </html>
 

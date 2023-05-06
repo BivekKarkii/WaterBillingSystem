@@ -30,16 +30,29 @@ from billing.models import consumerBilling
 
 def consumer_dashboardview(request):
     # get the logged-in consumer
-    consumer = Consumer.objects.get(id=request.session['consumer_id'])
-
-    # get the consumer's id
-    consumer_id = consumer.consumer_id
+    consumer_id = request.session.get('consumer_id')
+    consumer = Consumer.objects.get(id=consumer_id)
 
     # get all the bill records for the logged-in consumer
     billing = consumerBilling.objects.filter(consumer_det=consumer_id)
+    unpaidbill = billing.filter(status="unpaid")
+    u = 0;
+    paidbill = billing.filter(status="paid")
+    p = 0;
+
+    for i in unpaidbill:
+        u+=1;
+
+    for j in paidbill:
+        p+=1;
+
     context = {
-        'consumer_id': consumer_id,
+        'unpaidbill': unpaidbill,
+        'paidbill' : paidbill,
+        'consumer': consumer,
         'billing': billing,
+        'u_count' : u,
+        'p_count' : p,
     }
 
     return render(request, 'consumer_dashboard.html', context)
