@@ -6,7 +6,7 @@ from consumer.models import Consumer
 # Create your models here.
 class consumerBilling(models.Model):
     id = models.IntegerField(primary_key=True)
-    consumer_det = models.OneToOneField(Consumer, blank=True, on_delete=models.CASCADE)
+    consumer_det = models.ForeignKey(Consumer, blank=True, on_delete=models.CASCADE,unique=False)
 
     invoice_id = models.IntegerField()
     # employee_id = models.IntegerField()

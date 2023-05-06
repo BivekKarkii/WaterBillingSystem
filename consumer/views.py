@@ -169,6 +169,7 @@ def consumer_signupview(request):
 #     logout(request)
 #     return redirect('/customer_login_view')
 
+
 class SignedOutView(TemplateView):
     template_name = "customer_login.html"
 

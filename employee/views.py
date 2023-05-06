@@ -60,6 +60,8 @@ def employee_registration_formview(request):
 
     return render(request, "employee_registration_form.html")
 
+
+
 def employee_login_view(request):
     if request.method == "POST":
         print("Hello employee")
@@ -72,7 +74,7 @@ def employee_login_view(request):
             return redirect("/employee/employee_dashboard")
 
         except:
-            # print("Whattttttttttttttttt")
+            print("Whattttttttttttttttt")
             return render(request, "employee_login.html", context={"message": "invalid username or password"})
 
     form = AuthenticationForm()
@@ -82,6 +84,7 @@ def employee_login_view(request):
 # def employeelogoutview(request):
 #     logout(request)
 #     return redirect('/employee_login_view')
+
 
 class ConsumerSignedOutView(TemplateView):
     template_name = "employee_login.html"
