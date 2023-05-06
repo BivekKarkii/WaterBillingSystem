@@ -1,26 +1,152 @@
+{#<!DOCTYPE html>#}
+{#{% load static %}#}
+{#<html lang="en" dir="ltr">#}
+{#  <head>#}
+{#    <meta charset="utf-8">#}
+{#    <link rel="stylesheet" href="{% static 'css/Login.css' %}">#}
+{#    <title></title>#}
+{#  </head>#}
+{#  <body>#}
+{#    <div class="container">#}
+{#      <form method="post">#}
+{#          {% csrf_token %}#}
+{#        <h2>Welcome to our application</h2>#}
+{#          <p style="color:#ff0000">{{ message }}</p>#}
+{#        <p>Please login to use the platform</p>#}
+{#        <label for="phone">Phone</label><br>#}
+{#        <input type="text" id="phone" name="phone"><br>#}
+{#        <label for="password">Password</label><br>#}
+{#        <input type="password" id="password" name="Cpassword"><br>#}
+{#          <a class="forgotp" href="/forgetpassword">Forgot Password?</a>#}
+{#        <button type="submit" name="button">Login</button>#}
+{#        <p>New here?<a href="/consumer/consumer_signup">Sign Up</a></p>#}
+{#      </form>#}
+{#    </div>#}
+{#  </body>#}
+{#</html>#}
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static 'css/Login.css' %}">
-    <title></title>
-  </head>
-  <body>
-    <div class="container">
-      <form method="post">
-          {% csrf_token %}
-        <h2>Welcome to our application</h2>
-          <p style="color:#ff0000">{{ message }}</p>
-        <p>Please login to use the platform</p>
-        <label for="phone">Phone</label><br>
-        <input type="text" id="phone" name="phone"><br>
-        <label for="password">Password</label><br>
-        <input type="password" id="password" name="Cpassword"><br>
-          <a class="forgotp" href="/forgetpassword">Forgot Password?</a>
-        <button type="submit" name="button">Login</button>
-        <p>New here?<a href="/consumer/consumer_signup">Sign Up</a></p>
+
+<head>
+  <meta charset="utf-8">
+  <title>Consumer login</title>
+  <!-- <link rel="stylesheet" type="text/css" href="consumerlogin.css"> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style type="text/css">
+    *{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.leftimage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+}
+
+.leftimage img {
+  height: 100%;
+}
+
+.rightcontent {
+  width: 50%;
+}
+
+form {
+  padding: 50px 20px;
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 18px;
+}
+
+.conlogin-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+}
+
+.conlogin-btn:hover {
+  background-color: #0062cc;
+}
+
+.small {
+  font-size: small;
+}
+
+.text-center {
+  text-align: center;
+}
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <div class="leftimage">
+      <img src="{% static 'images/consumerlogin.jpg' %}" alt="water" width="100%" height="100%">
+    </div>
+    <div class="rightcontent">
+      <form method="POST">
+        {% csrf_token %}
+        <h2 class="text-center mb-4">Consumer Login</h2>
+        <div class="login-container">
+          <div style="width:50%;">
+            <p style="color:#ff0000">{{ message }}</p>
+            <label for="phone">Phone no.</label>
+            <input type="text" id="phone" name="phone" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px; font-size: 18px;"><br><br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="Cpassword" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px; font-size: 18px;"><br>
+            <p class="small mt-2 mb-3 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
+            <div class="pt-1 mb-4">
+              <button class="btn btn-primary btn-lg btn-block conlogin-btn" type="submit">Login</button>
+            </div>
+            <p class="small mb-5 pb-lg-2">Don't have an account? <a class="text-muted" href="/consumer/consumer_signup">Go to Sign up</a></p>
+          </div>
+
+        </div>
       </form>
     </div>
-  </body>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>

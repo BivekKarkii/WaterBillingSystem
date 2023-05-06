@@ -1,67 +1,35 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href=" {% static 'css/style.css' %}">
-    <title>Login Admin</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-      <style>
-          .messages{
-              color: red;
-          }
-          .bg-body main{
-                      margin-top: 7em;
-              }
-          .bg-body{
-              background-color: #EAFDFC !important;
-
-          }
-      </style>
-       </head>
-  <body class="bg-body">
-    <main class="container flex justify-around ">
-      <div class="Loginimage">
-        <img src="{% static 'images/LOGIN.jpg' %}" alt="signupimg">
-      </div>
-      <div class="Logincontent flex">
-        <form class="Loginform" method="POST">
-          {% csrf_token %}
-        <h3>Welcome</h3>
-                    {{ form.as_p }}
-                    {% if messages %}
-                    <div class="messages">
-                        {% for message in messages %}
-{#                            {% if message.tags %} class="{{ message.tags }}"{% endif %}#}
-                        {{ message }}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-
-          <label for="Cid">Username</label><br>
-          <input type="text" id="Cid" name="uname"><br>
-          <label for="Password">Password</label><br>
-          <input type="password" id="Password" name="pass"><br>
-          <a class="forgotp" href="/forgetpassword">Forgot Password?</a>
-          <button class="loginconfirm" type="submit" name="button">Login</button>
-        </form>
-        </div>
-      </div>
-    </main>
-
-{#  <section class="vh-100">#}
-{#  <div class="container py-5 h-100">#}
-{#    <div class="row d-flex align-items-center justify-content-center h-100">#}
-{#      <div class="col-md-8 col-lg-7 col-xl-6">#}
-{#        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"#}
-{#          class="img-fluid" alt="Phone image">#}
+{#<!DOCTYPE html>#}
+{#{% load static %}#}
+{#<html lang="en" dir="ltr">#}
+{#  <head>#}
+{#    <meta charset="utf-8">#}
+{#    <link rel="stylesheet" href=" {% static 'css/style.css' %}">#}
+{#    <title>Login Admin</title>#}
+{#      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">#}
+{##}
+{#      <style>#}
+{#          .messages{#}
+{#              color: red;#}
+{#          }#}
+{#          .bg-body main{#}
+{#                      margin-top: 7em;#}
+{#              }#}
+{#          .bg-body{#}
+{#              background-color: #EAFDFC !important;#}
+{##}
+{#          }#}
+{#      </style>#}
+{#       </head>#}
+{#  <body class="bg-body">#}
+{#    <main class="container flex justify-around ">#}
+{#      <div class="Loginimage">#}
+{#        <img src="{% static 'images/LOGIN.jpg' %}" alt="signupimg">#}
 {#      </div>#}
-{#      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">#}
-{#        <form method="post">#}
-{#        {% csrf_token %}#}
-{#          <!-- Email input -->#}
-{#            {{ form.as_p }}#}
+{#      <div class="Logincontent flex">#}
+{#        <form class="Loginform" method="POST">#}
+{#          {% csrf_token %}#}
+{#        <h3>Welcome</h3>#}
+{#                    {{ form.as_p }}#}
 {#                    {% if messages %}#}
 {#                    <div class="messages">#}
 {#                        {% for message in messages %}#}
@@ -70,34 +38,164 @@
 {#                        {% endfor %}#}
 {#                    </div>#}
 {#                    {% endif %}#}
-{#          <div class="form-outline mb-4">#}
-{#            <input type="text" id="form1Example13" class="form-control form-control-lg" name="uname" />#}
-{#            <label class="form-label" for="form1Example13">username</label>#}
-{#          </div>#}
 {##}
-{#          <!-- Password input -->#}
-{#          <div class="form-outline mb-4">#}
-{#            <input type="password" id="form1Example23" class="form-control form-control-lg" name="pass" />#}
-{#            <label class="form-label" for="form1Example23">Password</label>#}
-{#          </div>#}
-{##}
-{#          <div class="d-flex justify-content-around align-items-center mb-4">#}
-{#            <!-- Checkbox -->#}
-{#            <div class="form-check">#}
-{#              <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />#}
-{#              <label class="form-check-label" for="form1Example3"> Remember me </label>#}
-{#            </div>#}
-{#            <a href="/forgetpassword">Forgot password?</a>#}
-{#          </div>#}
-{##}
-{#          <!-- Submit button -->#}
-{#          <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>#}
-{##}
+{#          <label for="Cid">Username</label><br>#}
+{#          <input type="text" id="Cid" name="uname"><br>#}
+{#          <label for="Password">Password</label><br>#}
+{#          <input type="password" id="Password" name="pass"><br>#}
+{#          <a class="forgotp" href="/forgetpassword">Forgot Password?</a>#}
+{#          <button class="loginconfirm" type="submit" name="button">Login</button>#}
 {#        </form>#}
+{#        </div>#}
 {#      </div>#}
-{#    </div>#}
-{#  </div>#}
-{#</section>#}
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
+{#    </main>#}
+{#  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>#}
+{#  </body>#}
+{#</html>#}
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Admin login</title>
+  <link rel="stylesheet" type="text/css" href="adminlogin.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style type="text/css">
+    *{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.content {
+  display: flex;
+/*  justify-content: center;*/
+  align-items: center;
+  height: 100vh;
+}
+
+.messages{
+     color: red;
+}
+
+.leftimage {
+/*  flex: 1;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+}
+
+.leftimage img {
+  height: 100%;
+/*  object-fit: cover;*/
+}
+
+.rightcontent {
+  /*flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;*/
+  width: 50%;
+}
+
+form {
+  padding: 50px 20px;
+  background-color: #f2f2f2;
+  /*border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  max-width: 400px;*/
+  width: 100%;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*max-width: 300px;
+  width: 100%;*/
+  height: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+button[type="submit"]:hover {
+  background-color: #0062cc;
+}
+
+.small {
+  font-size: small;
+}
+
+.text-center {
+  text-align: center;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <div class="leftimage">
+      <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/remotely_2j6y.svg" alt="water" width="100%" height="100%">
+    </div>
+    <div class="rightcontent">
+      <form class="Loginform" method="POST">
+          {% csrf_token %}
+        <h2 class="text-center mb-4">Admin Login</h2>
+        <div class="login-container">
+          <div style="width:50%;">
+             {{ form.as_p }}
+                    {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <!-- {% if message.tags %} class="{{ message.tags }}"{% endif %} -->
+                        {{ message }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+            <label for="Cid">Username</label>
+          <input type="text" id="Cid" name="uname" required><br><br>
+          <label for="Password">Password</label>
+          <input type="password" id="Password" name="pass" required><br>
+          <p class="small mt-1 mb-2 pb-lg-2"><a class="text-muted" href="/forgetpassword">Forgot password?</a></p>
+          <div class="pt-1 mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+          </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
+
