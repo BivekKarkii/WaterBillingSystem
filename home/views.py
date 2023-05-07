@@ -153,7 +153,7 @@ def forgetPassword(request):
             token = str(uuid.uuid4())
 
             profile_obj = Profile.objects.get(user=user_obj)
-
+            # print(profile_obj)
             profile_obj.forget_password_token = token
             profile_obj.save()
             send_forget_password_mail(user_obj.email, token)

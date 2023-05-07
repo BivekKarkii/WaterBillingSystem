@@ -1,15 +1,18 @@
+import uuid
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import random
 from django.views.generic.base import TemplateView
 from consumer.forms import ConsumerForm
-from consumer.models import Consumer, Consumer_Profile
+from consumer.models import Consumer, Consumer_Profile, PasswordProfile
 from billing.models import consumerBilling
+from consumer.helpers import send_forget_password_mail
 
 
 # Create your views here.
@@ -234,3 +237,76 @@ def billView(request, id):
         billing.save()
         return redirect('/billview')
     return render(request, 'consumer_dashboard.html')
+
+
+
+def changePassword(request, token):
+    context = {}
+    try:
+        profile_obj = PasswordProfile.objects.get(forget_password_token=token)
+        context = {'phone': profile_obj.user.phone}
+        # print("shut up",profile_obj.user.phone)
+        if request.method == 'POST':
+            new_password = request.POST.get('password')
+            confirm_password = request.POST.get('c_password')
+            phone = profile_obj.user.phone
+            # print("user phone",phone)
+            if phone is None:
+                messages.success(request, 'No user found.')
+                return redirect(f'/consumer/forgetpasswordconsumer/')
+
+            if new_password != confirm_password:
+                messages.success(request, 'password mismatch.')
+                return redirect(f'/consumer/forgetpasswordconsumer/')
+
+            user_obj = Consumer_Profile.objects.get(phone=phone)
+            user_obj.password=new_password
+            # user_obj.set_password(new_password)
+            user_obj.save()
+            return redirect('/consumer/customer_login')
+
+    except Exception as e:
+        print(e)
+        print("token problem")
+
+    return render(request, 'change_password.html', context)
+
+
+# http://127.0.0.1:8000/changepassword/fe930ab0-be5a-433b-b738-82c5bd3d4001/
+def forgetPassword(request):
+    try:
+        if request.method == "POST":
+            phone = request.POST.get('phone')
+            print(phone)
+
+            if not Consumer_Profile.objects.filter(phone=phone).first().phone:
+
+                messages.success(request, 'No user found with this phone number.')
+                return redirect('/consumer/forgetpasswordconsumer')
+
+            # print("hello"+username)
+            #
+            # user_obj = User.objects.get(username=username)
+            # token = str(uuid.uuid4())
+            # profile_obj = Profile.objects.get(user=user_obj)
+
+            consumer_profile = get_object_or_404(Consumer, phone=phone)
+            phone_obj = Consumer.objects.get(phone=phone)
+            cprofile_obj, created = PasswordProfile.objects.get_or_create(user=phone_obj)
+
+            token = str(uuid.uuid4())
+            print(type(phone_obj))
+
+            # cprofile_obj = PasswordProfile.objects.get(user=phone_obj)
+
+            cprofile_obj.forget_password_token = token
+            cprofile_obj.save()
+            send_forget_password_mail(consumer_profile.email, token)
+            print(Consumer.objects.filter(phone=phone).first().phone)
+            messages.success(request, 'An email has been sent to your registered email. Please check your mail.')
+
+            return redirect('/consumer/forgetpasswordconsumer')
+
+    except Exception as e:
+        print(e)
+    return render(request, 'consumer_forgetpassword.html')
