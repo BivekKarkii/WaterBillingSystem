@@ -13,177 +13,314 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/cdashboard.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
-  <style type="text/css">
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+      <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-image: url('bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-image: url('bg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
 
-
-  #calendar {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      background-color: #fff;
-      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    /*.logo img {
-      height: 50px;
-    }*/
-
-    .nav ul {
-      display: flex;
-      list-style: none;
-    }
-
-    .nav ul li {
-      margin-right: 20px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .main {
-      padding: 20px;
-      margin: 20px;
-      background-color: #fff;
-      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .bill-summary {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 30px;
-      margin-top: 20px;
-    }
-
-    .summary-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: #ffffff;
-      padding: 30px;
-      border-radius: 10px;
-      width: 20%;
-      box-shadow: 3px 4px 8px 0px rgba(0, 0, 0, 0.49) inset;
-    }
-
-    .icon img {
-      height: 50px;
-    }
-
-    .count {
-      font-size: 40px;
-      font-weight: 600;
-      margin-top: 10px;
-    }
-
-    .label {
-      font-size: 18px;
-      font-weight: 500;
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    .graph {
-      height: 400px;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .sidebar {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 220px;
-      height: 100%;
-      background-color: #333;
-      color: #fff;
-      padding-top: 20px;
-            transition: transform 0.3s ease-in-out;
-      z-index: 1000;
-    }
-
-    .sidebar.closed {
-      transform: translateX(-100%);
-    }
-
-    .sidebar .logo {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .sidebar_menu ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .sidebar_menu ul li {
-      padding: 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 18px;
-    }
-
-    .sidebar_menu ul li a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .sidebar_menu ul li i {
-      margin-right: 10px;
-    }
-
-    .sidebar_menu ul li.active {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .sidebar_menu ul li.active a {
-      color: #fff;
-    }
-
-    .container {
-      display: flex;
-    }
-
-    .list-unstyled li {
-      display: flex;
-      flex-flow: row;
-      align-items: center;
-    }
 
     #calendar {
       max-width: 900px;
       margin: 0 auto;
     }
-    #Home,#Billing,#Payment,#History{
-      width: 100%;
+
+      #sidebar{
+        height:100vh;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: #fff;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /*.logo img {
+        height: 50px;
+      }*/
+
+      .nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav ul li {
+        margin-right: 20px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .main {
+        padding: 20px;
+        margin: 20px;
+        background-color: #fff;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .bill-summary {
+        font-size: 20px;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 30px;
+        margin-top: 20px;
+      }
+
+      .bill-text{
+        font-size: 40px;
+        display: flex;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color:black;
+        font-weight:500;
+      }
+
+      .summary-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        width: 20%;
+        box-shadow: 3px 4px 8px 0px rgba(0, 0, 0, 0.49) inset;
+      }
+
+      .icon img {
+        height: 50px;
+      }
+
+      .count {
+        font-size: 40px;
+        font-weight: 600;
+        margin-top: 10px;
+      }
+
+      .label {
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .graph {
+        height: 400px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 220px;
+        height: 100%;
+        background-color: #333;
+        color: #fff;
+        padding-top: 20px;
+              transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+      }
+
+      .sidebar.closed {
+        transform: translateX(-100%);
+      }
+
+      .sidebar .logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .sidebar_menu ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .sidebar_menu ul li {
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 18px;
+      }
+
+      .sidebar_menu ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .sidebar_menu ul li i {
+        margin-right: 10px;
+      }
+
+      .sidebar_menu ul li.active {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .sidebar_menu ul li.active a {
+        color: #fff;
+      }
+
+      .container {
+        display: flex;
+      }
+
+      .list-unstyled li {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+      }
+
+      #calendar {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      #Home,#Billing,#Payment,#History{
+        width: 100%;
+      }
+
+      .smenu{
+        margin-top: 20px;
+        margin-left:10px;
+      }
+
+        /* Modal styles */
+
+    .payment-modal {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
     }
 
-    .smenu{
-      margin-top: 20px;
-      margin-left:10px;
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
     }
-  </style>
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .payment-modal h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .payment-modal ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .payment-modal li {
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .payment-modal li img {
+      width: 200px;
+      height: 100px;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .payment-modal li img:hover {
+      transform: scale(1.1);
+    }
+
+        .bill-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .bill-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .bill-header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .bill-header h2 {
+      margin: 5px 0;
+      font-size: 20px;
+      color: #888;
+    }
+
+    .bill-table {
+      width: 100%;
+      margin-bottom: 20px;
+      border-collapse: collapse;
+    }
+
+    .bill-table th,
+    .bill-table td {
+      padding: 8px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .bill-table th {
+      text-align: left;
+      background-color: #f2f2f2;
+    }
+
+    .bill-total {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .bill-total strong {
+      font-size: 16px;
+    }
+
+    .bill-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .bill-actions button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .bill-actions button:hover {
+      background-color: #45a049;
+    }
+    </style>
 </head>
 
 <body>
@@ -204,7 +341,7 @@
           <li class="tablinks" onclick="openTab(event, 'Billing')"><i class="fa fa-file-invoice" style="padding: 0 3px 0 2px;"></i> <a href="#">Billing</a></li>
           <li class="tablinks" onclick="openTab(event, 'Payment')"><i class="fa fa-credit-card"></i><a href="#"> Payment</a></li>
           <li class="tablinks" onclick="openTab(event, 'History')"><i class="fa fa-history"></i><a href="#"> History</a></li>
-          <li><i class="fa fa-sign-out-alt"></i><a href="/logoout"> Logout</a></li>
+          <li><i class="fa fa-sign-out-alt"></i><a href="{% url 'consumer-page:customer_login'%}"> Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -237,9 +374,6 @@
           <canvas id="myChart"></canvas>
         </div>
 
-        <div id="calendar"></div>
-
-      </div>
     </div>
 
 
@@ -247,7 +381,7 @@
     <div id="Billing" class="tabcontent">
     <div id="content2" class="p-4 p-md-5 pt-5">
       <div class="content">
-        <div class="bill-summary">
+        <div class="bill-text">
           Bills
         </div>
 
@@ -257,7 +391,6 @@
               <tr>
                 <th>ID</th>
                 <th>Invoice ID</th>
-                <th>Meter No</th>
                 <th>Previous Unit</th>
                 <th>Current Unit</th>
                 <th>Amount</th>
@@ -271,7 +404,6 @@
               <tr>
                 <td>{{ i.id }}</td>
                 <td>{{ i.invoice_id }}</td>
-                <td>{{ i.meter_number }}</td>
                 <td>{{ i.previous_unit }}</td>
                 <td>{{ i.current_unit }}</td>
                 <td>{{ i.amount }}</td>
@@ -283,7 +415,6 @@
                   {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
                   {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
                   {#     </button>#}
-
                 </td>
               </tr>
             </tbody>
@@ -295,49 +426,54 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Water Billing System</h5>
+                    <h1>Invoice</h1>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
-                    <h1>Water Billing System</h1>
-                    <h2>BlueLine Splash</h2>
-                    <h3>Bill Invoice</h3>
-                    <div class="table-container">
-                        <table>
-                            <tr>
-                                <th>Date</th>
-                                <td>{{ i.date }}</td>
-                            </tr>
-                            <tr>
-                                <th>Consumer ID</th>
-                                <td>{{ i.consumer_det.consumer_id }}</td>
-                            </tr>
-                            <tr>
-                                <th>Name</th>
-                                <td>{{ i.consumer_det.name }}</td>
-                            </tr>
-                            <tr>
-                                <th>Address</th>
-                                <td>{{ i.consumer_det.address }}</td>
-                            </tr>
-                            <tr>
-                                <th>Previous Unit</th>
-                                <td>{{ i.previous_unit }}</td>
-                            </tr>
-                            <tr>
-                                <th>Current Unit</th>
-                                <td>{{ i.current_unit }}</td>
-                            </tr>
-                            <tr>
-                                <th>Total Amount</th>
-                                <td><strong>{{ i.amount }}</strong></td>
-                            </tr>
-                        </table>
+                 <div class="bill-container">
+                    <div class="bill-header">
+                      <h1>Water Billing System</h1>
+                      <h2>BlueLine Splash</h2>
+                      <h3>Bill Invoice</h3>
                     </div>
-                    <button onclick="window.print()">Print Bill</button>
-                </div>
+
+                    <table class="bill-table">
+                      <tr>
+                        <th>Date</th>
+                        <td>{{ i.date }}</td>
+                      </tr>
+                      <tr>
+                        <th>Consumer ID</th>
+                        <td>{{ i.consumer_det.consumer_id }}</td>
+                      </tr>
+                      <tr>
+                        <th>Name</th>
+                        <td>{{ i.consumer_det.name }}</td>
+                      </tr>
+                      <tr>
+                        <th>Address</th>
+                        <td>{{ i.consumer_det.address }}</td>
+                      </tr>
+                      <tr>
+                        <th>Previous Unit</th>
+                        <td>{{ i.previous_unit }}</td>
+                      </tr>
+                      <tr>
+                        <th>Current Unit</th>
+                        <td>{{ i.current_unit }}</td>
+                      </tr>
+                    </table>
+
+                    <div class="bill-total">
+                      <strong>Total Amount: {{ i.amount }}</strong>
+                    </div>
+
+                    <div class="bill-actions">
+                      <button class="btn btn-primary" onclick="window.print()">Print Bill</button>
+                    </div>
+                  </div>
+
             </div>
       </div>
     </div>
@@ -363,7 +499,6 @@
                 <tr>
                   <th>ID</th>
                   <th>Invoice ID</th>
-                  <th>Meter No</th>
                   <th>Previous Unit</th>
                   <th>Current Unit</th>
                   <th>Amount</th>
@@ -377,72 +512,106 @@
                 <tr>
                   <td>{{ i.id }}</td>
                   <td>{{ i.invoice_id }}</td>
-                  <td>{{ i.meter_number }}</td>
                   <td>{{ i.previous_unit }}</td>
                   <td>{{ i.current_unit }}</td>
                   <td>{{ i.amount }}</td>
                   <td>{{ i.date }}</td>
                   <td>{{ i.status }}</td>
                   <td>
-                    <a href="#payBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#payBillModal-{{ forloop.counter }}">Pay Bill</a>
-                    {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
-                    {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
-                    {#     </button>#}
-
+                      <a href="#paymentModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentModal">Pay Bill</a>
+                      {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
+                      {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
+                      {#     </button>#}
                   </td>
                 </tr>
               </tbody>
               {% endfor %}
             </table>
           </div>
-           {% for i in unpaidbill %}
-            <div id="viewBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">        <div class="modal-dialog">
-              <div class="modal-content">
-                <form action="/consumer/viewbill/{{i.id}}" method="post">
-                  {% csrf_token %}
-                  <div class="modal-header">
-                    <h4 class="modal-title">View Bill</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-group">
-                      <label for="date">Date:</label>
-                      <input type="text" value="{{ i.date }}" id="date" name="date" readonly>
-
-                      <label for="invoiceid">Invoice ID:</label>
-                      <input type="text" value="{{ i.invoice_id }}" id="invoiceid" name="invoice_id" readonly>
-
-                      <label for="meternumber">Meter Number:</label>
-                      <input type="text" value="{{ i.meter_number }}" id="meternumber" name="meter_no" readonly>
-
-                      <label for="previousunit">Previous Unit:</label>
-                      <input type="email" value="{{ i.previous_unit }}" id="previousunit" name="previous_unit" readonly>
-
-                      <label for="currentunit">Current Unit:</label>
-                      <input type="text" value="{{ i.current_unit }}" id="currentunit" name="current_unit" readonly>
-
-                      <label for="amount">Amount:</label>
-                      <input type="text" value="{{ i.amount }}" id="amount" name="amount" readonly>
-
-                      <label for="status">Status:</label>
-                      <input type="text" value="{{ i.status }}" id="status" name="status" readonly>
-
-                    </div>
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="add_btn btn btn-info">Print</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
         </div>
       </div>
-{#  </div>#}
+    </div>
+    {% for i in unpaidbill %}
+    <div id="paymentModal" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">        <div class="modal-dialog">
+      <div class="modal-content payment-modal">
+        <div class="model-body">
+          <span class="close">&times;</span>
+          <div class="modal-body">
+            <h1>Payment Options</h1>
+            <h1>consumer: {{ consumer.consumer_id }}</h1>
+            <ul>
+              <li><a href="https://esewa.com.np/#/home" target="_blank" rel="noopener noreferrer"><img src="{% static 'images/esewa.png' %}" alt="eSewa"></a></li>
+              <li><a href="https://login.connectips.com/#/login" target="_blank" rel="noopener noreferrer"><img src="{% static 'images/connectips.png' %}" alt="ConnectIPS"></a></li>
+              <li><a href="https://globalonline.globalimebank.com.np/login.xhtml" target="_blank" rel="noopener noreferrer"><img src="{% static 'images/globalbank.png' %}" alt="Global IME Bank"></a></li>
+              <li><a href="#payBillModal-{{  consumer.consumer_id }}" data-bs-toggle="modal" data-bs-target="#payBillModal-{{ consumer.consumer_id }}"><img src="{% static 'images/logo.png' %}" alt="bluelinesplash"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+      {% endfor %}
+              {% for i in unpaidbill %}
+              <div id="payBillModal-{{ consumer.consumer_id }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                  <form action="/consumer/payBill/{{i.id}}" method="post">
+                    {% csrf_token %}
+                  <div class="modal-header">
+                    <h1>Invoice</h1>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                 <div class="bill-container">
+                    <div class="bill-header">
+                      <h1>Water Billing System</h1>
+                      <h2>BlueLine Splash</h2>
+                      <h3>Bill Invoice</h3>
+                    </div>
+
+                    <table class="bill-table">
+                      <tr>
+                        <th>Date</th>
+                        <td>{{ i.date }}</td>
+                      </tr>
+                      <tr>
+                        <th>Consumer ID</th>
+                        <td>{{ i.consumer_det.consumer_id }}</td>
+                      </tr>
+                      <tr>
+                        <th>Name</th>
+                        <td>{{ i.consumer_det.name }}</td>
+                      </tr>
+                      <tr>
+                        <th>Address</th>
+                        <td>{{ i.consumer_det.address }}</td>
+                      </tr>
+                      <tr>
+                        <th>Previous Unit</th>
+                        <td>{{ i.previous_unit }}</td>
+                      </tr>
+                      <tr>
+                        <th>Current Unit</th>
+                        <td>{{ i.current_unit }}</td>
+                      </tr>
+                    </table>
+
+                   <input type="text" value="{{ i.consumer_det.id }}" id="consumer_det" name="consumer_det" hidden>
+
+                    <div class="bill-total">
+                      <strong>Total Amount: {{ i.amount }}</strong>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="submit" class="add_btn btn btn-info">Pay</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                  </form>
+                </div>
+                </div>
+              </div>
+            {% endfor %}
 
     <!-- History Content  -->
     <div id="History" class="tabcontent">
@@ -468,7 +637,7 @@
                 </tr>
               </thead>
               <tbody>
-                {% for i in unpaidbill %}
+                {% for i in paidbill %}
                 <tr>
                   <td>{{ i.id }}</td>
                   <td>{{ i.invoice_id }}</td>
@@ -628,8 +797,6 @@
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
         </script>
-
 </body>
 
 </html>
-
