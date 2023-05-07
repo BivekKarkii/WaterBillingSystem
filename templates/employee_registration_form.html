@@ -1,66 +1,241 @@
+{#<!DOCTYPE html>#}
+{#{% load static %}#}
+{#<html  lang="en">#}
+{#  <head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Add Employee</title>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">#}
+{#      <style>#}
+{#          .registration_btn{#}
+{#              display: flex;#}
+{#              justify-content: space-between;#}
+{#              align-items: center;#}
+{#          }#}
+{#          .registration_btn .add_btn{#}
+{#            font-size: 15px;#}
+{#            background-color: #345feb;#}
+{#            color: white;#}
+{#            padding: 10px 10px;#}
+{#            margin: 10px 0;#}
+{#            border: 2px solid #345feb;#}
+{#            border-radius: 25px;#}
+{#            cursor: pointer;#}
+{#            width: 45%;#}
+{#            opacity: 0.9;#}
+{#              transition: 0.5s all;#}
+{#          }#}
+{#          .registration_btn .add_btn:hover{#}
+{#            font-size: 15px;#}
+{#            background-color: #ffffff;#}
+{#            color: #345feb;#}
+{#            padding: 10px 10px;#}
+{#            margin: 10px 0;#}
+{#            border: 2px solid #345feb;#}
+{#            border-radius: 25px;#}
+{#            cursor: pointer;#}
+{#            width: 45%;#}
+{#            opacity: 0.9;#}
+{#          }#}
+{##}
+{#          .uc-cancel-button{#}
+{#              transition: 0.5s all;#}
+{#              font-size: 15px;#}
+{#            background-color: #ffffff;#}
+{#            color: #345feb;#}
+{#            padding: 10px 10px;#}
+{#            margin: 10px 0;#}
+{#            border: 2px solid #345feb;#}
+{#            border-radius: 25px;#}
+{#            cursor: pointer;#}
+{#            width: 45%;#}
+{#            opacity: 0.9;#}
+{#          }#}
+{##}
+{#           input[type="password"]{#}
+{#                width: 100%;#}
+{#                padding: 10px;#}
+{#                border: 1px solid #ccc;#}
+{#                border-radius: 4px;#}
+{#                box-sizing: border-box;#}
+{#                margin-bottom: 20px;#}
+{#                font-size: 16px;#}
+{#                background-color:white;#}
+{#            }#}
+{##}
+{##}
+{#      </style>#}
+{#  </head>#}
+{#  <body class="Addemployee">#}
+{#    <form method="post">#}
+{#      {% csrf_token %}#}
+{#      <img class="logo2" src="{% static 'images/logo.png' %}" alt="logo">#}
+{#      <h1>Register Employee</h1>#}
+{##}
+{#      <label for="fullname">Full Name:</label>#}
+{#      <input type="text" id="fullname" name="name" required>#}
+{##}
+{#      <label for="phonenumber">Phone Number:</label>#}
+{#      <input type="tel" id="phonenumber" name="phone" required>#}
+{##}
+{#      <label for="address">Address:</label>#}
+{#      <input type="text" id="address" name="address" required>#}
+{##}
+{#      <label for="email">Email:</label>#}
+{#      <input type="email" id="email" name="email" required>#}
+{##}
+{#      <label for="citizenshipnumber">Citizenship Number:</label>#}
+{#      <input type="text" id="citizenshipnumber" name="citizenship" required>#}
+{##}
+{#      <label for="employee_id">Employee Id:</label>#}
+{#      <input type="text" id="employee_id" name="employee_id" required>#}
+{##}
+{#      <label for="password">Password:</label>#}
+{#      <input type="password" id="password" name="password" required>#}
+{##}
+{#        <div class="registration_btn">#}
+{#            <button type="submit" class="add_btn">Add </button>#}
+{#            <button type="button" class="uc-cancel-button">Cancel</button>#}
+{#        </div>#}
+{##}
+{#    </form>#}
+{#  </body>#}
+{#</html>#}
+
 <!DOCTYPE html>
 {% load static %}
 <html  lang="en">
   <head>
     <meta charset="UTF-8">
     <title>Add Employee</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-      <style>
-          .registration_btn{
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-          }
-          .registration_btn .add_btn{
-            font-size: 15px;
-            background-color: #345feb;
-            color: white;
-            padding: 10px 10px;
-            margin: 10px 0;
-            border: 2px solid #345feb;
-            border-radius: 25px;
-            cursor: pointer;
-            width: 45%;
-            opacity: 0.9;
-              transition: 0.5s all;
-          }
-          .registration_btn .add_btn:hover{
-            font-size: 15px;
-            background-color: #ffffff;
-            color: #345feb;
-            padding: 10px 10px;
-            margin: 10px 0;
-            border: 2px solid #345feb;
-            border-radius: 25px;
-            cursor: pointer;
-            width: 45%;
-            opacity: 0.9;
-          }
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="employeeRegistrationForm.css">
+    <style>
+      .registration_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+       input[type="password"]{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+            background-color:white;
+        }
+      body {
+        font-family: Poppins, sans-serif;
+        background-color: #f2f2f2;
+      }
 
-          .uc-cancel-button{
-              transition: 0.5s all;
-              font-size: 15px;
-            background-color: #ffffff;
-            color: #345feb;
-            padding: 10px 10px;
-            margin: 10px 0;
-            border: 2px solid #345feb;
-            border-radius: 25px;
-            cursor: pointer;
-            width: 45%;
-            opacity: 0.9;
-          }
+      .Addemployee {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
 
-           input[type="password"]{
-                width: 100%;
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-                margin-bottom: 20px;
-                font-size: 16px;
-                background-color:white;
-            }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #17a2b8!important;
+      }
+
+      label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #666;
+        box-sizing: border-box;
+      }
+      label[for="commercial"] {
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+        resize: vertical;
+      }
+
+      input[type="radio"] {
+        margin-right: 12px;
+      }
+
+      .registration_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .registration_btn .add_btn {
+        font-size: 15px;
+        background-color: #345feb;
+        color: white;
+        padding: 10px 10px;
+        margin: 8px;
+        border: 1px solid #345feb;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 35%;
+        opacity: 0.9;
+        transition: 0.5s all;
+      }
+
+
+      .registration_btn .add_btn:hover {
+        font-size: 15px;
+        background-color: #ffffff;
+        color: #345feb;
+        padding: 10px 10px;
+        margin: 8px 0;
+        border: 1px solid #345feb;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 35%;
+        opacity: 0.9;
+      }
+
+      .registration_btn .uc-cancel-button {
+        font-size: 15px;
+        background-color: white;
+        color: #345feb;
+        padding: 10px 10px;
+        margin: 8px;
+        border: 1px solid #345feb;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 35%;
+        opacity: 0.9;
+        transition: 0.5s all;
+      }
+      /*input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        font-size: 16px;
+        background-color:white;
+      }*/
+      #employee_id::placeholder, #password::placeholder {
+        font-size: 12px;
+      }
+
+
 
 
       </style>
@@ -68,33 +243,39 @@
   <body class="Addemployee">
     <form method="post">
       {% csrf_token %}
-      <img class="logo2" src="{% static 'images/logo.png' %}" alt="logo">
+      <!-- <img class="logo2" src="{% static 'images/logo.png' %}" alt="logo"> -->
       <h1>Register Employee</h1>
 
       <label for="fullname">Full Name:</label>
-      <input type="text" id="fullname" name="name" required>
+      <input type="text" class ="Fform" id="fullname" name="name" placeholder="Enter your name." required>
 
       <label for="phonenumber">Phone Number:</label>
-      <input type="tel" id="phonenumber" name="phone" required>
+      <input type="tel" id="phonenumber" class ="phonenum" name="phone" placeholder="Enter contact number." required>
 
       <label for="address">Address:</label>
-      <input type="text" id="address" name="address" required>
+      <input type="text" id="address" class ="add" name="address" placeholder="Enter address." required>
 
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" class ="email" name="email" placeholder="Enter email." required>
 
       <label for="citizenshipnumber">Citizenship Number:</label>
-      <input type="text" id="citizenshipnumber" name="citizenship" required>
+      <input type="text" id="citizenshipnumber" class = "citzn" name="citizenship" placeholder="Enter citizenship number." required>
 
       <label for="employee_id">Employee Id:</label>
-      <input type="text" id="employee_id" name="employee_id" required>
+      <input type="text" id="employee_id" class = "empID" name="employee_id" placeholder="Enter Employee ID." required>
 
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+      <input type="password" id="password" class="pass" name="password" placeholder="Enter your password." required>
+
+      <div class="col-sm-12">
+        <input type="checkbox" class="form-check d-inline" id="chb" required><label for="chb" class="form-check-label">&nbsp;I accept all terms and conditions.
+        </label>
+      </div>
 
         <div class="registration_btn">
             <button type="submit" class="add_btn">Add </button>
-            <button type="button" class="uc-cancel-button">Cancel</button>
+            <!-- <button type="button" class="uc-cancel-button">Cancel</button> -->
+            <button type="button" class="uc-cancel-button" onclick="window.location='/welcome'">Cancel</button>
         </div>
 
     </form>

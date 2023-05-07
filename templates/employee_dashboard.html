@@ -176,7 +176,27 @@ button:hover {
               <ul class="navbar-nav">
               <div class="login-div employee_img" id="login-toggle">
                   <a href=""><img src="{% static 'images/user-circle-solid.svg' %}" alt="bell" style="margin-right: 10px;"> </a>
-                  <a href="{% url 'employee-page:empsigned_out'%}" class="">Logout</a>
+{#                  <a href="{% url 'employee-page:empsigned_out'%}" class="">Logout</a>#}
+                  <a href="#logoutModal" class="edit" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+
+                <!-- logout Modal -->
+                <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Do you want to logout?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                          <a href="{% url 'employee-page:empsigned_out'%}" class="btn btn-primary">Yes</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 </div>
             </ul>
           </div>
@@ -224,8 +244,8 @@ button:hover {
         <td>{{ i.citizenship }}</td>
         <td>{{ i.consumer_id }}</td>
         <td>
-            <a href="#createbillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createbillModal-{{ forloop.counter }}">Create Bill</a>
-            <a href="#{{ i.consumer_id  }}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#viewbillModal-{{ i.consumer_id  }}">View Bill</a>
+            <a href="#createbillModal-{{ i.consumer_id }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createbillModal-{{ i.consumer_id }}">Create Bill</a>
+            <a href="#viewbillModal-{{ i.consumer_id  }}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#viewbillModal-{{ i.consumer_id  }}">View Bill</a>
             {#            <button type="button view-bill-btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">view bill</button>#}
 {#            <button class="create-bill-btn">View Bill</button>#}
              </td>
@@ -238,9 +258,10 @@ button:hover {
 
  <!-- Modal create bill -->
 {% for i in billing %}
-
+{#{% for j in consumer_billing_list %}#}
+{#    {% for i in j %}#}
 {#    {% for j in consumer %}#}
-<div class="modal fade" id="createbillModal-{{ forloop.counter }}" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createbillModal-{{ i.consumer_det.consumer_id }}" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">

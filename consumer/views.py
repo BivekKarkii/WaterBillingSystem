@@ -7,8 +7,6 @@ from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 import random
 from django.views.generic.base import TemplateView
-
-import consumer
 from consumer.forms import ConsumerForm
 from consumer.models import Consumer, Consumer_Profile
 from billing.models import consumerBilling
@@ -233,28 +231,6 @@ def billView(request, id):
             status=status,
 
         )
-        return redirect('/billview')
-    return render(request, 'consumer_dashboard.html')
-
-def paybillView(request,id):
-    if request.method == 'POST':
-        date = request.POST.get('date')
-        invoice_id = request.POST.get('invoice_id')
-        previous_unit = request.POST.get('previous_unit')
-        current_unit = request.POST.get('current_unit')
-        amount = request.POST.get('amount')
-        consumer_det = request.POST.get('consumer_det')
-
-        billing = consumerBilling(
-            id = id,
-            date=date,
-            invoice_id=invoice_id,
-            previous_unit=previous_unit,
-            current_unit=current_unit,
-            amount=amount,
-            consumer_det_id = consumer_det,
-            status="paid",
-        )
         billing.save()
-        return redirect('/consumer/consumer_dashboard')
+        return redirect('/billview')
     return render(request, 'consumer_dashboard.html')
