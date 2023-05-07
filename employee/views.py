@@ -186,3 +186,28 @@ def employeedeleteView(request, id):
     }
     return redirect('/welcome')
 
+
+def updateView(request,id):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+        citizenship = request.POST.get('citizenship')
+        employee_id = request.POST.get('employee_id')
+        password = request.POST.get('password')
+
+        employee = Employee(
+            id=id,
+            employee_id=employee_id,
+            name=name,
+            phone=phone,
+            email=email,
+            address=address,
+            citizenship=citizenship,
+            password=password,
+        )
+        employee.save()
+        return redirect('/employee/employee_dashboard')
+    return render(request, 'employee_dashboard.html')
+

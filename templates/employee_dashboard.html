@@ -241,101 +241,111 @@ button:hover {
 {#                  <a href="#logoutModal" class="edit" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>#}
 
 <!-- profile Modal -->
-{# {% for i in emp %}#}
-{#<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
-{#  <div class="modal-dialog">#}
-{#    <div class="modal-content">#}
-{#      <div class="modal-header">#}
-{#        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>#}
-{#        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>#}
-{#      </div>#}
-{#      <div class="modal-body">#}
-{#        <div class="container">#}
-{#    <div class="main-body">#}
-{##}
-{#          <div class="row gutters-sm">#}
-{#            <div class="col-md-4 mb-3">#}
-{#              <div class="card">#}
-{#                <div class="card-body">#}
-{#                  <div class="d-flex flex-column align-items-center text-center">#}
-{#                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">#}
-{#                    <div class="mt-3">#}
-{#                      <h4>{{i.name}}</h4>#}
-{##}
-{#                    </div>#}
-{#                  </div>#}
-{#                </div>#}
-{#              </div>#}
-{##}
-{#            </div>#}
-{#            <div class="col-md-8">#}
-{#              <div class="card mb-3">#}
-{#                <div class="card-body">#}
-{#                  <div class="row">#}
-{#                    <div class="col-sm-3">#}
-{#                      <h6 class="mb-0">Full Name</h6>#}
-{#                    </div>#}
-{#                    <div class="col-sm-9 text-secondary">#}
-{#                        {{i.name}}#}
-{#                    </div>#}
-{#                  </div>#}
-{#                  <hr>#}
-{#                  <div class="row">#}
-{#                    <div class="col-sm-3">#}
-{#                      <h6 class="mb-0">Email</h6>#}
-{#                    </div>#}
-{#                    <div class="col-sm-9 text-secondary">#}
-{#                      {{i.email}}#}
-{#                    </div>#}
-{#                  </div>#}
-{#                  <hr>#}
-{#                  <div class="row">#}
-{#                    <div class="col-sm-3">#}
-{#                      <h6 class="mb-0">Phone</h6>#}
-{#                    </div>#}
-{#                    <div class="col-sm-9 text-secondary">#}
-{#                        {{i.phone}}#}
-{#                    </div>#}
-{#                  </div>#}
-{#                  <hr>#}
-{#                  <div class="row">#}
-{#                    <div class="col-sm-3">#}
-{#                      <h6 class="mb-0">Citizenship Number</h6>#}
-{#                    </div>#}
-{#                    <div class="col-sm-9 text-secondary">#}
-{#                      {{i.citizenship}}#}
-{#                    </div>#}
-{#                  </div>#}
-{#                  <hr>#}
-{#                  <div class="row">#}
-{#                    <div class="col-sm-3">#}
-{#                      <h6 class="mb-0">Address</h6>#}
-{#                    </div>#}
-{#                    <div class="col-sm-9 text-secondary">#}
-{#                      {{i.address}}#}
-{#                    </div>#}
-{#                  </div>#}
-{#                  <hr>#}
-{#                  <div class="row">#}
-{#                    <div class="col-sm-12">#}
-{#                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>#}
-{#                    </div>#}
-{#                  </div>#}
-{#                </div>#}
-{#              </div>#}
-{##}
-{##}
-{##}
-{#            </div>#}
-{#          </div>#}
-{##}
-{#        </div>#}
-{#    </div>#}
-{#      </div>#}
-{##}
-{#    </div>#}
-{#  </div>#}
-{#</div>#}
+ {% for i in emp %}
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+    <div class="main-body">
+
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>{{i.name}}</h4>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                  <form action="/employee/update/{{i.id}}" method="post">
+                      {% csrf_token %}
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" value="{{ i.name }}" id="fullname" name="name" readonly>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" value="{{ i.email }}" id="fullname" name="email" required>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" value="{{i.phone}}" id="fullname" name="phone" readonly>
+
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Citizenship Number</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" value="{{i.citizenship}}" id="fullname" name="citizenship" readonly>
+
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" value="{{i.address}}" id="fullname" name="address" required>
+
+                    </div>
+                  </div>
+                    <input type="text" value="{{i.employee_id}}" id="fullname" name="employee_id" hidden>
+                    <input type="text" value="{{i.password}}" id="fullname" name="password" hidden>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+{#                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Update</a>#}
+                        <button class="btn btn-info " type="submit">Update</button>
+                    </div>
+                  </div>
+                </div>
+                  </form>
+
+              </div>
+
+
+
+            </div>
+          </div>
+
+        </div>
+    </div>
+      </div>
+
+    </div>
+  </div>
+</div>
                   {% endfor %}
 {#                  <a href="{% url 'employee-page:empsigned_out'%}" class="">Logout</a>#}
                   <a href="#logoutModal" class="edit" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>

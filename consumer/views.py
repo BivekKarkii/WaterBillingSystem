@@ -310,3 +310,5 @@ def forgetPassword(request):
     except Exception as e:
         print(e)
     return render(request, 'consumer_forgetpassword.html')
+
+

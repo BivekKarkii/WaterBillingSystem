@@ -19,6 +19,7 @@ urlpatterns = [
     path("signed_out", SignedOutView.as_view(), name="sign_out"),
     path('billView/<str:id>', billView, name='billview'),
 
+
     path('forgetpasswordconsumer', forgetPassword, name="forget-password"),
     path('changepasswordconsumer/<token>/', changePassword, name="change-password"),
 
