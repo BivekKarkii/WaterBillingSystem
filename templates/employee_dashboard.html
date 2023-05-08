@@ -48,7 +48,7 @@
 }
 
 .employee_img img{
-    width: 8% !important;
+    width: 100% !important;
 
 }
 .login-div{
@@ -87,8 +87,8 @@ input[type="number"] {
   font-size: 16px;
   padding: 5px;
   margin-bottom: 20px;
-  border: none;
-  border-bottom: 2px solid #ccc;
+  {#border: none;#}
+  {#border-bottom: 2px solid #ccc;#}
   width: 100%;
 }
 
@@ -218,13 +218,28 @@ button:hover {
 #profileModal .modal-dialog{
   max-width: 60% !important;
 }
+.btn-create{
+    background-color: #6b7ae0;
+    color: #ffffff;
+}
 
+.table-hover th, .table-hover td{
+    text-align: center;
+}
+.table-head{
+    background: #0d6efd;
+    background: #6b7ae0;
+    color: #eaeaea;
+}
+.table>:not(:first-child){
+    border: none;
+}
 
     </style>
 </head>
 <body>
 <section class="nav-sec navigation-bar">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light" style="margin-right: 0 !important;box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.25);background: #ffffff;">
         <div class="container">
           <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -234,19 +249,22 @@ button:hover {
     display: flex;
     justify-content: flex-end;
 ">
-              <ul class="navbar-nav">
+              <ul class="navbar-nav" style="width: 15%;">
               <div class="login-div employee_img" id="login-toggle">
-                  <a href="#profileModal" data-bs-toggle="modal" data-bs-target="#profileModal"><img src="{% static 'images/user-circle-solid.svg' %}" alt="bell" style="margin-right: 10px;"> </a>
-
-{#                  <a href="#logoutModal" class="edit" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>#}
-
-<!-- profile Modal -->
+                  <div style="margin-right: 10px;">
+                  <a href="#profileModal" data-bs-toggle="modal" data-bs-target="#profileModal"><img src="{% static 'images/user-circle-solid.svg' %}" alt="bell" > </a>
+                </div>
+                  <div>
+                  <a href="#logoutModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                    </div>
+                </div>
+                  <!-- profile Modal -->
  {% for i in emp %}
 <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">User Profile</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -347,8 +365,6 @@ button:hover {
   </div>
 </div>
                   {% endfor %}
-{#                  <a href="{% url 'employee-page:empsigned_out'%}" class="">Logout</a>#}
-                  <a href="#logoutModal" class="edit" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
 
                 <!-- logout Modal -->
                 <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -368,7 +384,6 @@ button:hover {
                     </div>
                   </div>
                 </div>
-                </div>
             </ul>
           </div>
         </div>
@@ -377,7 +392,7 @@ button:hover {
 
 {# ============================================= main page =================================================================== #}
 <div class="container">
-    <div class="dashmid">
+    <div class="dashmid" style="background: #FFF;border: 1px solid #0d6efd;border-radius: 4px;box-shadow: 0px 5px 20px -17px rgba(0, 0, 0, 0.34);">
     <ul class="flex justify-between">
 
         <li>Total Consumer :  {{ count }}</li>
@@ -389,9 +404,9 @@ button:hover {
     </ul>
 </div>
 
-<table class="table table-striped">
+<table class="table table-hover">
   <thead>
-    <tr>
+    <tr class="table-head">
         <th>Full Name</th>
         <th>Phone Number</th>
         <th>Email</th>
@@ -415,8 +430,8 @@ button:hover {
         <td>{{ i.citizenship }}</td>
         <td>{{ i.consumer_id }}</td>
         <td>
-            <a href="#createbillModal-{{ i.consumer_id }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createbillModal-{{ i.consumer_id }}">Create Bill</a>
-            <a href="#viewbillModal-{{ i.consumer_id  }}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#viewbillModal-{{ i.consumer_id  }}">View Bill</a>
+            <a href="#createbillModal-{{ i.consumer_id }}" class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createbillModal-{{ i.consumer_id }}">Create Bill</a>
+            <a href="#viewbillModal-{{ i.consumer_id  }}" class="btn btn-create" data-bs-toggle="modal" data-bs-target="#viewbillModal-{{ i.consumer_id  }}">View Bill</a>
             {#            <button type="button view-bill-btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">view bill</button>#}
 {#            <button class="create-bill-btn">View Bill</button>#}
              </td>
