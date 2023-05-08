@@ -1,5 +1,6 @@
 <!doctype html>
 {% load static %}
+<!--suppress XmlDuplicatedId -->
 <html lang="en">
 
 <head>
@@ -320,215 +321,417 @@
     .bill-actions button:hover {
       background-color: #45a049;
     }
+
+    #consumerprofileModal .card-body img{
+    width: 100% !important;
+    }
+
+    #consumerprofileModal body{
+        margin-top:20px;
+        color: #1a202c;
+        text-align: left;
+        background-color: #e2e8f0;
+    }
+    #consumerprofileModal .main-body {
+        padding: 15px;
+    }
+    #consumerprofileModal .card {
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+    }
+
+    #consumerprofileModal .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 0 solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+    }
+
+    #consumerprofileModal .card-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1rem;
+    }
+
+    #consumerprofileModal .gutters-sm {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+
+    #consumerprofileModal .gutters-sm>.col, .gutters-sm>[class*=col-] {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+    #consumerprofileModal .mb-3, .my-3 {
+        margin-bottom: 1rem!important;
+    }
+
+    #consumerprofileModal .bg-gray-300 {
+        background-color: #e2e8f0;
+    }
+    #consumerprofileModal .h-100 {
+        height: 100%!important;
+    }
+    #consumerprofileModal .shadow-none {
+        box-shadow: none!important;
+    }
+    #consumerprofileModal .modal-dialog{
+      max-width: 60% !important;
+    }
+
+    .card-body input{
+      width: 75%;
+    }
+
+    .consumerprofile-image{
+      margin-right:30px;
+    }
+
+    .nav1{
+      display: flex;
+    }
+
+    #content1{
+      padding-top: 0px !important;
+    }
+
+    .bill1{
+     background:transparent;
+    }
     </style>
 </head>
 
 <body>
+  <div class="wrapper flex justify-content-between align-items-center nav1">
+    <a href="" class="logo"><img src="{% static 'images/logo.png' %}" style="width: 400px;"></a>
+    <a href="# consumerprofileModal" data-bs-toggle="modal" data-bs-target="#consumerprofileModal" class="consumerprofile-image">
+      <img src="{% static 'images/user-circle-solid.svg' %}" alt="bell" style="width: 40px;">
+    </a>
+  </div>
 
-      <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar">
-          <div class="custom-menu">
-            <button type="button" id="sidebarCollapse" class="btn btn-primary">
-              <i class="fa fa-bars"></i>
-              <span class="sr-only">Toggle Menu</span>
-            </button>
-          </div>
-          <div class="p-4 pt-5">
-            <a href="index.html" class="logo"><img src="{% static 'images/logo.png' %}" style="width: 100%;"></a>
-            <ul class="list-unstyled components mb-5 smenu">
+  <div class="modal fade" id="consumerprofileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Profile</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+      <div class="main-body">
 
-              <li class="tablinks" onclick="openTab(event, 'Home')" id="defaultOpen"><i class="fa fa-home"></i><a href="#"> Home</a></li>
-              <li class="tablinks" onclick="openTab(event, 'Billing')"><i class="fa fa-file-invoice" style="padding: 0 3px 0 2px;"></i> <a href="#">Billing</a></li>
-              <li class="tablinks" onclick="openTab(event, 'Payment')"><i class="fa fa-credit-card"></i><a href="#"> Payment</a></li>
-              <li class="tablinks" onclick="openTab(event, 'History')"><i class="fa fa-history"></i><a href="#"> History</a></li>
-              <li class="tablinks" onclick="openTab(event, 'Profile')"><i class="fa fa-user"></i><a href="#"> Profile</a></li>
-              <li><i class="fa fa-sign-out-alt"></i><a href="{% url 'consumer-page:customer_login'%}"> Logout</a></li>
-            </ul>
-          </div>
-        </nav>
+            <div class="row gutters-sm">
+              <div class="col-md-4 mb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                      <div class="mt-3">
+                        <h4>{{consumer.name}}</h4>
 
-        <!-- Page Content  -->
-        <div id = "Home" class="tabcontent" >
-        <div id="content1" class="p-4 p-md-5 pt-5">
-
-          <div class="content">
-            <div class="bill-summary">
-              <div class="summary-item unpaid-bills">
-                <div class="icon">
-                  <!-- <img src="bell.png"> -->
-                  <i class="fa fa-file-invoice" style="font-size: 35px;"></i>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="count">{{ u_count }}</div>
-                <div class="label">Unpaid Bills</div>
-              </div>
-              <div class="summary-item paid-bills">
-                <div class="icon">
 
-                  <i class="fa fa-file-invoice" style="font-size: 35px;"></i>
+              </div>
+              <div class="col-md-8">
+                <div class="card mb-3">
+                    <form action="/consumer/consumerupdate/{{consumer.id}}/" method="post">
+                        {% csrf_token %}
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Full Name</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                          <input type="text" value="{{ consumer.name }}" name="name" readonly>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Email</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                          <input type="text" value="{{ consumer.email }}" name="email" required>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Phone</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                          <input type="text" value="{{consumer.phone}}" name="phone" readonly>
+
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Citizenship Number</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                          <input type="text" value="{{consumer.citizenship}}" name="citizenship" readonly>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Meter No</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                          <input type="text" value="{{ consumer.meter_no }}" name="meter_no" required>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Address</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                          <input type="text" value="{{consumer.address}}" name="address" required>
+                      </div>
+                    </div>
+                      <input type="text" value="{{consumer.consumer_id}}" name="consumer_id" hidden>
+                      <input type="text" value="{{consumer.type}}" name="type" hidden >
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <button class="btn btn-info " type="submit">Update</button>
+                      </div>
+                    </div>
+                  </div>
+                    </form>
                 </div>
-                <div class="count">{{ p_count }}</div>
-                <div class="label">Paid Bills</div>
               </div>
             </div>
-            </div>
-                <div class="graph">
-              <canvas id="myChart"></canvas>
-            </div>
+          </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+          <i class="fa fa-bars"></i>
+          <span class="sr-only">Toggle Menu</span>
+        </button>
+      </div>
+      <div class="p-4 pt-3">
+        <ul class="list-unstyled components mb-5 smenu">
+
+          <li class="tablinks" onclick="openTab(event, 'Home')" id="defaultOpen"><i class="fa fa-home"></i><a href="#"> Home</a></li>
+          <li class="tablinks" onclick="openTab(event, 'Billing')"><i class="fa fa-file-invoice" style="padding: 0 3px 0 2px;"></i> <a href="#">Billing</a></li>
+          <li class="tablinks" onclick="openTab(event, 'Payment')"><i class="fa fa-credit-card"></i><a href="#"> Payment</a></li>
+          <li class="tablinks" onclick="openTab(event, 'History')"><i class="fa fa-history"></i><a href="#"> History</a></li>
+          <li><i class="fa fa-sign-out-alt"></i><a href="{% url 'consumer-page:customer_login'%}"> Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id = "Home" class="tabcontent" >
+    <div id="content1" class="p-4 p-md-5 pt-2">
+
+      <div class="content">
+        <div class="bill-summary">
+          <div class="summary-item unpaid-bills">
+            <div class="icon">
+              <!-- <img src="bell.png"> -->
+              <i class="fa fa-file-invoice" style="font-size: 35px;"></i>
+            </div>
+            <div class="count">{{ u_count }}</div>
+            <div class="label">Unpaid Bills</div>
+          </div>
+          <div class="summary-item paid-bills">
+            <div class="icon">
+
+              <i class="fa fa-file-invoice" style="font-size: 35px;"></i>
+            </div>
+            <div class="count">{{ p_count }}</div>
+            <div class="label">Paid Bills</div>
+          </div>
         </div>
         </div>
+            <div class="graph">
+          <canvas id="myChart"></canvas>
+        </div>
+    </div>
 
-      <!-- Billing Content  -->
-        <div id="Billing" class="tabcontent">
-        <div id="content2" class="p-4 p-md-5 pt-5">
-          <div class="content">
-            <div class="bill-text">
-              Bills
+    </div>
+
+
+  <!-- Billing Content  -->
+    <div id="Billing" class="tabcontent">
+    <div id="content1" class="p-4 p-md-5 pt-2">
+      <div class="content">
+        <div class="bill-text">
+          Bills
+        </div>
+
+        <div class="table-container">
+          <table class="billing-table table table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Invoice ID</th>
+                <th>Previous Unit</th>
+                <th>Current Unit</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in unpaidbill %}
+              <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.invoice_id }}</td>
+                <td>{{ i.previous_unit }}</td>
+                <td>{{ i.current_unit }}</td>
+                <td>{{ i.amount }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.status }}</td>
+                <td>
+                  <a href="#viewBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewBillModal-{{ forloop.counter }}">View Bill</a>
+                  <a href="#printBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#printBillModal-{{ forloop.counter }}">Print Bill</a>
+                  {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
+                  {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
+                  {#     </button>#}
+                </td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
+        </div>
+         {% for i in unpaidbill %}
+          <div id="viewBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">        <div class="modal-dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                    <h1>Invoice</h1>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                 <div class="bill-container">
+                    <div class="bill-header">
+                      <h1>Water Billing System</h1>
+                      <h2>BlueLine Splash</h2>
+                      <h3>Bill Invoice</h3>
+                    </div>
+
+                    <table class="bill-table">
+                      <tr>
+                        <th>Invoice ID</th>
+                        <td>{{ i.invoice_id }}</td>
+                      </tr>
+
+                      <tr>
+                        <th>Date</th>
+                        <td>{{ i.date }}</td>
+                      </tr>
+
+                      <tr>
+                        <th>Consumer ID</th>
+                        <td>{{ i.consumer_det.consumer_id }}</td>
+                      </tr>
+
+                      <tr>
+                        <th>Name</th>
+                        <td>{{ i.consumer_det.name }}</td>
+                      </tr>
+
+                      <tr>
+                        <th>Address</th>
+                        <td>{{ i.consumer_det.address }}</td>
+                      </tr>
+
+                      <tr>
+                        <th>Previous Unit</th>
+                        <td>{{ i.previous_unit }}</td>
+                      </tr>
+
+                      <tr>
+                        <th>Current Unit</th>
+                        <td>{{ i.current_unit }}</td>
+                      </tr>
+                    </table>
+                    <input type="text" value="{{ i.consumer_det.id }}" id="consumer_det" name="consumer_det" >
+
+                    <div class="bill-total">
+                      <strong>Total Amount: {{ i.amount }}</strong>
+                    </div>
+
+                    <div class="bill-actions">
+                      <button class="btn btn-primary" onclick="window.print()">Print Bill</button>
+                    </div>
+                  </div>
+
             </div>
+      </div>
+    </div>
+        </div>
+      {% endfor %}
+      </div>
 
-            <div class="table-container">
-              <table class="billing-table table table-hover">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Invoice ID</th>
-                    <th>Previous Unit</th>
-                    <th>Current Unit</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for i in unpaidbill %}
-                  <tr>
-                    <td>{{ i.id }}</td>
-                    <td>{{ i.invoice_id }}</td>
-                    <td>{{ i.previous_unit }}</td>
-                    <td>{{ i.current_unit }}</td>
-                    <td>{{ i.amount }}</td>
-                    <td>{{ i.date }}</td>
-                    <td>{{ i.status }}</td>
-                    <td>
-                      <a href="#viewBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewBillModal-{{ forloop.counter }}">View Bill</a>
-                      <a href="#printBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#printBillModal-{{ forloop.counter }}">Print Bill</a>
+    </div>
+    </div>
+
+
+    <!-- Payment Content  -->
+    <div id="Payment" class="tabcontent">
+      <div id="content1" class="p-4 p-md-5 pt-2">
+        <div class="content">
+          <div class="bill-text">
+           Payment
+          </div>
+
+          <div class="table-container">
+            <table class="billing-table table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Invoice ID</th>
+                  <th>Previous Unit</th>
+                  <th>Current Unit</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in unpaidbill %}
+                <tr>
+                  <td>{{ i.id }}</td>
+                  <td>{{ i.invoice_id }}</td>
+                  <td>{{ i.previous_unit }}</td>
+                  <td>{{ i.current_unit }}</td>
+                  <td>{{ i.amount }}</td>
+                  <td>{{ i.date }}</td>
+                  <td>{{ i.status }}</td>
+                  <td>
+                      <a href="#paymentModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentModal">Pay Bill</a>
                       {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
                       {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
                       {#     </button>#}
-                    </td>
-                  </tr>
-                </tbody>
-                {% endfor %}
-              </table>
-            </div>
-             {% for i in unpaidbill %}
-              <div id="viewBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">        <div class="modal-dialog">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                        <h1>Invoice</h1>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                     <div class="bill-container">
-                        <div class="bill-header">
-                          <h1>Water Billing System</h1>
-                          <h2>BlueLine Splash</h2>
-                          <h3>Bill Invoice</h3>
-                        </div>
-
-                        <table class="bill-table">
-                          <tr>
-                            <th>Date</th>
-                            <td>{{ i.date }}</td>
-                          </tr>
-                          <tr>
-                            <th>Consumer ID</th>
-                            <td>{{ i.consumer_det.consumer_id }}</td>
-                          </tr>
-                          <tr>
-                            <th>Name</th>
-                            <td>{{ i.consumer_det.name }}</td>
-                          </tr>
-                          <tr>
-                            <th>Address</th>
-                            <td>{{ i.consumer_det.address }}</td>
-                          </tr>
-                          <tr>
-                            <th>Previous Unit</th>
-                            <td>{{ i.previous_unit }}</td>
-                          </tr>
-                          <tr>
-                            <th>Current Unit</th>
-                            <td>{{ i.current_unit }}</td>
-                          </tr>
-                        </table>
-
-                        <div class="bill-total">
-                          <strong>Total Amount: {{ i.amount }}</strong>
-                        </div>
-
-                        <div class="bill-actions">
-                          <button class="btn btn-primary" onclick="window.print()">Print Bill</button>
-                        </div>
-                      </div>
-
-                </div>
+                  </td>
+                </tr>
+              </tbody>
+              {% endfor %}
+            </table>
           </div>
-        </div>
-            </div>
-          {% endfor %}
-          </div>
-
-        </div>
-        </div>
-
-
-        <!-- Payment Content  -->
-        <div id="Payment" class="tabcontent">
-          <div id="content3" class="p-4 p-md-5 pt-5">
-            <div class="content">
-              <div class="bill-text">
-               Payment
-              </div>
-
-              <div class="table-container">
-                <table class="billing-table table table-hover">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Invoice ID</th>
-                      <th>Previous Unit</th>
-                      <th>Current Unit</th>
-                      <th>Amount</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for i in unpaidbill %}
-                    <tr>
-                      <td>{{ i.id }}</td>
-                      <td>{{ i.invoice_id }}</td>
-                      <td>{{ i.previous_unit }}</td>
-                      <td>{{ i.current_unit }}</td>
-                      <td>{{ i.amount }}</td>
-                      <td>{{ i.date }}</td>
-                      <td>{{ i.status }}</td>
-                      <td>
-                          <a href="#paymentModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentModal">Pay Bill</a>
-                          {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
-                          {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
-                          {#     </button>#}
-                      </td>
-                    </tr>
-                  </tbody>
-                  {% endfor %}
-                </table>
-              </div>
         </div>
       </div>
     </div>
@@ -544,7 +747,7 @@
               <li><a href="https://esewa.com.np/#/home" target="_blank" rel="noopener noreferrer"><img src="{% static 'images/esewa.png' %}" alt="eSewa"></a></li>
               <li><a href="https://login.connectips.com/#/login" target="_blank" rel="noopener noreferrer"><img src="{% static 'images/connectips.png' %}" alt="ConnectIPS"></a></li>
               <li><a href="https://globalonline.globalimebank.com.np/login.xhtml" target="_blank" rel="noopener noreferrer"><img src="{% static 'images/globalbank.png' %}" alt="Global IME Bank"></a></li>
-              <li><a href="#payBillModal-{{  consumer.consumer_id }}" data-bs-toggle="modal" data-bs-target="#payBillModal-{{ consumer.consumer_id }}"><img src="{% static 'images/logo.png' %}" alt="bluelinesplash"></a></li>
+              <li><a href="#payBillModal-{{  forloop.counter }}" data-bs-toggle="modal" data-bs-target="#payBillModal-{{ forloop.counter }}"><img src="{% static 'images/logo.png' %}" alt="bluelinesplash"></a></li>
             </ul>
           </div>
         </div>
@@ -552,252 +755,260 @@
     </div>
     </div>
       {% endfor %}
-              {% for i in unpaidbill %}
-              <div id="payBillModal-{{ consumer.consumer_id }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                  <form action="/consumer/payBill/{{i.id}}" method="post">
-                    {% csrf_token %}
-                      <div class="modal-header">
-                        <h1>Invoice</h1>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                     <div class="bill-container">
-                        <div class="bill-header">
-                          <h1>Water Billing System</h1>
-                          <h2>BlueLine Splash</h2>
-                          <h3>Bill Invoice</h3>
-                        </div>
-
-                        <table class="bill-table">
-                          <tr>
-                            <th>Date</th>
-                            <td>{{ i.date }}</td>
-                          </tr>
-                          <tr>
-                            <th>Consumer ID</th>
-                            <td>{{ i.consumer_det.consumer_id }}</td>
-                          </tr>
-                          <tr>
-                            <th>Name</th>
-                            <td>{{ i.consumer_det.name }}</td>
-                          </tr>
-                          <tr>
-                            <th>Address</th>
-                            <td>{{ i.consumer_det.address }}</td>
-                          </tr>
-                          <tr>
-                            <th>Previous Unit</th>
-                            <td>{{ i.previous_unit }}</td>
-                          </tr>
-                          <tr>
-                            <th>Current Unit</th>
-                            <td>{{ i.current_unit }}</td>
-                          </tr>
-                        </table>
-
-                       <input type="text" value="{{ i.consumer_det.id }}" id="consumer_det" name="consumer_det" hidden>
-
-                        <div class="bill-total">
-                          <strong>Total Amount: {{ i.amount }}</strong>
-                        </div>
-
-                        <div class="modal-footer">
-                          <button type="submit" class="add_btn btn btn-info">Pay</button>
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        </div>
-                  </form>
-                </div>
-                </div>
-              </div>
-        </div>
-            {% endfor %}
-
-        <!-- History Content  -->
-        <div id="History" class="tabcontent">
-          <div id="content4" class="p-4 p-md-5 pt-5">
-            <div class="content4">
-              <div class="bill-text">
-                Bill History
-              </div>
-
-              <div class="table-container">
-                <table class="billing-table table table-hover">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Invoice ID</th>
-                      <th>Meter No</th>
-                      <th>Previous Unit</th>
-                      <th>Current Unit</th>
-                      <th>Amount</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for i in paidbill %}
-                    <tr>
-                      <td>{{ i.id }}</td>
-                      <td>{{ i.invoice_id }}</td>
-                      <td>{{ i.meter_number }}</td>
-                      <td>{{ i.previous_unit }}</td>
-                      <td>{{ i.current_unit }}</td>
-                      <td>{{ i.amount }}</td>
-                      <td>{{ i.date }}</td>
-                      <td>{{ i.status }}</td>
-                      <td>
-                        <a href="#viewBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewBillModal-{{ forloop.counter }}">View Bill</a>
-                        <a href="#printBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#printBillModal-{{ forloop.counter }}">Print Bill</a>
-                        {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
-                        {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
-                        {#     </button>#}
-
-                      </td>
-                    </tr>
-                  </tbody>
-                  {% endfor %}
-                </table>
-              </div>
-               {% for i in paidbill %}
-                <div id="viewBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">        <div class="modal-dialog">
-                  <div class="modal-content">
-                    <form action="/consumer/viewbill/{{i.id}}" method="post">
-                      {% csrf_token %}
-                      <div class="modal-header">
-                        <h4 class="modal-title">View Bill</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="form-group">
-                          <label for="date">Date:</label>
-                          <input type="text" value="{{ i.date }}" id="date" name="date" readonly>
-
-                          <label for="invoiceid">Invoice ID:</label>
-                          <input type="text" value="{{ i.invoice_id }}" id="invoiceid" name="invoice_id" readonly>
-
-                          <label for="meternumber">Meter Number:</label>
-                          <input type="text" value="{{ i.meter_number }}" id="meternumber" name="meter_no" readonly>
-
-                          <label for="previousunit">Previous Unit:</label>
-                          <input type="email" value="{{ i.previous_unit }}" id="previousunit" name="previous_unit" readonly>
-
-                          <label for="currentunit">Current Unit:</label>
-                          <input type="text" value="{{ i.current_unit }}" id="currentunit" name="current_unit" readonly>
-
-                          <label for="amount">Amount:</label>
-                          <input type="text" value="{{ i.amount }}" id="amount" name="amount" readonly>
-
-                          <label for="status">Status:</label>
-                          <input type="text" value="{{ i.status }}" id="status" name="status" readonly>
-
-                        </div>
-
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="add_btn btn btn-info">Print</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
+    {% for i in unpaidbill %}
+    <div id="payBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="/consumer/paybillView/{{i.id}}" method="post">
+            {% csrf_token %}
+            <div class="modal-header">
+              <h1>Invoice</h1>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+              <div class="bill-container">
+                <div class="bill-header">
+                  <h1>Water Billing System</h1>
+                  <h2>BlueLine Splash</h2>
+                  <h3>Bill Invoice</h3>
+                </div>
+
+                <table class="bill-table">
+                  <tr>
+                    <th>Invoice ID</th>
+                    <td>{{ i.invoice_id }}</td>
+                    <input class="bill1" type="text" value="{{i.invoice_id}}" name="invoice_id" hidden>
+                  </tr>
+
+                  <tr>
+                    <th>Date</th>
+                    <td>{{ i.date }}</td>
+                    <input class="bill1" type="text" value="{{i.date}}" name="date" hidden>
+                  </tr>
+
+                  <tr>
+                    <th>Consumer ID</th>
+                    <td>{{ consumer.consumer_id }}</td>
+                    <input class="bill1" type="text" value="{{ consumer.consumer_id }}" name="consumer_id" hidden>
+                    <input class="bill1" type="text" value="{{ i.consumer_det.id }}" name="consumer_det" hidden>
+                  </tr>
+                  <tr>
+                    <th>Name</th>
+                    <td>{{ consumer.name }}</td>
+                    <input class="bill1" type="text" value="{{ consumer.name }}" name="name" hidden>
+                  </tr>
+                  <tr>
+                    <th>Address</th>
+                    <td>{{ consumer.address }}</td>
+                    <input class="bill1" type="text" value="{{ consumer.address }}" name="address" hidden>
+                  </tr>
+                  <tr>
+                    <th>Previous Unit</th>
+                    <td>{{ i.previous_unit }}</td>
+                    <input class="bill1" type="text" value="{{ i.previous_unit }}" name="previous_unit" hidden>
+                  </tr>
+                  <tr>
+                    <th>Current Unit</th>
+                    <td>{{ i.current_unit }}</td>
+                    <input class="bill1" type="text" value="{{ i.current_unit }}" name="current_unit" hidden>
+                  </tr>
+                </table>
+
+                <div class="bill-total">
+                  <strong>Total Amount: {{ i.amount }}</strong>
+                  <input class="bill1" type="text" value="{{ i.amount }}" name="amount" hidden>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="submit" class="add_btn btn btn-info">Pay</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <!-- History Content  -->
+    <div id="History" class="tabcontent">
+      <div id="content1" class="p-4 p-md-5 pt-2">
+        <div class="content4">
+          <div class="bill-text" >
+            Bill History
+          </div>
+
+          <div class="table-container">
+            <table class="billing-table table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Invoice ID</th>
+                  <th>Previous Unit</th>
+                  <th>Current Unit</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in paidbill %}
+                <tr>
+                  <td>{{ i.id }}</td>
+                  <td>{{ i.invoice_id }}</td>
+                  <td>{{ i.previous_unit }}</td>
+                  <td>{{ i.current_unit }}</td>
+                  <td>{{ i.amount }}</td>
+                  <td>{{ i.date }}</td>
+                  <td>{{ i.status }}</td>
+                  <td>
+                    <a href="#viewBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewBillModal-{{ forloop.counter }}">View Bill</a>
+                    <a href="#printBillModal-{{ forloop.counter }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#printBillModal-{{ forloop.counter }}">Print Bill</a>
+                    {#     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ forloop.counter }}">#}
+                    {#     <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>#}
+                    {#     </button>#}
+
+                  </td>
+                </tr>
+              </tbody>
+              {% endfor %}
+            </table>
+          </div>
+           {% for i in paidbill %}
+            <div id="viewBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">        <div class="modal-dialog">
+              <div class="modal-content">
+                <form action="/consumer/viewbill/{{i.id}}" method="post">
+                  {% csrf_token %}
+                  <div class="modal-header">
+                    <h4 class="modal-title">View Bill</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="date">Date:</label>
+                      <input type="text" value="{{ i.date }}" id="date" name="date" readonly>
+
+                      <label for="invoiceid">Invoice ID:</label>
+                      <input type="text" value="{{ i.invoice_id }}" id="invoiceid" name="invoice_id" readonly>
+
+                      <label for="previousunit">Previous Unit:</label>
+                      <input type="email" value="{{ i.previous_unit }}" id="previousunit" name="previous_unit" readonly>
+
+                      <label for="currentunit">Current Unit:</label>
+                      <input type="text" value="{{ i.current_unit }}" id="currentunit" name="current_unit" readonly>
+
+                      <label for="amount">Amount:</label>
+                      <input type="text" value="{{ i.amount }}" id="amount" name="amount" readonly>
+
+                      <label for="status">Status:</label>
+                      <input type="text" value="{{ i.status }}" id="status" name="status" readonly>
+
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="add_btn btn btn-info">Print</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
+          {% endfor %}
+        </div>
+        </div>
       </div>
+  </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
+  <script src="{%static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/popper.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/new.js' %}"></script>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      var ctx = document.getElementById('myChart').getContext('2d');
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
-      <script src="{%static 'js/jquery.min.js' %}"></script>
-      <script src="{% static 'js/popper.js' %}"></script>
-      <script src="{% static 'js/bootstrap.min.js' %}"></script>
-      <script src="{% static 'js/new.js' %}"></script>
-      <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-          var ctx = document.getElementById('myChart').getContext('2d');
+      // Define the data for the graph
+      var data = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [{
+          label: 'Meter Unit',
+          data: [10, 20, 15, 25, 8, 32],
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      };
 
-          // Define the data for the graph
-          var data = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [{
-              label: 'Meter Unit',
-              data: [10, 20, 15, 25, 8, 32],
-              backgroundColor: 'rgba(54, 162, 235, 0.5)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 1
-            }]
-          };
+      // Configure the options for the graph
+      var options = {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      };
 
-          // Configure the options for the graph
-          var options = {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          };
+      // Create the chart
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+      });
 
-          // Create the chart
-          var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: options
-          });
+      // Initialize the calendar
+      $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,basicWeek,basicDay'
+        },
+        defaultDate: '2023-05-01',
+        editable: true,
+        eventLimit: true,
+        events: [
+          {
+            title: 'Event 1',
+            start: '2023-05-01'
+          },
+          {
+            title: 'Event 2',
+            start: '2023-05-05',
+            end: '2023-05-07'
+          },
+          {
+            title: 'Event 3',
+            start: '2023-05-09T16:00:00'
+          }
+          // add more events here...
+        ]
+      });
+    });
+  </script>
+  <script>
+        function openTab(evt, menuItem) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(menuItem).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
 
-          // Initialize the calendar
-          $('#calendar').fullCalendar({
-            header: {
-              left: 'prev,next today',
-              center: 'title',
-              right: 'month,basicWeek,basicDay'
-            },
-            defaultDate: '2023-05-01',
-            editable: true,
-            eventLimit: true,
-            events: [
-              {
-                title: 'Event 1',
-                start: '2023-05-01'
-              },
-              {
-                title: 'Event 2',
-                start: '2023-05-05',
-                end: '2023-05-07'
-              },
-              {
-                title: 'Event 3',
-                start: '2023-05-09T16:00:00'
-              }
-              // add more events here...
-            ]
-          });
-        });
-      </script>
-      <script>
-            function openTab(evt, menuItem) {
-              var i, tabcontent, tablinks;
-              tabcontent = document.getElementsByClassName("tabcontent");
-              for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-              }
-              tablinks = document.getElementsByClassName("tablinks");
-              for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-              }
-              document.getElementById(menuItem).style.display = "block";
-              evt.currentTarget.className += " active";
-            }
-
-            // Get the element with id="defaultOpen" and click on it
-            document.getElementById("defaultOpen").click();
-      </script>
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+        </script>
 </body>
+
 </html>
