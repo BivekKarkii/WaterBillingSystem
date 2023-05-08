@@ -3,7 +3,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from employee.views import employee_dashboardview, employee_registration_formview, employee_login_view, \
-    ConsumerSignedOutView
+    ConsumerSignedOutView, updateView
 
 app_name = "employee"
 
@@ -13,6 +13,7 @@ urlpatterns = [
     path('employee_registration_form', employee_registration_formview, name='employee_registration_form'),
     # path('employeelogout', employeelogoutview, name='employeelogout'),
     path("empsigned_out", ConsumerSignedOutView.as_view(), name="empsigned_out"),
+    path('update/<str:id>', updateView, name='update'),
 
 
 ]

@@ -27,6 +27,7 @@ class Consumer_Profile(models.Model):
     def __str__(self):
         return "%s's profile" % (self.consumer.name)
 
+
 class PasswordProfile(models.Model):
     user = models.OneToOneField(Consumer, on_delete=models.CASCADE, primary_key=True)
     forget_password_token = models.CharField(max_length=100)

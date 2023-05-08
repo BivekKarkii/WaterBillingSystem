@@ -9,12 +9,10 @@ from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect, get_object_or_404
 import random
 from django.views.generic.base import TemplateView
-
-import consumer
 from consumer.forms import ConsumerForm
 from consumer.models import Consumer, Consumer_Profile, PasswordProfile
 from billing.models import consumerBilling
-from home.helpers import send_forget_password_mail
+from consumer.helpers import send_forget_password_mail
 
 
 # Create your views here.
@@ -236,55 +234,10 @@ def billView(request, id):
             status=status,
 
         )
+        billing.save()
         return redirect('/billview')
     return render(request, 'consumer_dashboard.html')
 
-def paybillView(request,id):
-    if request.method == 'POST':
-        date = request.POST.get('date')
-        invoice_id = request.POST.get('invoice_id')
-        previous_unit = request.POST.get('previous_unit')
-        current_unit = request.POST.get('current_unit')
-        amount = request.POST.get('amount')
-        consumer_det = request.POST.get('consumer_det')
-
-        billing = consumerBilling(
-            id = id,
-            date=date,
-            invoice_id=invoice_id,
-            previous_unit=previous_unit,
-            current_unit=current_unit,
-            amount=amount,
-            consumer_det_id = consumer_det,
-            status="paid",
-        )
-        billing.save()
-        return redirect('/consumer/consumer_dashboard')
-    return render(request, 'consumer_dashboard.html')
-
-
-def paybillView(request,id):
-    if request.method == 'POST':
-        date = request.POST.get('date')
-        invoice_id = request.POST.get('invoice_id')
-        previous_unit = request.POST.get('previous_unit')
-        current_unit = request.POST.get('current_unit')
-        amount = request.POST.get('amount')
-        consumer_det = request.POST.get('consumer_det')
-
-        billing = consumerBilling(
-            id = id,
-            date=date,
-            invoice_id=invoice_id,
-            previous_unit=previous_unit,
-            current_unit=current_unit,
-            amount=amount,
-            consumer_det_id = consumer_det,
-            status="paid",
-        )
-        billing.save()
-        return redirect('/consumer/consumer_dashboard')
-    return render(request, 'consumer_dashboard.html')
 
 
 def changePassword(request, token):
@@ -357,3 +310,5 @@ def forgetPassword(request):
     except Exception as e:
         print(e)
     return render(request, 'consumer_forgetpassword.html')
+
+

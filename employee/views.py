@@ -7,6 +7,8 @@ from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 import random
 from django.views.generic.base import TemplateView
+
+import employee
 from billing.models import consumerBilling
 from consumer.models import Consumer
 from employee.models import Employee, Employee_Profile
@@ -15,6 +17,13 @@ from employee.models import Employee, Employee_Profile
 # Create your views here.
 
 def employee_dashboardview(request):
+    # get the logged in employee's info'
+    employee_id = request.session.get('employee_id')
+
+    emp = Employee.objects.filter(employee_id=employee_id)
+    print("HEkkkkkkkkkk", emp)
+
+
     consumer = Consumer.objects.all()
     a = 0
 
@@ -25,13 +34,13 @@ def employee_dashboardview(request):
         if last_billing:
             consumer_billing_list.append(last_billing)
 
-    print("counterrrrr",consumer_billing_list)
+    # print("counterrrrr",consumer_billing_list)
     billcounter = consumerBilling.objects.all()
     c = 0
 
-    for l in consumer_billing_list:
-        for i in l:
-            print(i.amount)
+    # for l in consumer_billing_list:
+    #     for i in l:
+    #         print(i.amount)
 
     for i in billcounter:
         c = +1
@@ -44,6 +53,7 @@ def employee_dashboardview(request):
         'billing': billcounter,
         'countbill': c,
         'consumer_billing_list':consumer_billing_list,
+        'emp':emp,
     }
     return render(request, 'employee_dashboard.html',context)
 
@@ -84,6 +94,8 @@ def employee_login_view(request):
         try:
             usr = Employee.objects.filter(phone=phone, password=password)
             print(usr.first().phone)
+            request.session['employee_id'] = usr.first().employee_id
+            print(usr.first().employee_id)
             return redirect("/employee/employee_dashboard")
 
         except:
@@ -173,4 +185,29 @@ def employeedeleteView(request, id):
         'employee': employee,
     }
     return redirect('/welcome')
+
+
+def updateView(request,id):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+        citizenship = request.POST.get('citizenship')
+        employee_id = request.POST.get('employee_id')
+        password = request.POST.get('password')
+
+        employee = Employee(
+            id=id,
+            employee_id=employee_id,
+            name=name,
+            phone=phone,
+            email=email,
+            address=address,
+            citizenship=citizenship,
+            password=password,
+        )
+        employee.save()
+        return redirect('/employee/employee_dashboard')
+    return render(request, 'employee_dashboard.html')
 
