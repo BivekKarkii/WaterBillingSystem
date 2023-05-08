@@ -3,7 +3,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from consumer.views import customer_login_view, consumer_dashboardview, consumer_registration_formview, \
-    consumer_adminview, consumer_signupview, SignedOutView, billView, paybillView
+    consumer_adminview, consumer_signupview, SignedOutView, billView, paybillView, forgetPassword, changePassword
 from home import views
 from home.views import homeview
 
