@@ -1,4 +1,4 @@
-/* General css */
+/* General css
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
@@ -184,7 +184,7 @@ a:hover{
 .pagefooter a:hover{
     text-decoration: underline;
     color: black;
-}
+} 
 
 /* --------------------------------------------------------------------- */
 
@@ -893,121 +893,114 @@ a:hover{
 /* --------------------------------------------------------------------- */
 /* UpdateE css (Nilima) */
 
-.Addemployee  {
-	background-color: #EAFDFC;
-	font-family: Poppins, sans-serif;
-	margin: 0;
-	padding: 0;
-  }
-  
-  .Addemployee h1 {
-	text-align: center;
-	margin-top: 30px;
-	margin-bottom: 30px;
-  }
-  
-  .Addemployee form {
-	max-width: 500px;
-	margin: 0 auto;
-	padding: 20px;
-	background-color: #EAFDFC;
-	border-radius: 4px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .Addemployee label {
-	display: block;
-	margin-bottom: 10px;
-	font-weight: bold;
-  }
-  
-  .Addemployee input[type="text"],
-  .Addemployee input[type="email"],
-  .Addemployee input[type="tel"] {
-	width: 100%;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-	margin-bottom: 20px;
-	font-size: 16px;
-  }
-  
-  .Addemployee input[type="radio"] {
-	margin-right: 10px;
-  }
-  
-  .Addemployee button[type="submit"] {
-	background-color: #345FE3;
-	color: white;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	font-size: 16px;
-  }
-  
-  .Addemployee button[type="submit"]:hover {
-	background-color: #345FE3;
-  }
-  .Addemployee {
-	background-color: #EAFDFC;
-	font-family: Poppins, sans-serif;
-	margin: 0;
-	padding: 0;
-  }
-  
-  .Addemployee h1 {
-	text-align: center;
-	margin-top: 30px;
-	margin-bottom: 30px;
-  }
-  
-  .Addemployee form {
-	max-width: 500px;
-	margin: 0 auto;
-	padding: 20px;
-	background-color: #fff;
-	border-radius: 4px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .Addemployee label {
-	display: block;
-	margin-bottom: 10px;
-	font-weight: bold;
-  }
-  
-  .Addemployee input[type="text"],
-  .Addemployee input[type="email"],
-  .Addemployee input[type="tel"] {
-	width: 100%;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-	margin-bottom: 20px;
-	font-size: 16px;
-  }
-  
-  .Addemployee input[type="radio"] {
-	margin-right: 10px;
-  }
-  
-  .Addemployee button[type="submit"] {
-	background-color: #345FE3;
-	color: white;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	font-size: 16px;
-  }
-  
-  .Addemployee button[type="submit"]:hover {
-	background-color: #345FE3;
-  }
+body {
+  font-family: Poppins, sans-serif;
+  background-color: #f2f2f2;
+}
 
+
+.Updateemployee {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+/*  color: #345feb;*/
+  color: #17a2b8!important;
+}
+
+label {
+  /*display: block;
+  margin-bottom: 8px;*/
+/*  color: #345feb;*/
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #666;
+  box-sizing: border-box;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+
+
+.update_btn {
+  display: flex;
+  justify-content: center;
+  /*align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;*/
+}
+
+.update_btn .add_btn {
+  font-size: 15px;
+  background-color: #345feb;
+  color: white;
+  padding: 10px 10px;
+  margin: 8px 15px;
+  border: 1px solid #345feb;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 35%;
+  opacity: 0.9;
+  transition: 0.5s all;
+}
+
+.update_btn .add_btn:hover {
+  font-size: 15px;
+  background-color: #ffffff;
+  color: #345feb;
+  padding: 10px 10px;
+  margin: 8px 15px;
+  border: 1px solid #345feb;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 35%;
+  opacity: 0.9;
+}
+
+.uc-cancel-button {
+  transition: 0.5s all;
+  font-size: 15px;
+  background-color: #ffffff;
+  color: #345feb;
+  padding: 10px 10px;
+  margin: 8px 15px;
+  border: 1px solid #345feb;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 35%;
+  opacity: 0.9;
+}
+
+.uc-cancel-button:hover {
+  background-color: #345feb;
+  color: white;
+}
+label {
+    font-weight: 600;
+    color: #666;
+}
+body {
+  background: #f1f1f1;
+}
 /* --------------------------------------------------------------------- */
 /* DeleteE css (Nilima) */
 
@@ -1471,11 +1464,389 @@ tr:nth-child(even) {
   cursor: pointer;
 }
 
+
 /* --------------------------------------------------------------------- *
 /* Viewbillform css (Nilima) */
 .container {
   margin: 0 auto;
+  max-width: 80px;
+}
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+input[type="text"],
+input[type="number"] {
+  font-size: 16px;
+  padding: 5px;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-bottom: 2px solid #1E90FF;
+}
+
+/* button[type="submit"] {
+  background-color: #1E90FF;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+} */
+button[type="submit"] {
+font-size: 15px;
+display: inline-block;
+    background-color: #345feb;
+    color: white;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: 1px solid #345feb;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 35%;
+    opacity: 0.9;
+    transition: 0.5s all;
+}
+
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+button[type="cancel"] {
+transition: 0.5s all;
+    font-size: 15px;
+    display: inline-block;
+    background-color: #ffffff;
+    color: #345feb;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: 1px solid #345feb;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 35%;
+    opacity: 0.9;
+}
+
+
+
+button[type="submit"]:hover {
+font-size: 15px;
+background-color: #ffffff;
+color: #345feb;
+padding: 10px 10px;
+margin: 8px 0;
+border: 1px solid #345feb;
+border-radius: 25px;
+cursor: pointer;
+width: 35%;
+opacity: 0.9;
+}
+
+button[type="cancel"]:hover {
+  background-color: #345feb;
+  color: #ffffff;
+}
+button[type="submit"], button[type="cancel"] {
+  float: left;
+  margin-right: 10px;
+}
+
+
+.container {
   max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-decoration: underline;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#prevReading, #currReading, #total_amount {
+  width: 80px;
+}
+
+#consumption, #totalBill {
+  font-weight: bold;
+}
+
+/* .view-bill-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+} */
+
+
+/* --------------------------------------------------------------------- *
+/* ConsumerBD css (Nilima) */
+ /* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+#calendar {
+max-width: 900px;
+margin: 0 auto;
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+} */
+
+/*.logo img {
+  height: 50px;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.nav ul li {
+  margin-right: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.main {
+  padding: 20px;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bill-summary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 20%;
+  box-shadow: 3px 4px 8px 0px rgba(0, 0, 0, 0.49) inset;
+}
+
+.icon img {
+  height: 50px;
+}
+
+.count {
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.label {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.graph {
+  height: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  padding-top: 20px;
+        transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.sidebar .logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar_menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar_menu ul li {
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 18px;
+}
+
+.sidebar_menu ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar_menu ul li i {
+  margin-right: 10px;
+}
+
+.sidebar_menu ul li.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar_menu ul li.active a {
+  color: #fff;
+}
+
+.container {
+  display: flex;
+}
+
+.list-unstyled li {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+#calendar {
+  max-width: 900px;
+  margin: 0 auto;
+} */
+
+
+/*--------------------------------------------------------------------- *
+ /* EmployeeBD css (Nilima) */
+.view-bill-btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.create-bill-btn {
+  background-color: #f44336; /* Red */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.navbar img{
+    width: 100% !important;
+}
+.navigation-bar{
+    margin-bottom: 15px;
+}
+.dashmid{
+    margin: 0 0 20px 0;
+}
+
+.employee_img img{
+    width: 8% !important;
+
+}
+.login-div{
+    display: flex;
+    justify-content: flex-end;
+}
+.employee_img{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 h1 {
@@ -1526,142 +1897,111 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-button[type="cancel"] {
-  background-color: #eff4f8;
-  color: #1E90FF;
-  font-size: 16px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
 button[type="submit"]:hover {
   background-color: #0066CC;
 }
-button[type="cancel"]:hover {
-  background-color: #0066CC;
+
+h2, h3 {
+	margin-top: 0;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-h1 {
-  text-decoration: underline;
+.table-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 30px auto;
 }
 
 table {
-  border-collapse: collapse;
-  width: 100%;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 th, td {
-  text-align: left;
-  padding: 8px;
+	padding: 10px;
+	border: 1px solid #ddd;
 }
 
 th {
-  background-color: #333;
-  color: white;
+	background-color: #f2f2f2;
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+tbody td:last-child {
+	font-weight: bold;
 }
 
-#prevReading, #currReading, #total_amount {
-  width: 80px;
+button {
+	display: block;
+	{#margin: 30px auto;#}
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
 }
 
-#consumption, #totalBill {
-  font-weight: bold;
+button:hover {
+	background-color: #3e8e41;
 }
 
-.view-bill-btn {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 4px 2px;
-  cursor: pointer;
+#profileModal .card-body img{
+    width: 100% !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --------------------------------------------------------------------- *
-/* ConsumerBD css (Nilima) */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*--------------------------------------------------------------------- *
+#profileModal body{
+    margin-top:20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;
+}
+#profileModal .main-body {
+    padding: 15px;
+}
+#profileModal .card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+#profileModal .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+#profileModal .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+#profileModal .gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+#profileModal .gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+#profileModal .mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+#profileModal .bg-gray-300 {
+    background-color: #e2e8f0;
+}
+#profileModal .h-100 {
+    height: 100%!important;
+}
+#profileModal .shadow-none {
+    box-shadow: none!important;
+}
+#profileModal .modal-dialog{
+  max-width: 60% !important;
+}
 

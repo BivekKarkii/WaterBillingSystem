@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- {% load static %} -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Update Employee</title>
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/consumerRegistrationForm.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+      .update_btn .add_btn{
+        font-size: 15px;
+        background-color: #345feb;
+        color: white;
+        padding: 10px 10px;
+        margin: 8px 15px;
+        border: 1px solid #345feb;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 35%;
+        opacity: 0.9;
+        transition: 0.5s all;
+      }
+      .update_btn .add_btn:hover{
+        font-size: 15px;
+        background-color: #ffffff;
+        color: #345feb;
+        padding: 10px 10px;
+        margin: 8px 15px;
+        border: 1px solid #345feb;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 35%;
+        opacity: 0.9;
+      }
+
+      .uc-cancel-button{
+        transition: 0.5s all;
+        font-size: 15px;
+        background-color: #ffffff;
+        color: #345feb;
+        padding: 10px 10px;
+        margin: 8px 15px;
+        border: 1px solid #345feb;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 35%;
+        opacity: 0.9;
+      }
+
+    </style>
+  </head>
+  <body class="Addconsumer">
+    <form method="post" id="consumer-form">
+       <!-- <img src="Logo.png" alt="logo"> -->
+      <!-- {% csrf_token %} -->
+      <!-- <img class="logo2" src="{% static 'images/logo.png' %}" alt="logo"> -->
+      <h1>Update Employee</h1>
+       
+
+
+      <label for="fullname">Full Name:</label>
+      <input type="text" class="form" id="fullname" name="name" placeholder="Enter your name." required>
+
+      <label for="phonenumber">Phone Number:</label>
+      <input type="tel" id="phonenumber" name="phone" placeholder="Enter your mobile number." required>
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" placeholder="Enter your Address." required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email." required>
+
+      <label for="citizenshipnumber">Citizenship Number:</label>
+      <input type="text" id="citizenshipnumber" name="citizenship_no" placeholder="Enter Your Citizenship Number." required>
+
+  <div class="update_btn"style="
+    display: flex;
+    justify-content: center;
+">
+    <button type="submit" class="add_btn">Update</button>
+    <button type="button" class="uc-cancel-button" onclick="window.location='consumerlist'">Cancel</button>
+  </div>
+
+
+
+</form>
+ </body>
+</html>
