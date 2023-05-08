@@ -1,17 +1,20 @@
+import uuid
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import random
 from django.views.generic.base import TemplateView
 
 import consumer
 from consumer.forms import ConsumerForm
-from consumer.models import Consumer, Consumer_Profile
+from consumer.models import Consumer, Consumer_Profile, PasswordProfile
 from billing.models import consumerBilling
+from home.helpers import send_forget_password_mail
 
 
 # Create your views here.
@@ -282,7 +285,6 @@ def paybillView(request,id):
         billing.save()
         return redirect('/consumer/consumer_dashboard')
     return render(request, 'consumer_dashboard.html')
-=======
 
 
 def changePassword(request, token):

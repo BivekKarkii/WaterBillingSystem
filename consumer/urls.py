@@ -20,6 +20,8 @@ urlpatterns = [
     path('billView/<str:id>', billView, name='billview'),
     path('payBill/<str:id>', paybillView, name='payBill'),
 
+    path('forgetpasswordconsumer', forgetPassword, name="forget-password"),
+    path('changepasswordconsumer/<token>/', changePassword, name="change-password"),
     # path('consumer_dashboard', consumer_dashboardview, name='consumer_dashboard'),
     # path('consumer_update/<int:phone>', consumer_updateview, name='consumer_update'),
     # path('delete/<int:id>/', consumer_delete, name='consumer_delete'),
