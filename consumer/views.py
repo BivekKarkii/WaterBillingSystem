@@ -311,4 +311,55 @@ def forgetPassword(request):
         print(e)
     return render(request, 'consumer_forgetpassword.html')
 
+def paybillView(request,id):
+    if request.method == 'POST':
+        date = request.POST.get('date')
+        invoice_id = request.POST.get('invoice_id')
+        previous_unit = request.POST.get('previous_unit')
+        current_unit = request.POST.get('current_unit')
+        amount = request.POST.get('amount')
+        consumer_det = request.POST.get('consumer_det')
+
+        print("Hello",id)
+
+        billing = consumerBilling(
+            id = id,
+            date=date,
+            invoice_id=invoice_id,
+            previous_unit=previous_unit,
+            current_unit=current_unit,
+            amount=amount,
+            consumer_det_id = consumer_det,
+            status="paid",
+        )
+        billing.save()
+        return redirect('/consumer/consumer_dashboard')
+    return render(request, 'consumer_dashboard.html')
+
+def consumerupdateView(request,id):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+        citizenship = request.POST.get('citizenship')
+        consumer_id = request.POST.get('consumer_id')
+        meter_no = request.POST.get('meter_no')
+        water_type = request.POST.get('type')
+
+        consumer = Consumer(
+            id=id,
+            consumer_id=consumer_id,
+            name=name,
+            phone=phone,
+            email=email,
+            address=address,
+            citizenship=citizenship,
+            meter_no=meter_no,
+            type=water_type,
+        )
+        consumer.save()
+        return redirect('/consumer/consumer_dashboard')
+    return render(request, 'consumer_dashboard.html')
+
 
