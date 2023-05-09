@@ -14,7 +14,8 @@
         </header>
         <main>
             <div class="contactuscontent flex">
-                <form class="contactusform">
+                <form class="contactusform" action="{% url "home:message" %}" method="post">
+                     {% csrf_token %}
                     <div class="logo">
                         <img src="{% static 'images/logo.png' %}" alt="logo">
                     </div>
@@ -24,9 +25,9 @@
                   <label for="email">Email</label><br>
                   <input type="text" id="email" name="email" placeholder="Email"><br>
                   <label for="message">Message</label><br>
-                  <textarea class="cutxt" rows="4">
+                  <textarea class="cutxt" rows="4" name="message" placeholder="Enter your message here...">
                   </textarea><br>
-                  <button class="confirm contactusbutton flex" type="button" name="button">Submit</button>
+                  <button class="confirm contactusbutton flex" type="submit" name="button">Submit</button>
                 </form>
             </div>
         </main>

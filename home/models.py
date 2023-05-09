@@ -11,3 +11,11 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+
+class Mymessage(models.Model):
+    email = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
+    message=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.username,self.message

@@ -26,6 +26,7 @@ urlpatterns = [
     path('about', aboutview, name="about"),
     path('support', supportview, name="support"),
     path('contact', contactview, name="contact"),
+    path('message',consumer_messageView, name="message"),
 
     path('employeetable', employeeview, name="employeetable"),
     path('employeeedit', employeeeditView, name='employeeedit'),

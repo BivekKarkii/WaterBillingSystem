@@ -12,7 +12,7 @@ from employee.models import Employee
 from .helpers import send_forget_password_mail
 
 # from home.forms import UserLoginForm
-from .models import Profile
+from .models import Profile, Mymessage
 import uuid
 
 
@@ -286,4 +286,18 @@ def employeedeleteView(request, id):
 
 
 
+def consumer_messageView(request):
+    if request.method == 'POST':
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        message = request.POST.get('message')
 
+        Mymessage.objects.create(
+            username=username,
+            email=email,
+            message=message,
+        )
+        print("message sent!")
+        return redirect("/contact")
+
+    return render(request, "contactus.html")
