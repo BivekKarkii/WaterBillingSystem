@@ -48,7 +48,7 @@
 }
 
 .employee_img img{
-    width: 100% !important;
+    width: 8% !important;
 
 }
 .login-div{
@@ -87,8 +87,8 @@ input[type="number"] {
   font-size: 16px;
   padding: 5px;
   margin-bottom: 20px;
-  {#border: none;#}
-  {#border-bottom: 2px solid #ccc;#}
+  border: none;
+  border-bottom: 2px solid #ccc;
   width: 100%;
 }
 
@@ -99,14 +99,14 @@ input[type="text"]:focus {
 }
 
 button[type="submit"] {
-  background-color: #0B59A7;
-    color: white;
-    font-size: 16px;
-    padding: 12px 35px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    cursor: pointer;
+  background-color: #1E90FF;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
 button[type="submit"]:hover {
@@ -130,8 +130,8 @@ table {
 }
 
 th, td {
-	padding: 8px;
-      border-bottom: 1px solid #ccc;
+	padding: 10px;
+	border: 1px solid #ddd;
 }
 
 th {
@@ -141,24 +141,22 @@ th {
 tbody td:last-child {
 	font-weight: bold;
 }
-tr{
-    border-bottom: 1px solid #c6c6c6;
-}
 
 button {
 	display: block;
-    /* padding: 10px 20px; */
-    background-color: transparent;
-    color: #000000;
-    border: navajowhite;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 50px;
+	{#margin: 30px auto;#}
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
 }
 
-{#button:hover {#}
-{#	background-color: #3e8e41;#}
-{#}#}
+button:hover {
+	background-color: #3e8e41;
+}
 
 #profileModal .card-body img{
     width: 100% !important;
@@ -220,66 +218,13 @@ button {
 #profileModal .modal-dialog{
   max-width: 60% !important;
 }
-.btn-create{
-    background-color: #0B59A7;
-    color: #ffffff;
-}
 
-.table-hover th, .table-hover td{
-    text-align: center;
-}
-.table-head{
-    {#background: #0d6efd;#}
-    {#background: #6b7ae0;#}
-    {#background-color: #f2f2f2;#}
-    color: #212529;
-}
-.table>:not(:first-child){
-    border: none;
-}
-.table-head th{
-    vertical-align: center;
-    border-top: 1px solid #dee2e6;
-    border-bottom: 2px solid #dee2e6;
-    padding: 0.75rem;
-}
-table tbody td{
-    border-top: 2px solid #dee2e6;
-    padding: 0.75rem;
-}
-.update-btn{
-    display: flex;
-    justify-content: center;
-}
-@media print {
-    body *{
-        visibility: hidden;
-
-    }
-    .printbill-modal,
-    .printbill-modal *
-    {
-        visibility: visible;
-    }
-    .printbill-modal button{
-        visibility: hidden;
-    }
-
-     .printbill-modal {
-    position: absolute;
-    left: 15%;
-    top: 50%;
-     margin: auto auto;
-     width: 70%;
-     {#transform: translate(-50%,-50%);#}
-  }
-}
 
     </style>
 </head>
 <body>
 <section class="nav-sec navigation-bar">
-      <nav class="navbar navbar-expand-lg navbar-light" style="margin-right: 0 !important;box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.25);background: #ffffff;">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -289,22 +234,19 @@ table tbody td{
     display: flex;
     justify-content: flex-end;
 ">
-              <ul class="navbar-nav" style="width: 15%;">
+              <ul class="navbar-nav">
               <div class="login-div employee_img" id="login-toggle">
-                  <div style="margin-right: 10px;">
-                  <a href="#profileModal" data-bs-toggle="modal" data-bs-target="#profileModal"><img src="{% static 'images/user-circle-solid.svg' %}" alt="bell" > </a>
-                </div>
-                  <div>
-                  <a href="#logoutModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
-                    </div>
-                </div>
-                  <!-- profile Modal -->
+                  <a href="#profileModal" data-bs-toggle="modal" data-bs-target="#profileModal"><img src="{% static 'images/user-circle-solid.svg' %}" alt="bell" style="margin-right: 10px;"> </a>
+
+{#                  <a href="#logoutModal" class="edit" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>#}
+
+<!-- profile Modal -->
  {% for i in emp %}
 <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">User Profile</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -382,7 +324,7 @@ table tbody td{
                     <input type="text" value="{{i.password}}" id="fullname" name="password" hidden>
                   <hr>
                   <div class="row">
-                    <div class="col-sm-12 update-btn">
+                    <div class="col-sm-12">
 {#                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Update</a>#}
                         <button class="btn btn-info " type="submit">Update</button>
                     </div>
@@ -405,13 +347,15 @@ table tbody td{
   </div>
 </div>
                   {% endfor %}
+{#                  <a href="{% url 'employee-page:empsigned_out'%}" class="">Logout</a>#}
+                  <a href="#logoutModal" class="edit" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
 
                 <!-- logout Modal -->
                 <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
@@ -424,6 +368,7 @@ table tbody td{
                     </div>
                   </div>
                 </div>
+                </div>
             </ul>
           </div>
         </div>
@@ -432,20 +377,21 @@ table tbody td{
 
 {# ============================================= main page =================================================================== #}
 <div class="container">
-    <div class="dashmid" style="background: #FFF;border: 1px solid #0d6efd;border-radius: 4px;box-shadow: 0px 5px 20px -17px rgba(0, 0, 0, 0.34);">
+    <div class="dashmid">
     <ul class="flex justify-between">
 
         <li>Total Consumer :  {{ count }}</li>
         <li>Active : {{ count }}</li>
-        <li><div class="crud"></div></li>
+        <li><div class="crud">
+        </div></li>
 
 
     </ul>
 </div>
 
-<table class="table table-hover">
+<table class="table table-striped">
   <thead>
-    <tr class="table-head">
+    <tr>
         <th>Full Name</th>
         <th>Phone Number</th>
         <th>Email</th>
@@ -469,8 +415,8 @@ table tbody td{
         <td>{{ i.citizenship }}</td>
         <td>{{ i.consumer_id }}</td>
         <td>
-            <a href="#createbillModal-{{ i.consumer_id }}" class="btn btn-create" data-bs-toggle="modal" data-bs-target="#createbillModal-{{ i.consumer_id }}">Create Bill</a>
-            <a href="#viewbillModal-{{ i.consumer_id  }}" class="btn btn-create" data-bs-toggle="modal" data-bs-target="#viewbillModal-{{ i.consumer_id  }}">View Bill</a>
+            <a href="#createbillModal-{{ i.consumer_id }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createbillModal-{{ i.consumer_id }}">Create Bill</a>
+            <a href="#viewbillModal-{{ i.consumer_id  }}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#viewbillModal-{{ i.consumer_id  }}">View Bill</a>
             {#            <button type="button view-bill-btn" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">view bill</button>#}
 {#            <button class="create-bill-btn">View Bill</button>#}
              </td>
@@ -491,8 +437,7 @@ table tbody td{
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-{#        <h5 class="modal-title" id="exampleModalLabel">Water Billing System</h5>#}
-          <img src="{% static 'images/logo.png' %}" style="width: 50%;">
+        <h5 class="modal-title" id="exampleModalLabel">Water Billing System</h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -564,16 +509,15 @@ table tbody td{
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-{#        <h5 class="modal-title" id="exampleModalLabel">Water Billing System</h5>#}
-          <img src="{% static 'images/logo.png' %}" style="width: 50%;">
+        <h5 class="modal-title" id="exampleModalLabel">Water Billing System</h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body printbill-modal">
-{#<h1>Water Billing System</h1>#}
-{#		<h2>BlueLine Splash</h2>#}
-		<h3 style="text-align: center">Bill Invoice</h3>
+      <div class="modal-body">
+<h1>Water Billing System</h1>
+		<h2>BlueLine Splash</h2>
+		<h3>Bill Invoice</h3>
 		<div class="table-container">
 			<table>
 				<tr>
@@ -602,8 +546,7 @@ table tbody td{
 				</tr>
 			</table>
 		</div>
-{#		<button onclick="window.print()">Print Bill</button>#}
-          <button type="submit" onclick="window.print()">Print Bill</button>
+		<button onclick="window.print()">Print Bill</button>
 	</div>
       </div>
     </div>

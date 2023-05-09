@@ -320,15 +320,6 @@ def paybillView(request,id):
         amount = request.POST.get('amount')
         consumer_det = request.POST.get('consumer_det')
 
-        print("Hello",id)
-        print("Hello", date)
-        print("Hello", invoice_id)
-        print("Hello", previous_unit)
-        print("Hello", current_unit)
-        print("Hello", amount)
-        print("Hello", consumer_det)
-
-
         billing = consumerBilling(
             id = id,
             date=date,
