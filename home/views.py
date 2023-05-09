@@ -32,14 +32,14 @@ def welcomeview(request):
     b = 0
     billing = consumerBilling.objects.all()
     c = 0
-    for i in billing:
-        c=+1
         # print(i.invoice_id)
 
     for i in consumer:
         a+=1
     for j in employee:
         b += 1
+    for i in billing:
+        c += 1
     context = {
         'consumer':consumer,
         'count':a,

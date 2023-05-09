@@ -590,5 +590,36 @@ button:hover {
 	});
 });
 </script>
+<script>
+    // Get the input elements
+    var previousUnitInput = document.getElementById('previousUnit');
+    var currentUnitInput = document.getElementById('currentUnit');
+    var perUnitPriceInput = document.getElementById('perUnitPrice');
+    var totalAmountInput = document.getElementById('totalAmount');
+
+    // Add event listener to current unit input
+    currentUnitInput.addEventListener('input', calculateTotalAmount);
+
+    // Function to calculate the total amount
+    function calculateTotalAmount() {
+      // Get the values from the input fields
+      var previousUnit = parseFloat(previousUnitInput.value);
+      var currentUnit = parseFloat(currentUnitInput.value);
+      var perUnitPrice = parseFloat(perUnitPriceInput.value);
+
+      // Calculate the consumption
+      var consumption = currentUnit - previousUnit;
+
+      // Calculate the total amount
+      var totalAmount = consumption * perUnitPrice;
+
+      // Update the total amount input field with the calculated value
+      totalAmountInput.value = totalAmount.toFixed(2); // Adjust the number of decimal places as needed
+    }
+
+    // Call the calculateTotalAmount function initially to set the initial value
+    calculateTotalAmount();
+
+</script>
 </body>
 </html>

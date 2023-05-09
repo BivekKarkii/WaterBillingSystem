@@ -321,6 +321,13 @@ def paybillView(request,id):
         consumer_det = request.POST.get('consumer_det')
 
         print("Hello",id)
+        print("Hello", date)
+        print("Hello", invoice_id)
+        print("Hello", previous_unit)
+        print("Hello", current_unit)
+        print("Hello", amount)
+        print("Hello", consumer_det)
+
 
         billing = consumerBilling(
             id = id,
@@ -334,7 +341,8 @@ def paybillView(request,id):
         )
         billing.save()
         return redirect('/consumer/consumer_dashboard')
-    return render(request, 'consumer_dashboard.html')
+    success_message = "Task successfully completed."
+    return render(request, 'consumer_dashboard.html', {'success_message': success_message})
 
 def consumerupdateView(request,id):
     if request.method == 'POST':
