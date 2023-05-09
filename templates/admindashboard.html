@@ -43,8 +43,8 @@
                     <i class="fas fa-user-tie"></i>Employee</button>
                 <button class="tablinks" onclick="openTab(event, 'Billing')">
                     <i class="fas fa-file-invoice-dollar"></i>Billing</button>
-                <button class="tablinks" onclick="openTab(event, 'Messages')">
-                    <i class="fas fa-inbox"></i>Messages</button>
+<!--                <button class="tablinks" onclick="openTab(event, 'Messages')">-->
+<!--                    <i class="fas fa-inbox"></i>Messages</button>-->
                 <button class="tablinks">
                     <a href="/logoout"><i class="fas fa-sign-out-alt"></i>Logout</a></button>
             </div>
@@ -486,41 +486,41 @@
     {% endfor %}
 
 {#     ===================================================Messages part=======================================#}
-     <div id="Messages" class="tabcontent">
-         <div class="dashcontent flex">
-             <ul class="searchbar justify-between">
-                 <li>
-                     <form action="post">
-                         <input type="text" placeholder="Search..."><button class="dashbtn" type="button">Search</button>
-                     </form>
-                 </li>
-             </ul>
-         </div>
-         <div class="dashmid">
-             <ul class="flex justify-between">
-                 <li>Total Messages :  {{ countemp }}</li>
-             </ul>
-         </div>
-         <div class="messagerecords table-responsive">
-             <table class="center table">
-                 <tr>
-                     <th>ID</th>
-                     <th>Email</th>
-                     <th>Message</th>
-                 </tr>
-                 {% for i in messages %}
-                 <tr>
-                     <td>{{ i.id }}</td>
-                     <td>{{ i.email }}</td>
-                     <td>{{ i.c_message }}</td>
-                     <td>
-                         <a href="#viewMessageModal-{{ forloop.counter }}" class="edit" data-bs-toggle="modal" data-bs-target="#viewMessageModal-{{ forloop.counter }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                     </td>
-                 </tr>
-                 {% endfor %}
-             </table>
-         </div>
-     </div>
+<!--     <div id="Messages" class="tabcontent">-->
+<!--         <div class="dashcontent flex">-->
+<!--             <ul class="searchbar justify-between">-->
+<!--                 <li>-->
+<!--                     <form action="post">-->
+<!--                         <input type="text" placeholder="Search..."><button class="dashbtn" type="button">Search</button>-->
+<!--                     </form>-->
+<!--                 </li>-->
+<!--             </ul>-->
+<!--         </div>-->
+<!--         <div class="dashmid">-->
+<!--             <ul class="flex justify-between">-->
+<!--                 <li>Total Messages :  {{ countemp }}</li>-->
+<!--             </ul>-->
+<!--         </div>-->
+<!--         <div class="messagerecords table-responsive">-->
+<!--             <table class="center table">-->
+<!--                 <tr>-->
+<!--                     <th>ID</th>-->
+<!--                     <th>Email</th>-->
+<!--                     <th>Message</th>-->
+<!--                 </tr>-->
+<!--                 {% for i in messages %}-->
+<!--                 <tr>-->
+<!--                     <td>{{ i.id }}</td>-->
+<!--                     <td>{{ i.email }}</td>-->
+<!--                     <td>{{ i.c_message }}</td>-->
+<!--                     <td>-->
+<!--                         <a href="#viewMessageModal-{{ forloop.counter }}" class="edit" data-bs-toggle="modal" data-bs-target="#viewMessageModal-{{ forloop.counter }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
+<!--                     </td>-->
+<!--                 </tr>-->
+<!--                 {% endfor %}-->
+<!--             </table>-->
+<!--         </div>-->
+<!--     </div>-->
         </main>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
