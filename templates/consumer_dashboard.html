@@ -406,9 +406,64 @@
       width:50%;
     }
     .nav1{
-            box-shadow: 1px 1px 15px -1px rgba(0, 0, 0, 0.2);
-        }
-    </style>
+      box-shadow: 1px 1px 15px -1px rgba(0, 0, 0, 0.2);
+    }
+
+    @media print {
+    body *{
+        visibility: hidden;
+      #bill-name::after {
+        content: " - Your Custom Bill Name";
+    }
+    .print,
+    .print *
+    {
+        visibility: visible;
+    }
+    .print button{
+        visibility: hidden;
+    }
+    .print button span{
+        font-size: 0;
+    }
+
+   .print {
+    position: absolute;
+    left: 15%;
+    top: 50%;
+     margin:  auto auto;
+     width: 70%;
+     {#transform: translate(-50%,-50%);#}
+    }
+  }
+
+  @media print {
+    body *{
+        visibility: hidden;
+
+    }
+    .print1,
+    .print1 *
+    {
+        visibility: visible;
+    }
+    .print1 button{
+        visibility: hidden;
+    }
+    .print1 button span{
+        font-size: 0;
+    }
+
+   .print1 {
+    position: absolute;
+    left: 15%;
+    top: 50%;
+     margin:  auto auto;
+     width: 70%;
+     {#transform: translate(-50%,-50%);#}
+    }
+  }
+  </style>
 </head>
 
 <body>
@@ -541,30 +596,31 @@
           <li class="tablinks" onclick="openTab(event, 'Billing')"><i class="fa fa-file-invoice" style="padding: 0 3px 0 2px;"></i> <a href="#">Billing</a></li>
           <li class="tablinks" onclick="openTab(event, 'Payment')"><i class="fa fa-credit-card"></i><a href="#"> Payment</a></li>
           <li class="tablinks" onclick="openTab(event, 'History')"><i class="fa fa-history"></i><a href="#"> History</a></li>
-          <li><i class="fa fa-sign-out-alt"></i><a href="#logoutModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+          <li><i class="fa fa-sign-out-alt"></i><a href="#logoutModal" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
         </ul>
       </div>
     </nav>
 
     <!-- logout Modal -->
-                <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        Do you want to logout?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                          <a href="{% url 'consumer-page:customer_login'%}" class="btn btn-primary">Yes</a>
-                      </div>
-                    </div>
-                  </div>
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Do you want to logout?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <a href="{% url 'consumer-page:customer_login'%}" class="btn btn-primary">Yes</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Page Content  -->
     <div id = "Home" class="tabcontent" >
@@ -714,7 +770,7 @@
           <div id="printBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+              <div class="modal-content print">
                   <div class="modal-header">
                     <img class="billlogo" src="{% static 'images/logo.png'%}">
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -1059,7 +1115,7 @@
           <div id="printBillModal1-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+              <div class="modal-content print1">
                   <div class="modal-header">
                     <h1><img class="billlogo" src="{% static 'images/logo.png'%}"></h1>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
