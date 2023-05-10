@@ -526,9 +526,7 @@
     </div>
   </div>
 
-  <div class="wrapper d-flex align-items-stretch" style="
-    background: #F6F4FF;
-">
+  <div class="wrapper d-flex align-items-stretch" style="background: #F6F4FF;">
     <nav id="sidebar">
       <div class="custom-menu">
         <button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -543,10 +541,30 @@
           <li class="tablinks" onclick="openTab(event, 'Billing')"><i class="fa fa-file-invoice" style="padding: 0 3px 0 2px;"></i> <a href="#">Billing</a></li>
           <li class="tablinks" onclick="openTab(event, 'Payment')"><i class="fa fa-credit-card"></i><a href="#"> Payment</a></li>
           <li class="tablinks" onclick="openTab(event, 'History')"><i class="fa fa-history"></i><a href="#"> History</a></li>
-          <li><i class="fa fa-sign-out-alt"></i><a href="{% url 'consumer-page:customer_login'%}"> Logout</a></li>
+          <li><i class="fa fa-sign-out-alt"></i><a href="#logoutModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
         </ul>
       </div>
     </nav>
+
+    <!-- logout Modal -->
+                <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Do you want to logout?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                          <a href="{% url 'consumer-page:customer_login'%}" class="btn btn-primary">Yes</a>
+                      </div>
+                    </div>
+                  </div>
 
     <!-- Page Content  -->
     <div id = "Home" class="tabcontent" >
