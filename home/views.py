@@ -21,8 +21,8 @@ def homeview(request):
     return render(request, 'index.html')
 
 
-def signupview(request):
-    pass
+# def signupview(request):
+#     pass
 
 @login_required
 def welcomeview(request):
@@ -234,17 +234,17 @@ def deleteView(request, id):
 
 
 @login_required
-def employeeview(request):
-    employee = Employee.objects.all()
-    b = 0
-    for i in employee:
-        b += 1
-        print(i)
-    context = {
-        'employee': employee,
-        'count': b
-    }
-    return render(request, 'admindashboard.html', context)
+# def employeeview(request):
+#     employee = Employee.objects.all()
+#     b = 0
+#     for i in employee:
+#         b += 1
+#         print(i)
+#     context = {
+#         'employee': employee,
+#         'count': b
+#     }
+#     return render(request, 'admindashboard.html', context)
 
 
 def employeeeditView(request):

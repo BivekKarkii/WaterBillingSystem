@@ -28,28 +28,57 @@
 <!--	<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <!--===============================================================================================-->
+<style>
+    .navbar .dropdown-menu li{
+        margin: 0;
+        justify-content: center;
+        padding: 3px 10px;
+    }
+    .navbar .dropdown-menu li a:hover{
+        text-decoration: none;
+        color: #ffffff;
+    }
+    .navbar .dropdown-menu li:hover{
+        background: #007bff;
+        color: #ffffff;
+    }
+    .navbar .btn-secondary.active, .btn-secondary:active, .show>.btn-secondary.dropdown-toggle {
+    background-color: #007bff;
+    background-image: none;
+    border-color: #007bff;
+}
+    .pageheader button:hover {
+    background-color: #345feb;
+    color: #fff;
+    border: none;
+}
+    .button-color a:hover{
+        color: #ffffff !important;
+    }
 
+</style>
 </head>
 <body>
 <div class="home">
         <header class="pageheader">
             <nav class="homenav flex justify-between">
                 <div class="logo">
-                    <a href=""><img src="{% static '/images/logo.png' %}" alt="logo"></a>
+                    <a href="{% url "home:homepage" %}"><img src="{% static '/images/logo.png' %}" alt="logo"></a>
                 </div>
                 <ul class="navbar align-center">
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/support">Support</a></li>
                     <li><a href="/contact">Contact Us</a></li>
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle button-color" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle button-color" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 7px 6px;">
                         Corporate login
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                       <a href="/login">Admin Login</a>
-                        <a href="/employee/employeelogin">Employee Login</a>
+                        <li><a href="/login">Admin Login</a></li>
+                        <li><a href="/employee/employeelogin">Employee Login</a></li>
                       </div>
                     </div>
+
                     <li><button class="button-color" name="c_login"><a href="consumer/customer_login" >Customer Login</a></button></li>
                 </ul>
             </nav>

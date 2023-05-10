@@ -79,7 +79,7 @@ def employee_registration_formview(request):
             password=password
         )
         # print("user created!")
-        return redirect("/employeetable")
+        return redirect("/welcome")
 
     return render(request, "employee_registration_form.html")
 
