@@ -1,3 +1,5 @@
+
+
 import uuid
 
 from django.contrib import messages
@@ -49,6 +51,8 @@ def consumer_dashboardview(request):
     for j in paidbill:
         p+=1;
 
+    success_message = request.session.pop('success_message', None)
+
     context = {
         'unpaidbill': unpaidbill,
         'paidbill' : paidbill,
@@ -56,6 +60,7 @@ def consumer_dashboardview(request):
         'billing': billing,
         'u_count' : u,
         'p_count' : p,
+        'success_message': success_message,
     }
 
     return render(request, 'consumer_dashboard.html', context)
@@ -104,6 +109,7 @@ def consumer_registration_formview(request):
             citizenship=citizenship
         )
         # print("user created!")
+        request.session['success_message'] = "Task successful."
         return redirect("/welcome")
 
     return render(request, "consumer_registration_form.html")
@@ -331,9 +337,11 @@ def paybillView(request,id):
             status="paid",
         )
         billing.save()
+
+        request.session['success_message'] = "Bill payment successful."
         return redirect('/consumer/consumer_dashboard')
-    success_message = "Task successfully completed."
-    return render(request, 'consumer_dashboard.html', {'success_message': success_message})
+
+    return render(request, 'consumer_dashboard.html')
 
 def consumerupdateView(request,id):
     if request.method == 'POST':

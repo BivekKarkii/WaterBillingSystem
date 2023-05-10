@@ -606,7 +606,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Logout</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -650,7 +650,23 @@
           <canvas id="myChart"></canvas>
         </div>
     </div>
-
+      <!------- Success Message ---------->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="successModalLabel">Success</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Display the success message here -->
+            <p>{{ success_message }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
 
 
@@ -1277,6 +1293,13 @@
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
   </script>
+  {% if success_message %}
+  <script>
+    $(document).ready(function() {
+      $('#successModal').modal('show');
+    });
+  </script>
+  {% endif %}
 </body>
 
 </html>
