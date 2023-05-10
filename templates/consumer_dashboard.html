@@ -406,8 +406,35 @@
       width:50%;
     }
     .nav1{
-            box-shadow: 1px 1px 15px -1px rgba(0, 0, 0, 0.2);
-        }
+      box-shadow: 1px 1px 15px -1px rgba(0, 0, 0, 0.2);
+    }
+
+    @media print {
+    body *{
+        visibility: hidden;
+
+    }
+    .modal-content,
+    .modal-content *
+    {
+        visibility: visible;
+    }
+    .modal-content button{
+        visibility: hidden;
+    }
+    .modal-content button span{
+        font-size: 0;
+    }
+
+   .modal-content {
+    position: absolute;
+    left: 15%;
+    top: 50%;
+     margin:  auto auto;
+     width: 70%;
+     {#transform: translate(-50%,-50%);#}
+    }
+  }
     </style>
 </head>
 
@@ -547,24 +574,25 @@
     </nav>
 
     <!-- logout Modal -->
-                <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        Do you want to logout?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                          <a href="{% url 'consumer-page:customer_login'%}" class="btn btn-primary">Yes</a>
-                      </div>
-                    </div>
-                  </div>
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Do you want to logout?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <a href="{% url 'consumer-page:customer_login'%}" class="btn btn-primary">Yes</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Page Content  -->
     <div id = "Home" class="tabcontent" >
