@@ -412,21 +412,22 @@
     @media print {
     body *{
         visibility: hidden;
-
+      #bill-name::after {
+        content: " - Your Custom Bill Name";
     }
-    .modal-content,
-    .modal-content *
+    .print,
+    .print *
     {
         visibility: visible;
     }
-    .modal-content button{
+    .print button{
         visibility: hidden;
     }
-    .modal-content button span{
+    .print button span{
         font-size: 0;
     }
 
-   .modal-content {
+   .print {
     position: absolute;
     left: 15%;
     top: 50%;
@@ -435,7 +436,34 @@
      {#transform: translate(-50%,-50%);#}
     }
   }
-    </style>
+
+  @media print {
+    body *{
+        visibility: hidden;
+
+    }
+    .print1,
+    .print1 *
+    {
+        visibility: visible;
+    }
+    .print1 button{
+        visibility: hidden;
+    }
+    .print1 button span{
+        font-size: 0;
+    }
+
+   .print1 {
+    position: absolute;
+    left: 15%;
+    top: 50%;
+     margin:  auto auto;
+     width: 70%;
+     {#transform: translate(-50%,-50%);#}
+    }
+  }
+  </style>
 </head>
 
 <body>
@@ -568,7 +596,7 @@
           <li class="tablinks" onclick="openTab(event, 'Billing')"><i class="fa fa-file-invoice" style="padding: 0 3px 0 2px;"></i> <a href="#">Billing</a></li>
           <li class="tablinks" onclick="openTab(event, 'Payment')"><i class="fa fa-credit-card"></i><a href="#"> Payment</a></li>
           <li class="tablinks" onclick="openTab(event, 'History')"><i class="fa fa-history"></i><a href="#"> History</a></li>
-          <li><i class="fa fa-sign-out-alt"></i><a href="#logoutModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+          <li><i class="fa fa-sign-out-alt"></i><a href="#logoutModal" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -742,7 +770,7 @@
           <div id="printBillModal-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+              <div class="modal-content print">
                   <div class="modal-header">
                     <img class="billlogo" src="{% static 'images/logo.png'%}">
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -1087,7 +1115,7 @@
           <div id="printBillModal1-{{ forloop.counter }}" class="modal fade" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-dialog" role="document">
-              <div class="modal-content">
+              <div class="modal-content print1">
                   <div class="modal-header">
                     <h1><img class="billlogo" src="{% static 'images/logo.png'%}"></h1>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
