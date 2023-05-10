@@ -34,6 +34,11 @@ def welcomeview(request):
     c = 0
         # print(i.invoice_id)
 
+    message = Mymessage.objects.all()
+    m=0
+    for i in message:
+        m+=1
+
     for i in consumer:
         a+=1
     for j in employee:
@@ -47,6 +52,8 @@ def welcomeview(request):
         'countemp': b,
         'billing':billing,
         'countbill':c,
+        'message':message,
+        'msgcount':m,
     }
 
     return render(request, 'admindashboard.html',context)

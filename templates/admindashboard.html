@@ -506,7 +506,7 @@
          </div>
          <div class="dashmid">
              <ul class="flex justify-between">
-                 <li>Total Messages :  {{ countemp }}</li>
+                 <li>Total Messages :  {{ msgcount }}</li>
              </ul>
          </div>
          <div class="messagerecords table-responsive">
@@ -516,14 +516,14 @@
                      <th>Email</th>
                      <th>Message</th>
                  </tr>
-                 {% for i in messages %}
+                 {% for i in message %}
                  <tr>
                      <td>{{ i.id }}</td>
                      <td>{{ i.email }}</td>
-                     <td>{{ i.c_message }}</td>
-                     <td>
-                         <a href="#viewMessageModal-{{ forloop.counter }}" class="edit" data-bs-toggle="modal" data-bs-target="#viewMessageModal-{{ forloop.counter }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                     </td>
+                     <td>{{ i.message }}</td>
+{#                     <td>#}
+{#                         <a href="#viewMessageModal-{{ forloop.counter }}" class="edit" data-bs-toggle="modal" data-bs-target="#viewMessageModal-{{ forloop.counter }}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>#}
+{#                     </td>#}
                  </tr>
                  {% endfor %}
              </table>

@@ -136,6 +136,7 @@ th, td {
 
 th {
 	background-color: #f2f2f2;
+    border-top: 2px solid #dee2e6;
 }
 
 tbody td:last-child {
@@ -260,16 +261,19 @@ table tbody td{
         visibility: hidden;
 
     }
-    .printbill-modal,
-    .printbill-modal *
+    .modal-content,
+    .modal-content *
     {
         visibility: visible;
     }
-    .printbill-modal button{
+    .modal-content button{
         visibility: hidden;
     }
+    .modal-content button span{
+        font-size: 0;
+    }
 
-     .printbill-modal {
+     .modal-content {
     position: absolute;
     left: 15%;
     top: 50%;
