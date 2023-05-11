@@ -57,6 +57,8 @@ def employee_dashboardview(request):
     }
     return render(request, 'employee_dashboard.html',context)
 
+from django.contrib import messages
+
 def employee_registration_formview(request):
     if request.method == 'POST':
         employee_id = request.POST.get("employee_id")
@@ -67,8 +69,6 @@ def employee_registration_formview(request):
         citizenship = request.POST.get("citizenship")
         password = request.POST.get("password")
 
-        print(employee_id)
-
         Employee.objects.create(
             employee_id=employee_id,
             name=name,
@@ -78,10 +78,14 @@ def employee_registration_formview(request):
             citizenship=citizenship,
             password=password
         )
-        # print("user created!")
+
+        # Set the success message
+        messages.success(request, "Employee registration successful.")
+
         return redirect("/welcome")
 
     return render(request, "employee_registration_form.html")
+
 
 
 
