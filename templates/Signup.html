@@ -54,6 +54,7 @@
     <meta charset="utf-8">
     <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
     <!-- <link rel="stylesheet" type="text/css" href="signup.css"> -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Consumer signup</title>
@@ -193,6 +194,8 @@ p a:hover {
       </div>
       <div class="signupcontent flex">
         <form class="signupform" method="POST">
+            <a href="{% url "home:homepage" %}">
+            <i class="fas fa-arrow-left icon" style="font-size: 24px; color: #007bff; margin-right: 10px;"></i> Back to Home</a>
           {% csrf_token %}
           <h3>Consumer Sign Up</h3>
           <div class="form-contain" >
