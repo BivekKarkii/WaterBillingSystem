@@ -22,7 +22,78 @@
         .tablinks i{
             margin-right:15px;
         }
+    /* Modal Styles */
+    .modal-dialog {
+      max-width: 500px;
+      margin: 0 auto;
+    }
 
+    .modal-content {
+      border-radius: 0;
+    }
+
+    .modal-header {
+      background-color: #f8f9fa;
+      border-bottom: none;
+    }
+
+    .modal-title {
+      color: #343a40;
+    }
+
+    .modal-body {
+      padding: 20px;
+    }
+
+    .modal-footer {
+      background-color: #f8f9fa;
+      border-top: none;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      color: #343a40;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+    }
+
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    .add_btn {
+      padding: 10px 20px;
+      color: #fff;
+      background-color: #17a2b8;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .btn-secondary {
+      padding: 10px 20px;
+      color: #fff;
+      background-color: #6c757d;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .btn-close {
+      color: #000;
+    }
     </style>
 </head>
 <body>
@@ -74,6 +145,32 @@
                             <h3>{{ countbill }}</h3>
                         </div>
                     </div>
+                {% if messages %}
+                <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="successModalLabel">Success</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        {% for message in messages %}
+                        <p>{{ message }}</p>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  $(document).ready(function() {
+                    $('#successModal').modal('show');
+                  });
+                </script>
+                {% endif %}
+
                 </div>
 
 {#        =============================== Consumer part ===============================================#}
@@ -143,58 +240,55 @@
 
     {% for i in consumer %}
 	<div id="editConsumerModal-{{ forloop.counter }}" class="modal fade"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form action="/update/{{i.id}}" method="post">
+		<div class="modal-dialog view">
+            <div class="modal-content">
+                <form action="/update/{{i.id}}" method="post">
                     {% csrf_token %}
-					<div class="modal-header">
-						<h4 class="modal-title">Edit Consumer</h4>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Consumer</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="fullname">Full Name:</label>
+                            <input type="text" value="{{ i.name }}" id="fullname" name="name" required>
 
-                        <label for="fullname">Full Name:</label>
-                        <input type="text" value="{{ i.name }}" id="fullname" name="name" required>
+                            <label for="phonenumber">Phone Number:</label>
+                            <input type="tel" value="{{ i.phone }}" id="phonenumber" name="phone" required>
 
-                        <label for="phonenumber">Phone Number:</label>
-                        <input type="tel" value="{{ i.phone }}" id="phonenumber" name="phone" required>
+                            <label for="address">Address:</label>
+                            <input type="text" value="{{ i.address }}" id="address" name="address" required>
 
-                          <label for="address">Address:</label>
-                          <input type="text" value="{{ i.address }}" id="address" name="address" required>
+                            <label>Water Type:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="domestic" name="type" value="domestic" checked>
+                                <label class="form-check-label" for="domestic">Community</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="commercial" name="type" value="commercial">
+                                <label class="form-check-label" for="commercial">KUKL</label>
+                            </div>
 
-                          <label>Water Type:</label>
-                          <label for="domestic">
-                            <input type="radio" id="domestic" name="type" value="domestic" checked>
-                            Community
-                          </label>
-                          <label for="commercial">
-                            <input type="radio" id="commercial" name="type" value="commercial">
-                            KUKL
-                          </label>
+                            <label for="meternumber">Meter Number:</label>
+                            <input type="text" value="{{ i.meter_no }}" id="meternumber" name="meter_no" required>
 
-                          <label for="meternumber">Meter Number:</label>
-                          <input type="text" value="{{ i.meter_no }}" id="meternumber" name="meter_no" required>
+                            <label for="email">Email:</label>
+                            <input type="email" value="{{ i.email }}" id="email" name="email" required>
 
-                          <label for="email">Email:</label>
-                          <input type="email" value="{{ i.email }}" id="email" name="email" required>
+                            <label for="citizenshipnumber">Citizenship Number:</label>
+                            <input type="text" value="{{ i.citizenship }}" id="citizenshipnumber" name="citizenship" required>
 
-                          <label for="citizenshipnumber">Citizenship Number:</label>
-                          <input type="text" value="{{ i.citizenship }}" id="citizenshipnumber" name="citizenship" required>
-
-                          <label for="consumer_id">Consumer Id:</label>
-                          <input type="text" value="{{ i.consumer_id }}" id="consumer_id" name="consumer_id" required>
-
-						</div>
-
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="add_btn btn btn-info">Update </button>
+                            <label for="consumer_id">Consumer Id:</label>
+                            <input type="text" value="{{ i.consumer_id }}" id="consumer_id" name="consumer_id" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="add_btn btn btn-info">Update</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-					</div>
-				</form>
-			</div>
-		</div>
+                    </div>
+                </form>
+            </div>
+        </div>
 	</div>
     {% endfor %}
 
